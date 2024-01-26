@@ -35,17 +35,20 @@ public class Room : MonoBehaviour
     }
 
     /**
-     * Queries the number of free (unreserved & unoccopied) workstations in the room.
+     * Queries the list of free (unreserved and unoccopied) workstations in the room.
      */
-    public int GetFreeSpaces()
-    {
-        int freeSpaces = 0;
+    public List<WorkStation> GetFreeWorkstations()
+    {   
+        List<WorkStation> freeWorkStations = new List<WorkStation>();
         foreach (WorkStation workStation in workStationsInRoom)
         {
-            freeSpaces += workStation.IsReserved() ? 0 : 1;
+            if (!workStation.IsReserved())
+            {
+                freeWorkStations.Add(workStation);
+            }
         }
 
-        return freeSpaces;
+        return freeWorkStations;
     }
 
     /**

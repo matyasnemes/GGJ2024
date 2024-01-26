@@ -61,10 +61,15 @@ public class WorkStation : MonoBehaviour
         remainingDuration -= Time.deltaTime;
         if (remainingDuration < 0.0f)
         {
-            currentCharacter.LeaveWorkstation(this);
+            currentCharacter.RequestLeaveWorkstation(this);
             currentCharacter = null;
             isReserved = false;
         }
     }
-    
+
+    public Room GetRoom()
+    {
+        return null;
+    }
+
 }
