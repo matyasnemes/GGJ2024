@@ -5,7 +5,11 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
 
-    public void LeaveWorkstation(WorkStation workStation)
+    /**
+     * Requests the character to leave its current workstation.
+     * The workstation unregisters the character after this method is done.
+     */
+    public void RequestLeaveWorkstation(WorkStation workStation)
     {
 
     }

@@ -8,37 +8,59 @@ public class Room : MonoBehaviour
     public List<WorkStation> workStationsInRoom;
     public List<Door> doors;
 
+    /**
+     * Adds a character to the room.
+     * @param[in] character: The character that entered the room.
+     */
     public void EnterRoom(Character character)
     {
         charactersInRoom.Add(character);
     }
 
+    /**
+     * Removes a character from the room.
+     * @param[in] character: The character that left the room.
+     */
     public void LeaveRoom(Character character)
     {
         charactersInRoom.Remove(character);
     }
 
-    // Start is called before the first frame update
+    /**
+     * Initializes the room.
+     */
     void Start()
     {
         workStationsInRoom = new List<WorkStation>(GetComponentsInChildren<WorkStation>());
     }
 
-    // Update is called once per frame
-    void Update()
+    /**
+     * Queries the number of free (unreserved & unoccopied) workstations in the room.
+     */
+    public int GetFreeSpaces()
     {
-        
+        int freeSpaces = 0;
+        foreach (WorkStation workStation in workStationsInRoom)
+        {
+            freeSpaces += workStation.IsReserved() ? 0 : 1;
+        }
+
+        return freeSpaces;
     }
 
-    public int freeSpaces()
+    /**
+     * Queries whether the specified room is a neighbour of this room. 
+     */
+    public bool IsNeighbourRoom(Room room)
     {
-        return 0;
-    }
+        foreach (Door door in doors)
+        {
+            if ((door.room1 == this && door.room2 == room) || (door.room1 == room && door.room2 == this))
+            {
+                return true;
+            }
+        }
 
-    public bool isNeighbour(Room room)
-    {
         return false;
     }
-
-
 }
