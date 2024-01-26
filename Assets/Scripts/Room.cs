@@ -6,6 +6,7 @@ public class Room : MonoBehaviour
 {
     public List<Character> charactersInRoom;
     public List<WorkStation> workStationsInRoom;
+    public List<Door> doors;
 
     public void EnterRoom(Character character)
     {
@@ -28,4 +29,16 @@ public class Room : MonoBehaviour
     {
         
     }
+
+    public int freeSpaces()
+    {
+        return 0;
+    }
+
+    public bool isNeighbour(Room room)
+    {
+        return false;
+    }
+
+
 }
