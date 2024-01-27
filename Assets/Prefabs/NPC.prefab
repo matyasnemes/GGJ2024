@@ -48,12 +48,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.4
-  bubbleOffset: {x: 0, y: 7, z: 0}
   bubbleTime: 2
-  startRoom: {fileID: 0}
   funnyJokes: []
   laughBubble: {fileID: 2473199078318612518, guid: d8673bd747cd51445b96b6df2397f87d, type: 3}
   neutralBubble: {fileID: 2473199078318612518, guid: 2e1d6b17a1e590240ab68bebbeac7c2c, type: 3}
+  JokePaperPrefab: {fileID: 4882196499427237929, guid: 5f791b7348a7a5042832acf456c671a4, type: 3}
+  JokeSpawnTimeSecondsMin: 5
+  JokeSpawnTimeSecondsMax: 10
 --- !u!70 &1877281849831207107
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

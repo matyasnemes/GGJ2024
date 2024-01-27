@@ -10,7 +10,12 @@ public class Inventory : MonoBehaviour
 		itemSprite = null;
 	}
 
-	public void addItem()
+	public bool isFull()
+	{
+		return (Random.value < 0.8);
+	}
+
+	public void addItem(JokeItem jokeItem)
 	{
 	}
 
