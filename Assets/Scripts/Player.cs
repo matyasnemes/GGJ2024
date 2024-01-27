@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -96,10 +94,6 @@ public class Player : MonoBehaviour
     void OnTriggerExit2D(Collider2D collider)
     {
         Room room = collider.gameObject.GetComponent<Room>();
-        if (room)
-        {
-            Debug.Log("Player left room: " + room.name);
-        }
     }
 
     /**
@@ -111,23 +105,23 @@ public class Player : MonoBehaviour
         Vector2 velocity = Vector2.zero;
         characterDisplay.FaceDown();
 
-        if (Input.GetKey(KeyCode.W)) 
-        { 
+        if (Input.GetKey(KeyCode.W))
+        {
             velocity += Vector2.up * MovementSpeed;
             characterDisplay.FaceUp();
         }
-        else if (Input.GetKey(KeyCode.S)) 
-        { 
+        else if (Input.GetKey(KeyCode.S))
+        {
             velocity += Vector2.down * MovementSpeed;
             characterDisplay.FaceDown();
         }
 
-        if (Input.GetKey(KeyCode.A)) 
-        { 
+        if (Input.GetKey(KeyCode.A))
+        {
             velocity += Vector2.left * MovementSpeed;
         }
-        else if (Input.GetKey(KeyCode.D)) 
-        { 
+        else if (Input.GetKey(KeyCode.D))
+        {
             velocity += Vector2.right * MovementSpeed;
         }
         else if (Input.GetKey(KeyCode.Space))
@@ -141,7 +135,7 @@ public class Player : MonoBehaviour
     void DisplayJoke(string joke)
     {
         //Around 250 characters can be displayed on the textbox
-        if(joke.Length > 250)
+        if (joke.Length > 250)
         {
             Debug.LogError("The following joke is too long: " + joke);
             return;
