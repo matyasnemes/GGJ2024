@@ -1420,7 +1420,7 @@ GameObject:
   - component: {fileID: 404120187}
   - component: {fileID: 404120190}
   m_Layer: 5
-  m_Name: TextBox
+  m_Name: JokeTextBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

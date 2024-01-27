@@ -36,7 +36,7 @@ public class JokeTextBox : MonoBehaviour
                 img.enabled = false;
                 textmesh.enabled = false;
 
-                int index = (int)((textTimeMax - textTimeLeft)/(textTimeMax-1));
+                int index = (int)(((textTimeMax - textTimeLeft)/(textTimeMax-1))*jokeToDisplay.Length);
 
                 if(index >= jokeToDisplay.Length) index = jokeToDisplay.Length;
                 Debug.Log(index);
