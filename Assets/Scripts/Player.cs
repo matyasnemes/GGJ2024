@@ -73,7 +73,6 @@ public class Player : MonoBehaviour
         Room room = collider.gameObject.GetComponent<Room>();
         if (room)
         {
-            Debug.Log("Player entered room: " + room.name);
             currentRoom = room;
         }
         else if (collider.gameObject.name.Contains("JokePaper"))

@@ -27,7 +27,12 @@ public class CharacterDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.Find("Name").GetComponent<TMPro.TextMeshPro>().text = transform.parent.name;
+        var nameTag = transform.Find("Name");
+        if (nameTag)
+        {
+            nameTag.GetComponent<TMPro.TextMeshPro>().text = transform.parent.name;
+        }
+
 
         if (uiIcon)
         {
