@@ -1,31 +1,17 @@
 # GGJ2024
 
-Design Doksi
+##Matyitól rajz
+* Robot karakter
+* Accuse ujj
+* Meh fejnek más szín
+* Meeting room székek háttal?
+* Óra?
 
-Vicc mesélés:
-
-X Helység
-X Ember
-X Kategória
-
-
-Kell a grafika
-Level design  - Mátyás
-
-Táblázat - Jázmin
-
-Speech bubble
-Gombok - Bálint
-
-Mesterséges “intelligencia” - Gergő
-
-Szoba/Workstation
-Karakter irányítás - Peti
-
-Menük
+Animációk
+	Kövesse az UI?
+Menü
 Vicc gyűjtemény
-Hangeffektet
 Cinematic
-Feladvány
-
 Zoom out to max
+
+Vesztés esetén helyes reveal
