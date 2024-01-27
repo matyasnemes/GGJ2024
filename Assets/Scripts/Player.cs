@@ -20,6 +20,16 @@ public class Player : MonoBehaviour
     private CharacterDisplay characterDisplay;
 
     /**
+     * Reference to the singleton joke factory.
+     */
+    private JokeFactory jokeFactory;
+
+    /**
+     * Reference to the inventory of the player.
+     */
+    private Inventory inventory;
+
+    /**
      * The room in which the player currently resides.
      */
     private Room currentRoom = null;
@@ -43,10 +53,13 @@ public class Player : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         characterDisplay = GetComponentInChildren<CharacterDisplay>();
+        jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
+        inventory = GetComponent<Inventory>();
     }
 
     /**
-     * Called when the player collides with a trigger (used for entering rooms).
+     * Called when the player collides with a trigger. Used for 
+     * entering rooms and collecting joke papers.
      * @param[in] collider: Collider the player collided with.
      */
     void OnTriggerEnter2D(Collider2D collider)
@@ -56,6 +69,15 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Player entered room: " + room.name);
             currentRoom = room;
+        }
+        else if (collider.gameObject.name.Contains("JokePaper"))
+        {
+            if (!inventory.isFull())
+            {
+                Destroy(collider.gameObject);
+                jokeFactory.OnJokePaperCollected();
+                inventory.addItem(jokeFactory.createJokeItem());
+            }
         }
     }
 
