@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
     private Room currentRoom = null;
 
     /**
+    * The text box displaying the hilarious jokes
+    */
+    private JokeTextBox jokeTB;
+
+    /**
      * Tells the specified joke type in the current room of the player.
      * @param[in] The type of the joke to tell.
      */
@@ -57,6 +62,7 @@ public class Player : MonoBehaviour
         characterDisplay = GetComponentInChildren<CharacterDisplay>();
         jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
         inventory = GetComponent<Inventory>();
+        jokeTB = GameObject.Find("JokeTextBox").GetComponent<JokeTextBox>();
     }
 
     /**
@@ -137,6 +143,6 @@ public class Player : MonoBehaviour
             return;
         }
 
-        
+        jokeTB.DisplayJoke(joke);
     }
 }
