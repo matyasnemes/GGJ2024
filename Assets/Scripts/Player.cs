@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
             currentRoom.TellJoke(joke.type());
         }
 
-        //DisplayJoke(jokestring);
+        DisplayJoke(joke.jokeText());
     }
 
     /**
