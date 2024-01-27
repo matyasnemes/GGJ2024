@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     public List<Character> npcs = new List<Character>();
     public JokeFactory jokeFactory;
     public Text timer;
-    public float gameTime;
+    public float gameTime = 120;
 
     System.Random rd = new System.Random();
     Character robot;
@@ -21,7 +21,16 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (gameTime > 0)
+        {
+            gameTime -= Time.deltaTime;
+            updateTimer();
+        }
+        else
+        {
+            Debug.Log("TIME IS UP YOU LOSER!");
+            gameTime = 0;
+        }
     }
 
     public void Accuse(GameObject characterObejct)
@@ -83,6 +92,14 @@ public class GameController : MonoBehaviour
             }
         }
 
+    }
+
+    void updateTimer()
+    {
+        float minutes = Mathf.FloorToInt(gameTime / 60);
+        float seconds = Mathf.FloorToInt(gameTime % 60);
+
+        timer.text = string.Format("{0}:{1:00}", minutes, seconds);
     }
 
     string GenerateRandomNLongBinary(int n)
