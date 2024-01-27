@@ -132,7 +132,7 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.Space))
         {
-            DisplayJoke("Lorem ipsum lorem ipsum lorem ipsum lorem ipsum");
+            DisplayJoke("Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem");
         }
 
         rigidBody.velocity = velocity;
