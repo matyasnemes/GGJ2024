@@ -11,8 +11,10 @@ public class InventorySlot : MonoBehaviour
 		Debug.Assert(_itemImage != null);
 		_itemTypeImage = transform.Find("slot_item_type").GetComponent<Image>();
 		Debug.Assert(_itemTypeImage != null);
+		_cooldownImage = transform.Find("slot_cooldown").GetComponent<Image>();
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
+		_cooldownImage.GetComponent<Image>().enabled = false;
 	}
 
 	// Uses up a joke (if there is any).
@@ -25,14 +27,16 @@ public class InventorySlot : MonoBehaviour
 		_itemTypeImage.sprite = null;
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
+		_cooldownImage.GetComponent<Image>().enabled = false;
 		return result;
 	}
 
 	public void addJoke(JokeItem jokeItem)
 	{
 		_jokeItem = jokeItem;
-		_itemImage.GetComponent<Image>().enabled = true;
 		_itemImage.sprite = jokeItem.unopenedSprite();
+		_itemImage.GetComponent<Image>().enabled = true;
+		_cooldownImage.GetComponent<Image>().enabled = true;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
 	}
 
@@ -60,6 +64,8 @@ public class InventorySlot : MonoBehaviour
 	public Image _itemImage = null;
 	// Indicates the type of the joke.
 	public Image _itemTypeImage = null;
+	// Cooldown image.
+	public Image _cooldownImage = null;
 
 	private JokeItem _jokeItem = null;
 }
