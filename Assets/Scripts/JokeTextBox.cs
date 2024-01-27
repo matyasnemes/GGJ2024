@@ -10,11 +10,16 @@ public class JokeTextBox : MonoBehaviour
     public float textTimeMax = 3.0f;
 
     float textTimeLeft = 0.0f;
+    TextMeshProUGUI textmesh;
+    Image img;
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Image>().enabled = false;
-        GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+        img = GetComponent<Image>();
+        textmesh = GetComponentInChildren<TextMeshProUGUI>();
+
+        img.enabled = false;
+        textmesh.enabled = false;
     }
 
     // Update is called once per frame
@@ -25,17 +30,18 @@ public class JokeTextBox : MonoBehaviour
             textTimeLeft -= Time.deltaTime;
 
             if(textTimeLeft <= 0.0f)
-            {
-                GetComponent<Image>().enabled = false;
-                GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+            {        
+                img.enabled = false;
+                textmesh.enabled = false;
             }
         }
     }
 
     public void DisplayJoke(string joke)
     {
-        textTimeLeft = textTimeMax;
-        GetComponent<Image>().enabled = true;
-        GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+        textTimeLeft = textTimeMax;        
+        img.enabled = true;
+        textmesh.enabled = true;
+        textmesh.text = joke;
     }
 }
