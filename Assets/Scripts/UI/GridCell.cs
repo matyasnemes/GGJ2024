@@ -16,6 +16,7 @@ public class GridCell : MonoBehaviour, IPointerDownHandler
     void Start()
     {
         image = GetComponent<Image>();
+        SetTransparency(0);
     }
 
     public void OnPointerDown(PointerEventData eventData)
