@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5505127597832173923, guid: aa7989718d0e76d4584192894d916e52, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 58093525ffc935b4cadfcbedd88ea92f, type: 3}
     - target: {fileID: 1875529731320418087, guid: aa7989718d0e76d4584192894d916e52, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.28
@@ -79,6 +83,10 @@ PrefabInstance:
     - target: {fileID: 4009578942475264321, guid: aa7989718d0e76d4584192894d916e52, type: 3}
       propertyPath: m_Name
       value: Workstation Cubicle
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473170659311284922, guid: aa7989718d0e76d4584192894d916e52, type: 3}
+      propertyPath: playSoundAtEnter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

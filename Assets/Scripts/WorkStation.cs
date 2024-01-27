@@ -26,6 +26,16 @@ public class WorkStation : MonoBehaviour
      * The current character working at the workstation (set when the countdown starts).
      */
     private Character currentCharacter = null;
+
+    /**
+     * The audio source for the workstation.
+     */
+    private AudioSource audioSource = null;
+
+    /**
+     * Whether to play workstation sound upon entering or exiting.
+     */
+    public bool playSoundAtEnter = false;
     
     /**
      * Marks the workstation as reserved, so noone else can claim it.
@@ -52,6 +62,10 @@ public class WorkStation : MonoBehaviour
     {
         currentCharacter = character;
         remainingDuration = WorkDurationSeconds;
+        if (audioSource && playSoundAtEnter)
+        {
+            audioSource.Play();
+        }
     }
 
     /**
@@ -79,6 +93,20 @@ public class WorkStation : MonoBehaviour
             currentCharacter.RequestLeaveWorkstation(this);
             currentCharacter = null;
             isReserved = false;
+
+            if (audioSource && playSoundAtEnter)
+            {
+                audioSource.Stop();
+            }
+            else if (audioSource && !playSoundAtEnter)
+            {
+                audioSource.Play();
+            }
         }
+    }
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
     }
 }

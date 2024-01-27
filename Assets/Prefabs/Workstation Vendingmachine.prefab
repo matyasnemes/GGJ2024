@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5505127597832173923, guid: aa7989718d0e76d4584192894d916e52, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 968122c9d24b0ff4c80ba123aa06ff5c, type: 3}
     - target: {fileID: 1875529731320418087, guid: aa7989718d0e76d4584192894d916e52, type: 3}
       propertyPath: m_LocalPosition.y
       value: -3.98
@@ -67,6 +71,10 @@ PrefabInstance:
     - target: {fileID: 4009578942475264321, guid: aa7989718d0e76d4584192894d916e52, type: 3}
       propertyPath: m_Name
       value: Workstation Vendingmachine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473170659311284922, guid: aa7989718d0e76d4584192894d916e52, type: 3}
+      propertyPath: playSoundAtEnter
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
