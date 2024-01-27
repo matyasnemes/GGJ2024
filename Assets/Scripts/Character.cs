@@ -200,12 +200,13 @@ public class Character : MonoBehaviour
             //If we stay in the current room there is no door needed to get there
             target.SetTargetToWorkstation();
         }
-
+        Debug.Log("New Target is: " + target.GetTargetPosition());
         return true;
     }
 
     void ReachedGoal()
     {
+        Debug.Log("Target " + target.GetTargetPosition() + " has been reached, I am at " + transform.position);
         switch(target.Type)
         {
             case TargetType.Door:
