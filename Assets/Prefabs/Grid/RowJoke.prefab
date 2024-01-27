@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3830820234268842541}
   m_Layer: 0
-  m_Name: GridRowJokeType
+  m_Name: RowJoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
