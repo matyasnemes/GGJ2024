@@ -37,11 +37,11 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Joke(JokeItemTpye joke)
+    public void Joke(JokeItemType joke)
     {
         if(funnyJokes.Contains(joke))
         {
-            
+
         }
 
     }
