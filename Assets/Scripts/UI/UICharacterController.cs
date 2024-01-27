@@ -10,8 +10,11 @@ public class UICharacterController : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        var button = gameObject.transform.GetChild(0).GetChild(0).GetComponent<Button>();
-        button.onClick.AddListener(OnClick);
+        var button = gameObject.transform.GetChild(0).GetChild(0);
+        button.GetComponent<Button>().onClick.AddListener(OnClick);
+
+        var text = button.GetChild(0).GetComponentInChildren<TMPro.TextMeshProUGUI>();
+        text.text += character.name;
 
         var uiIcon = gameObject.transform.GetChild(1).GetChild(0).gameObject;
         character.transform.Find("Character Display").GetComponent<CharacterDisplay>().RegisterUIIcon(uiIcon);
