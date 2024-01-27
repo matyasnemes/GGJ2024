@@ -130,6 +130,10 @@ public class Player : MonoBehaviour
         { 
             velocity += Vector2.right * MovementSpeed;
         }
+        else if (Input.GetKey(KeyCode.Space))
+        {
+            DisplayJoke("asd");
+        }
 
         rigidBody.velocity = velocity;
     }

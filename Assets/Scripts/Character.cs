@@ -194,9 +194,9 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Joke(string joke)
+    public void Joke(string jokeTypeString)
     {
-        if(funnyJokes.Contains(joke))
+        if(funnyJokes.Contains(jokeTypeString))
         {
             //TODO: Laugh
             bubble = laughBubble;

@@ -1418,6 +1418,7 @@ GameObject:
   - component: {fileID: 404120189}
   - component: {fileID: 404120188}
   - component: {fileID: 404120187}
+  - component: {fileID: 404120190}
   m_Layer: 5
   m_Name: TextBox
   m_TagString: Untagged
@@ -1483,6 +1484,20 @@ RectTransform:
   m_AnchoredPosition: {x: -190, y: -120}
   m_SizeDelta: {x: 1477.3594, y: 152.05139}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &404120190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 404120186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2414f5cbac6819e4da1ed6def31e8a68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text: 
+  textTimeMax: 5
 --- !u!1 &410286524 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1199440877697933035, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
