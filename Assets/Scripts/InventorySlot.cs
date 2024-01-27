@@ -7,7 +7,12 @@ public class InventorySlot : MonoBehaviour
 {
 	public void Start()
 	{
-		//_itemImage.sprite = null;
+		_itemImage = transform.Find("slot_item").GetComponent<Image>();
+		Debug.Assert(_itemImage != null);
+		_itemTypeImage = transform.Find("slot_item_type").GetComponent<Image>();
+		Debug.Assert(_itemTypeImage != null);
+		_itemImage.GetComponent<Image>().enabled = false;
+		_itemTypeImage.GetComponent<Image>().enabled = false;
 		_jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
 		Debug.Assert(_jokeFactory != null);
 	}
@@ -15,13 +20,18 @@ public class InventorySlot : MonoBehaviour
 	public void useJoke()
 	{
 		_jokeItem = null;
-		//_itemImage.sprite = null;
+		_itemImage.sprite = null;
+		_itemTypeImage.sprite = null;
+		_itemImage.GetComponent<Image>().enabled = false;
+		_itemTypeImage.GetComponent<Image>().enabled = false;
 	}
 
 	public void addJoke(JokeItem jokeItem)
 	{
 		_jokeItem = jokeItem;
-		//_itemImage.sprite = jokeItem.unopenedSprite();
+		_itemImage.GetComponent<Image>().enabled = true;
+		_itemImage.sprite = jokeItem.unopenedSprite();
+		_itemTypeImage.GetComponent<Image>().enabled = false;
 	}
 
 	public JokeItem jokeItem()
@@ -43,12 +53,19 @@ public class InventorySlot : MonoBehaviour
 			_jokeItem.onUpdate(Time.deltaTime);
 			if (_jokeItem.isTypeRevealed())
 			{
-				//_itemImage.sprite = _jokeItem.jokeSprite();
+				_itemImage.GetComponent<Image>().enabled = true;
+				_itemImage.sprite = _jokeItem.openedSprite();
+				_itemTypeImage.GetComponent<Image>().enabled = true;
+				_itemTypeImage.sprite = _jokeItem.jokeSprite();
 			}
 		}
 	}
 
-	public Image _itemImage;
+	// Main icon of the item (open/closed paper).
+	public Image _itemImage = null;
+	// Indicates the type of the joke.
+	public Image _itemTypeImage = null;
+
 	private JokeItem _jokeItem = null;
 	private JokeFactory _jokeFactory = null;
 }

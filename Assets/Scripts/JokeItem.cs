@@ -3,19 +3,30 @@ using UnityEngine;
 // Class containing the information of a joke to be used.
 public class JokeItem
 {
-	public JokeItem(Sprite unopenedSprite,
-					JokeItemType type,
+	public JokeItem(JokeItemType type,
+					Sprite unopenedSprite,
+					Sprite openedSprite,
 					float revealDuration)
 	{
 		this._type = type;
 		this._unopenedSprite = unopenedSprite;
+		this._openedSprite = openedSprite;
 		this._revealDuration = revealDuration;
 		this._revealTimer = 0.0F;
+
+		Debug.Assert(_type != null);
+		Debug.Assert(_unopenedSprite != null);
+		Debug.Assert(_openedSprite != null);
 	}
 
 	public Sprite unopenedSprite()
 	{
 		return _unopenedSprite;
+	}
+
+	public Sprite openedSprite()
+	{
+		return _openedSprite;
 	}
 
 	public JokeItemType type()
@@ -55,6 +66,7 @@ public class JokeItem
 
 	private JokeItemType _type;
 	private Sprite _unopenedSprite;
+	private Sprite _openedSprite;
 	private float _revealTimer; // Elapsed, in seconds.
 	public float _revealDuration; // In seconds.
 }

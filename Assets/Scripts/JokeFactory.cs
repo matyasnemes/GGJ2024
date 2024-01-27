@@ -14,14 +14,17 @@ public class JokeFactory : MonoBehaviour
 		Debug.Assert(jokeItemTypes.Count == uniqueTypeNames.Count);
 		Debug.Assert(jokeItemTypes.Count > 0);
 		Debug.Assert(unopenedSprites.Count > 0);
+		Debug.Assert(openedSprites.Count > 0);
 	}
 
 	public JokeItem createJokeItem()
 	{
 		int chosenUnopened = generateInterval(0, unopenedSprites.Count);
+		int chosenOpened = generateInterval(0, openedSprites.Count);
 		int chosenType = generateInterval(0, jokeItemTypes.Count);
-		return new JokeItem(unopenedSprites[chosenUnopened],
-				            jokeItemTypes[chosenType],
+		return new JokeItem(jokeItemTypes[chosenType],
+							unopenedSprites[chosenUnopened],
+							openedSprites[chosenOpened],
 							revealDuration);
 	}
 
@@ -42,6 +45,7 @@ public class JokeFactory : MonoBehaviour
 	}
 
 	public List<Sprite> unopenedSprites;
+	public List<Sprite> openedSprites;
 	public List<JokeItemType> jokeItemTypes;
 	public float revealDuration = 5.0F; // In seconds.
 }
