@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
     }
 
     bool iAmRobot = false;
+    bool firstFindGoal = true;
     System.Random rd;
     State state;
     Target target;
@@ -100,8 +101,12 @@ public class Character : MonoBehaviour
             case State.Idle:
 
                 //TODO: If time allows, go to the center of the current room
-
-                if( FindNewGoal() )
+                if(firstFindGoal)
+                {
+                    if(FirstFindGoal()) state = State.Going;
+                    firstFindGoal = false;
+                }
+                else if( FindNewGoal() )
                 {
                     state = State.Going;
                 }
@@ -135,12 +140,12 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        state = State.Idle;
         target = new Target();
         rd = new System.Random();
         charDisp = GetComponentInChildren<CharacterDisplay>();
         jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
         RemainingSecondsUntilJokeSpawn = Random.Range(JokeSpawnTimeSecondsMin, JokeSpawnTimeSecondsMax);
+        state = State.Idle;
     }
 
      // Update is called once per frame
@@ -211,6 +216,21 @@ public class Character : MonoBehaviour
         bubble = Instantiate(bubble, transform);
         bubble.transform.position += bubbleOffset;
         Destroy(bubble, bubbleTime);
+    }
+
+    //The first time we search for goal, it makes sense to search in the room
+    bool FirstFindGoal()
+    {
+        var workstations = currentRoom.GetFreeWorkstations();
+        if(workstations.Count > 0)
+        {
+            target.SetDestination(workstations[rd.Next(workstations.Count)]);
+            target.SetTargetToWorkstation();
+            target.TargetWorkStation.ReserveWorkstation();
+            return true;
+        }
+
+        return false;
     }
 
     //Currently, a possible target can only be in the adjacent rooms, if there is no space there, try the current room
