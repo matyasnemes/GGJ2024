@@ -4,17 +4,20 @@ using UnityEngine;
 public class JokeItem
 {
 	public JokeItem(JokeItemType type,
+					string jokeText,
 					Sprite unopenedSprite,
 					Sprite openedSprite,
 					float revealDuration)
 	{
 		this._type = type;
+		this._jokeText = jokeText;
 		this._unopenedSprite = unopenedSprite;
 		this._openedSprite = openedSprite;
 		this._revealDuration = revealDuration;
 		this._revealTimer = 0.0F;
 
 		Debug.Assert(_type != null);
+		Debug.Assert(_jokeText != null);
 		Debug.Assert(_unopenedSprite != null);
 		Debug.Assert(_openedSprite != null);
 	}
@@ -32,6 +35,11 @@ public class JokeItem
 	public JokeItemType type()
 	{
 		return _type;
+	}
+
+	public string jokeText()
+	{
+		return _jokeText;
 	}
 
 	public Sprite jokeSprite()
@@ -65,6 +73,7 @@ public class JokeItem
 	}
 
 	private JokeItemType _type;
+	private string _jokeText;
 	private Sprite _unopenedSprite;
 	private Sprite _openedSprite;
 	private float _revealTimer; // Elapsed, in seconds.

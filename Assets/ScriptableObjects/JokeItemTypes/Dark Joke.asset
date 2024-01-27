@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4de0746e089d3264da90cc901fe2531e, type: 3}
-  m_Name: CamelJoke
+  m_Name: Dark Joke
   m_EditorClassIdentifier: 
-  Name: Camel Joke
+  Name: Dark Joke
   Description: A joke about camels.
+  JokeTexts:
+  - How many babies do you need to paint a room? Depends on how hard you throw them.
   Sprite: {fileID: 21300000, guid: 25fa4c7deb057b94e822763b1922abd8, type: 3}

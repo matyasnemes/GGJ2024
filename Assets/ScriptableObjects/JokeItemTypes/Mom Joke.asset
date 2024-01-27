@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4de0746e089d3264da90cc901fe2531e, type: 3}
-  m_Name: BoatJoke
+  m_Name: Mom Joke
   m_EditorClassIdentifier: 
-  Name: Boat Joke
-  Description: A joke about boats.
+  Name: Mom Joke
+  Description: A joke about well rounded mothers.
+  JokeTexts:
+  - Yo mama's so poor, the ducks throw bread at her.
   Sprite: {fileID: 21300000, guid: ffac91f94dec3ce439b7f8026fa88f8f, type: 3}
