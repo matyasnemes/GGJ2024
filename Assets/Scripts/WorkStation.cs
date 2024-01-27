@@ -49,7 +49,17 @@ public class WorkStation : MonoBehaviour
     {
         currentCharacter = character;
         remainingDuration = WorkDurationSeconds;
-    } 
+    }
+
+    /**
+     * Returns a global position vector where NPCs should go 
+     * while working at this workstation.
+     */
+    public Vector3 GetWorkingPosition()
+    {
+        Transform workingTransform = transform.Find("WorkingPosition");
+        return workingTransform ? workingTransform.position : transform.position;
+    }
 
     /**
      * Counts down, when a character occupies the workstation.
