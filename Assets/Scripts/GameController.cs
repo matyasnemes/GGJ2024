@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameController : MonoBehaviour
     public JokeFactory jokeFactory;
     public Text timer;
     public float gameTime = 120;
+    public string winSceneName = "";
+    public string loseSceneName = "";
 
     System.Random rd = new System.Random();
     Character robot;
@@ -37,11 +40,11 @@ public class GameController : MonoBehaviour
     {
         if (characterObejct.GetComponent<Character>().AreYouARobot())
         {
-            Debug.Log("You won");
+            if(winSceneName != "") SceneManager.LoadScene(winSceneName);
         }
         else
         {
-            Debug.Log("You lost");
+            if(loseSceneName != "") SceneManager.LoadScene(loseSceneName);
         }
     }
 

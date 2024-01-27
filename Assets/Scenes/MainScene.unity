@@ -3623,6 +3623,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1144409787}
+    - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       propertyPath: slots.Array.size
       value: 9
       objectReference: {fileID: 0}
@@ -3723,6 +3727,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6411585285967165199, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
   m_PrefabInstance: {fileID: 1144409782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1144409787 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2166805176502934737, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+  m_PrefabInstance: {fileID: 1144409782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985bfe13043999b41bb8f9729152ffbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1170051321
 GameObject:
   m_ObjectHideFlags: 0
@@ -6156,6 +6171,8 @@ MonoBehaviour:
   jokeFactory: {fileID: 139705701}
   timer: {fileID: 899482695}
   gameTime: 120
+  winSceneName: WinScene
+  loseSceneName: LoseScene
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
