@@ -32,6 +32,7 @@ public class CharacterDisplay : MonoBehaviour
     }
 
     public void FaceDown() {
+        faceDown = true;
         headRenderer.sprite = headDown;
         bodyRenderer.sprite = bodyDown;
         headRenderer.sortingOrder = 11;
@@ -41,6 +42,7 @@ public class CharacterDisplay : MonoBehaviour
     }
 
     public void FaceUp() {
+        faceDown = false;
         headRenderer.sprite = headUp;
         bodyRenderer.sprite = bodyUp;
         headRenderer.sortingOrder = 10;
