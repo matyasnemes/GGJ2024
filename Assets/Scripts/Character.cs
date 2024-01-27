@@ -6,7 +6,6 @@ public class Character : MonoBehaviour
 {
     const float eps = 0.0001f;
     public float speed = 0.4f;
-    public Room startRoom;
     public List<JokeItemType> funnyJokes;
 
     enum State
@@ -20,6 +19,19 @@ public class Character : MonoBehaviour
     State state;
     Target target;
     Room currentRoom;
+
+    /**
+     * Called automatically when entering another trigger collider.
+     * Used to automatically set the starting room of the character.
+     */
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        Room room = collider.gameObject.GetComponent<Room>();
+        if (currentRoom == null && room != null)
+        {
+            currentRoom = room;
+        }
+    }
 
     /**
      * Requests the character to leave its current workstation.
@@ -52,7 +64,6 @@ public class Character : MonoBehaviour
         state = State.Idle;
         target = new Target();
         rd = new System.Random();
-        currentRoom = startRoom;
     }
 
     // Update is called once per frame
