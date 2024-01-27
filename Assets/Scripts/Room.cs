@@ -34,7 +34,7 @@ public class Room : MonoBehaviour
     {
         foreach (Character character in charactersInRoom)
         {
-            character.Joke(jokeType);
+            character.Joke(jokeType.Name);
         }
     }
 

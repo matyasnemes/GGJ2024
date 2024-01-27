@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     
     public float speed = 0.4f;
     public float bubbleTime = 2.0f;
-    public List<JokeItemType> funnyJokes;
+    public List<string> funnyJokes;
     public GameObject laughBubble;
     public GameObject neutralBubble;
 
@@ -21,6 +21,7 @@ public class Character : MonoBehaviour
         Idle
     }
 
+    bool iAmRobot = false;
     System.Random rd;
     State state;
     Target target;
@@ -93,6 +94,21 @@ public class Character : MonoBehaviour
         }  
     }
 
+    public void ThisIsFunny(string joke)
+    {
+        funnyJokes.Add(joke);
+    }
+
+    public void YouAreARobot()
+    {
+        iAmRobot = true;
+    }
+
+    public bool AreYouARobot()
+    {
+        return iAmRobot;
+    }
+
     /**
      * Called automatically when entering another trigger collider.
      * Used to automatically set the starting room of the character.
@@ -122,7 +138,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Joke(JokeItemType joke)
+    public void Joke(string joke)
     {
         if(funnyJokes.Contains(joke))
         {
