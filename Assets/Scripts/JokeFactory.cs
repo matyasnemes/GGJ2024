@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,7 +23,11 @@ public class JokeFactory : MonoBehaviour
 		int chosenUnopened = generateInterval(0, unopenedSprites.Count);
 		int chosenOpened = generateInterval(0, openedSprites.Count);
 		int chosenType = generateInterval(0, jokeItemTypes.Count);
-		return new JokeItem(jokeItemTypes[chosenType],
+		JokeItemType jit = jokeItemTypes[chosenType];
+		int numJokeTexts = jit.jokeTexts().Count;
+		int chosenText = generateInterval(0, numJokeTexts);
+		return new JokeItem(jit,
+				            jit.jokeTexts()[chosenText],
 							unopenedSprites[chosenUnopened],
 							openedSprites[chosenOpened],
 							revealDuration);
@@ -41,7 +46,23 @@ public class JokeFactory : MonoBehaviour
 	// min inclusive, max is exclusive.
 	private int generateInterval(int min, int max)
 	{
-		return (int)(Random.value * (max -  min - 1) + min);
+		// 2nd try
+		return _random.Next() % (max - min) + min;
+	}
+
+	public bool CanSpawnNewJokePaper()
+	{
+		return numActiveJokePapers < MaximumNumberOfActiveJokePapers;
+	}
+
+	public void OnJokePaperSpawned()
+	{
+		numActiveJokePapers += 1;
+	}
+
+	public void OnJokePaperCollected()
+	{
+		numActiveJokePapers -= 1;
 	}
 
 	public List<Sprite> unopenedSprites;
@@ -59,22 +80,6 @@ public class JokeFactory : MonoBehaviour
 	 */
 	private int numActiveJokePapers;
 
-	public bool CanSpawnNewJokePaper()
-	{
-		return numActiveJokePapers < MaximumNumberOfActiveJokePapers;
-	}
-
-	public void OnJokePaperSpawned()
-	{
-		numActiveJokePapers += 1;
-	}
-
-	public void OnJokePaperCollected()
-	{
-		numActiveJokePapers -= 1;
-	}
-
-
-
+	private System.Random _random = new System.Random();
 }
 

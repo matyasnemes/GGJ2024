@@ -13,17 +13,19 @@ public class InventorySlot : MonoBehaviour
 		Debug.Assert(_itemTypeImage != null);
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
-		_jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
-		Debug.Assert(_jokeFactory != null);
 	}
 
-	public void useJoke()
+	// Uses up a joke (if there is any).
+	// Returns the item itself (or null if there was none).
+	public JokeItem useJoke()
 	{
+		var result = _jokeItem;
 		_jokeItem = null;
 		_itemImage.sprite = null;
 		_itemTypeImage.sprite = null;
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
+		return result;
 	}
 
 	public void addJoke(JokeItem jokeItem)
@@ -41,13 +43,6 @@ public class InventorySlot : MonoBehaviour
 
 	public void Update()
 	{
-		// Temp testing
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			addJoke(_jokeFactory.createRandomJokeItem());
-		}
-		// Temp testing done
-
 		if (_jokeItem != null)
 		{
 			_jokeItem.onUpdate(Time.deltaTime);
@@ -67,6 +62,5 @@ public class InventorySlot : MonoBehaviour
 	public Image _itemTypeImage = null;
 
 	private JokeItem _jokeItem = null;
-	private JokeFactory _jokeFactory = null;
 }
 

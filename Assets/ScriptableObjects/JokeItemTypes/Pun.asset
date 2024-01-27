@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4de0746e089d3264da90cc901fe2531e, type: 3}
-  m_Name: FlowerJoke
+  m_Name: Pun
   m_EditorClassIdentifier: 
-  Name: Flower Joke
-  Description: A joke about flowers.
+  Name: Pun
+  Description: Pun.
+  JokeTexts:
+  - Why did the tomate blush? Because the salad was dressing.
   Sprite: {fileID: 21300000, guid: 1cf2d90429d772144a1c5c713d97fb1b, type: 3}

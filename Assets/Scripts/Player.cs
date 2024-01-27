@@ -41,14 +41,14 @@ public class Player : MonoBehaviour
      * Tells the specified joke type in the current room of the player.
      * @param[in] The type of the joke to tell.
      */
-    public void TellJokeInCurrentRoom(JokeItemType jokeType)
+    public void TellJokeInCurrentRoom(JokeItem joke)
     {
         if (currentRoom)
         {
-            currentRoom.TellJoke(jokeType);
+            currentRoom.TellJoke(joke.type());
         }
 
-        //DisplayJoke(jokestring);
+        DisplayJoke(joke.jokeText());
     }
 
     /**
