@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public List<Character> npcs = new List<Character>();
     public JokeFactory jokeFactory;
+    public Text timer;
+    public float gameTime;
 
     System.Random rd = new System.Random();
     Character robot;
@@ -25,11 +28,11 @@ public class GameController : MonoBehaviour
     {
         if (characterObejct.GetComponent<Character>().AreYouARobot())
         {
-            //win
+            Debug.Log("You won");
         }
         else
         {
-            //lose
+            Debug.Log("You lost");
         }
     }
 
