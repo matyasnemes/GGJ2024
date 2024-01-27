@@ -10,6 +10,8 @@ public class JokeTextBox : MonoBehaviour
     public float textTimeMax = 3.0f;
 
     float textTimeLeft = 0.0f;
+    string jokeToDisplay = "";
+    float jokeTellingSpeed = 2.0f;
     TextMeshProUGUI textmesh;
     Image img;
     // Start is called before the first frame update
@@ -33,6 +35,12 @@ public class JokeTextBox : MonoBehaviour
             {        
                 img.enabled = false;
                 textmesh.enabled = false;
+
+                int index = (int)((textTimeMax - textTimeLeft)/(textTimeMax-1));
+
+                if(index >= jokeToDisplay.Length) index = jokeToDisplay.Length;
+                Debug.Log(index);
+                textmesh.text = jokeToDisplay.Substring(0, index);
             }
         }
     }
@@ -42,6 +50,6 @@ public class JokeTextBox : MonoBehaviour
         textTimeLeft = textTimeMax;        
         img.enabled = true;
         textmesh.enabled = true;
-        textmesh.text = joke;
+        jokeToDisplay = joke;
     }
 }

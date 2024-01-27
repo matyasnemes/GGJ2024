@@ -10,7 +10,7 @@ public class Character : MonoBehaviour
     
     public float speed = 0.4f;
     public float bubbleTime = 2.0f;
-    public List<string> funnyJokes;
+    public List<JokeItemType> funnyJokes;
     public GameObject laughBubble;
     public GameObject neutralBubble;
 
@@ -150,7 +150,7 @@ public class Character : MonoBehaviour
         UpdateJokeSpawner();
     }
 
-    public void ThisIsFunny(string joke)
+    public void ThisIsFunny(JokeItemType joke)
     {
         funnyJokes.Add(joke);
     }
@@ -194,9 +194,9 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void Joke(string jokeTypeString)
+    public void Joke(JokeItemType jokeType)
     {
-        if(funnyJokes.Contains(jokeTypeString))
+        if(funnyJokes.Contains(jokeType))
         {
             //TODO: Laugh
             bubble = laughBubble;

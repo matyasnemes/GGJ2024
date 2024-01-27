@@ -47,7 +47,7 @@ public class GameController : MonoBehaviour
 
     void SetUpNPCs()
     {
-        List<string> jokes = jokeFactory.getJokeTypeNames();
+        List<JokeItemType> jokes = jokeFactory.jokeItemTypes;
 
         //ChooseARobot
         robot = npcs[rd.Next(npcs.Count)];
