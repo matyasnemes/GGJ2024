@@ -27,6 +27,8 @@ public class CharacterDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        transform.Find("Name").GetComponent<TMPro.TextMeshPro>().text = transform.parent.name;
+
         if (uiIcon)
         {
             bodyImage = uiIcon.transform.GetChild(0).gameObject.GetComponent<Image>();
@@ -36,7 +38,6 @@ public class CharacterDisplay : MonoBehaviour
             handImage1.sprite = hand;
             handImage2.sprite = hand;
         }
-
 
         if (faceDown)
         {
