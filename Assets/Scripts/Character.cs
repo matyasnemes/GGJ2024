@@ -41,7 +41,7 @@ public class Character : MonoBehaviour
     {
         if(funnyJokes.Contains(joke))
         {
-
+            //TODO: Laugh
         }
 
     }
@@ -62,7 +62,27 @@ public class Character : MonoBehaviour
         {
             case State.Going:
 
-                transform.position = Vector2.MoveTowards(transform.position, target.GetTargetPosition(), speed * Time.deltaTime);
+                Vector2 newpos = Vector2.MoveTowards(transform.position, target.GetTargetPosition(), speed * Time.deltaTime);
+
+                //facing up or down?
+                var charDisp = GetComponentInChildren<CharacterDisplay>();
+                bool down = (newpos - new Vector2(transform.position.x, transform.position.y)).y >= 0 ? false : true;
+                if( charDisp.faceDown != down)
+                {
+                    charDisp.faceDown = down;
+
+                    if(down)
+                    {
+                        charDisp.FaceDown();
+                    }
+                    else
+                    {
+                        charDisp.FaceUp();
+                    }
+                }
+
+                transform.position = newpos;
+
                 if(Vector2.Distance(target.GetTargetPosition(), transform.position) < eps)
                 {
                     ReachedGoal();
@@ -133,7 +153,7 @@ public class Character : MonoBehaviour
         {
             foreach( var d in currentRoom.doors)
             {
-                if(d.GetOtherRoom(targetRoom))
+                if(d.IsConnectedToRoom(targetRoom))
                 {
                     target.SetTargetDoor(d);
                 }
@@ -144,13 +164,11 @@ public class Character : MonoBehaviour
             //If we stay in the current room there is no door needed to get there
             target.SetTargetToWorkstation();
         }
-        Debug.Log("New Target is: " + target.GetTargetPosition());
         return true;
     }
 
     void ReachedGoal()
     {
-        Debug.Log("Target " + target.GetTargetPosition() + " has been reached, I am at " + transform.position);
         switch(target.Type)
         {
             case TargetType.Door:

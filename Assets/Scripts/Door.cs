@@ -23,8 +23,13 @@ public class Door : MonoBehaviour
         }
         else
         {
-            Debug.LogError("GetOtherRoom called with a non-connected room.");
+            Debug.LogError("GetOtherRoom called with a non-connected room. Door is " + this + " called room is " + thisRoom);
             return null;
         } 
+    }
+
+    public bool IsConnectedToRoom(Room thisRoom)
+    {
+        return room1 == thisRoom || room2 == thisRoom;
     }
 }
