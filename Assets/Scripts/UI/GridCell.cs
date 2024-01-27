@@ -24,7 +24,6 @@ public class GridCell : MonoBehaviour, IPointerDownHandler
         if (eventData.button == PointerEventData.InputButton.Left)
         {
             SetState(State.CheckMarked);
-            Debug.Log("CLICKED");
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
