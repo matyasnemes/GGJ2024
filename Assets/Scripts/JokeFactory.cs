@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JokeFactory : MonoBehaviour
 {
-	void Start()
+	public void Start()
 	{
 		HashSet<string> uniqueTypeNames = new HashSet<string>();
 		foreach (var jit in jokeItemTypes)
@@ -12,14 +12,27 @@ public class JokeFactory : MonoBehaviour
 			uniqueTypeNames.Add(jit.name());
 		}
 		Debug.Assert(jokeItemTypes.Count == uniqueTypeNames.Count);
+		Debug.Assert(jokeItemTypes.Count > 0);
+		Debug.Assert(unopenedSprites.Count > 0);
 	}
 
-	JokeItem createJokeItem()
+	public JokeItem createJokeItem()
 	{
 		int chosenUnopened = generateInterval(0, unopenedSprites.Count);
 		int chosenType = generateInterval(0, jokeItemTypes.Count);
 		return new JokeItem(unopenedSprites[chosenUnopened],
-				            jokeItemTypes[chosenType]);
+				            jokeItemTypes[chosenType],
+							revealDuration);
+	}
+
+	public List<string> getJokeTypeNames()
+	{
+		List<string> result = new List<string>();
+		foreach (var jit in jokeItemTypes)
+		{
+			result.Add(jit.name());
+		}
+		return result;
 	}
 
 	// min inclusive, max is exclusive.
@@ -30,5 +43,6 @@ public class JokeFactory : MonoBehaviour
 
 	public List<Sprite> unopenedSprites;
 	public List<JokeItemType> jokeItemTypes;
+	public float revealDuration = 5.0F; // In seconds.
 }
 
