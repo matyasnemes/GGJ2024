@@ -17,7 +17,7 @@ public class JokeFactory : MonoBehaviour
 		Debug.Assert(openedSprites.Count > 0);
 	}
 
-	public JokeItem createJokeItem()
+	public JokeItem createRandomJokeItem()
 	{
 		int chosenUnopened = generateInterval(0, unopenedSprites.Count);
 		int chosenOpened = generateInterval(0, openedSprites.Count);

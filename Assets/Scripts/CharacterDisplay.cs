@@ -15,9 +15,9 @@ public class CharacterDisplay : MonoBehaviour
     public SpriteRenderer handRenderer1;
     public SpriteRenderer handRenderer2;
 
-    public GameObject uiIcon;
-
     public bool faceDown = true;
+
+    private GameObject uiIcon;
 
     private Image handImage1;
     private Image handImage2;
@@ -27,7 +27,7 @@ public class CharacterDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(uiIcon)
+        if (uiIcon)
         {
             bodyImage = uiIcon.transform.GetChild(0).gameObject.GetComponent<Image>();
             headImage = uiIcon.transform.GetChild(1).gameObject.GetComponent<Image>();
@@ -60,8 +60,8 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer1.sortingOrder = 11;
         handRenderer2.sortingOrder = 11;
         bodyRenderer.sortingOrder = 10;
-        
-        if(uiIcon)
+
+        if (uiIcon)
         {
             headImage.sprite = headDown;
             bodyImage.sprite = bodyDown;
@@ -77,11 +77,16 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer1.sortingOrder = 10;
         handRenderer2.sortingOrder = 10;
         bodyRenderer.sortingOrder = 11;
-        
-        if(uiIcon)
+
+        if (uiIcon)
         {
             headImage.sprite = headUp;
             bodyImage.sprite = bodyUp;
         }
+    }
+
+    public void RegisterUIIcon(GameObject icon)
+    {
+        uiIcon = icon;
     }
 }

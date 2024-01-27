@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
             {
                 Destroy(collider.gameObject);
                 jokeFactory.OnJokePaperCollected();
-                inventory.addItem(jokeFactory.createJokeItem());
+                inventory.addItem(jokeFactory.createRandomJokeItem());
             }
         }
     }
