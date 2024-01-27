@@ -66,7 +66,20 @@ public class Character : MonoBehaviour
 
                 //facing up or down?
                 var charDisp = GetComponentInChildren<CharacterDisplay>();
-                bool up = (newpos - new Vector2(transform.position.x, transform.position.y)).y >= 0 ? true : false;
+                bool down = (newpos - new Vector2(transform.position.x, transform.position.y)).y >= 0 ? false : true;
+                if( charDisp.faceDown != down)
+                {
+                    charDisp.faceDown = down;
+
+                    if(down)
+                    {
+                        charDisp.FaceDown();
+                    }
+                    else
+                    {
+                        charDisp.FaceUp();
+                    }
+                }
 
                 transform.position = newpos;
 
