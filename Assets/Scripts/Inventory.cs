@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 		Debug.Assert(slots.Count > 0);
 		_jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
 		Debug.Assert(_jokeFactory != null);
+		Debug.Assert(player != null);
 	}
 
 	public bool useItem(int slot)
