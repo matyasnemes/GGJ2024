@@ -5,9 +5,14 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     const float eps = 0.0001f;
+    
     public float speed = 0.4f;
+    public Vector3 bubbleOffset = new Vector3(0, 10, 0);
+    public float bubbleTime = 2.0f;
     public Room startRoom;
     public List<JokeItemType> funnyJokes;
+    public GameObject laughBubble;
+    public GameObject neutralBubble;
 
     enum State
     {
@@ -20,6 +25,7 @@ public class Character : MonoBehaviour
     State state;
     Target target;
     Room currentRoom;
+    GameObject bubble = null;
 
     /**
      * Requests the character to leave its current workstation.
@@ -42,8 +48,26 @@ public class Character : MonoBehaviour
         if(funnyJokes.Contains(joke))
         {
             //TODO: Laugh
+            bubble = laughBubble;
+        }
+        else
+        {
+            //TODO: Meh
+            bubble = neutralBubble;
         }
 
+
+        bubble = Instantiate(bubble, transform.position + bubbleOffset, Quaternion.identity);
+        bubble.transform.parent = transform;
+        Destroy(bubble, bubbleTime);
+    }
+
+    void DebugLaugh()
+    {
+        bubble = laughBubble;
+        bubble = Instantiate(bubble, transform.position + bubbleOffset, Quaternion.identity);
+        bubble.transform.parent = transform;
+        Destroy(bubble, bubbleTime);
     }
 
     // Start is called before the first frame update
@@ -58,15 +82,17 @@ public class Character : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Handle state specific behaviour
         switch(state)
         {
             case State.Going:
 
                 Vector2 newpos = Vector2.MoveTowards(transform.position, target.GetTargetPosition(), speed * Time.deltaTime);
-
+                Vector2 displacement = newpos - new Vector2(transform.position.x, transform.position.y);
+                
                 //facing up or down?
                 var charDisp = GetComponentInChildren<CharacterDisplay>();
-                bool down = (newpos - new Vector2(transform.position.x, transform.position.y)).y >= 0 ? false : true;
+                bool down = displacement.y >= 0 ? false : true;
                 if( charDisp.faceDown != down)
                 {
                     charDisp.faceDown = down;
@@ -80,7 +106,8 @@ public class Character : MonoBehaviour
                         charDisp.FaceUp();
                     }
                 }
-
+                
+                //Actually Go;
                 transform.position = newpos;
 
                 if(Vector2.Distance(target.GetTargetPosition(), transform.position) < eps)
@@ -107,7 +134,11 @@ public class Character : MonoBehaviour
                 //What
                 break;
         }
-        
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            DebugLaugh();
+        }    
     }
 
     //Currently, a possible target can only be in the adjacent rooms, if there is no space there, try the current room

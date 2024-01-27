@@ -47,8 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.4
+  bubbleOffset: {x: 0, y: 2, z: 0}
+  bubbleTime: 2
   startRoom: {fileID: 0}
   funnyJokes: []
+  laughBubble: {fileID: 6442327368107480969, guid: d8673bd747cd51445b96b6df2397f87d, type: 3}
+  neutralBubble: {fileID: 6442327368107480969, guid: f4848a6d0357c8b479e2137b50cdfb65, type: 3}
 --- !u!70 &1877281849831207107
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -309,6 +313,7 @@ MonoBehaviour:
   bodyRenderer: {fileID: 5012638317272763560}
   handRenderer1: {fileID: 3830891465885700428}
   handRenderer2: {fileID: 307616046719073693}
+  uiIcon: {fileID: 0}
   faceDown: 1
 --- !u!1 &5460556284349811495
 GameObject:
