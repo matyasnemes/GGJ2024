@@ -2807,6 +2807,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1170051322}
     m_Modifications:
+    - target: {fileID: 4362450252131362371, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.44
+      objectReference: {fileID: 0}
     - target: {fileID: 6802332320650001740, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_Name
       value: Door RK
@@ -2819,6 +2823,10 @@ PrefabInstance:
       propertyPath: room2
       value: 
       objectReference: {fileID: 1377395015}
+    - target: {fileID: 7651007147440794498, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.13
+      objectReference: {fileID: 0}
     - target: {fileID: 9044297153095116810, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 27.66
@@ -4837,6 +4845,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1170051322}
     m_Modifications:
+    - target: {fileID: 4362450252131362371, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.43
+      objectReference: {fileID: 0}
     - target: {fileID: 6802332320650001740, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_Name
       value: Door MK
@@ -4849,6 +4861,10 @@ PrefabInstance:
       propertyPath: room2
       value: 
       objectReference: {fileID: 1244115121}
+    - target: {fileID: 7651007147440794498, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.52
+      objectReference: {fileID: 0}
     - target: {fileID: 9044297153095116810, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -5926,6 +5942,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1170051322}
     m_Modifications:
+    - target: {fileID: 4362450252131362371, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6802332320650001740, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_Name
       value: Door OR
@@ -5938,6 +5958,10 @@ PrefabInstance:
       propertyPath: room2
       value: 
       objectReference: {fileID: 1033197955}
+    - target: {fileID: 7651007147440794498, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.55
+      objectReference: {fileID: 0}
     - target: {fileID: 9044297153095116810, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.6
@@ -6075,6 +6099,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1170051322}
     m_Modifications:
+    - target: {fileID: 4362450252131362371, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.22
+      objectReference: {fileID: 0}
     - target: {fileID: 6802332320650001740, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_Name
       value: Door OM
@@ -6087,6 +6115,10 @@ PrefabInstance:
       propertyPath: room2
       value: 
       objectReference: {fileID: 1244115121}
+    - target: {fileID: 7651007147440794498, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.43
+      objectReference: {fileID: 0}
     - target: {fileID: 9044297153095116810, guid: 953cd25b78a396142840b01e86e88ef5, type: 3}
       propertyPath: m_LocalPosition.x
       value: -22.12

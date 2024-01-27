@@ -4,7 +4,9 @@ using UnityEngine;
 
 public enum TargetType
 {
+    PreDoor,
     Door,
+    PostDoor,
     Workstation,
     None
 }
@@ -18,6 +20,10 @@ public class Target
 
     Door targetDoor;
     public Door TargetDoor => targetDoor;
+    Vector2 preDoorTarget;
+    Vector2 postDoorTarget;
+
+    Vector2 doorTargetOffset;
 
     WorkStation targetWorkStation;
     public WorkStation TargetWorkStation => targetWorkStation;
@@ -47,10 +53,34 @@ public class Target
         type = TargetType.Workstation;
     }
 
-    public void SetTargetDoor(Door d)
+    // Parameters, the target door and the position of the character trying to move
+    public void SetTargetDoor(Door d, Vector2 pos)
+    {
+        type = TargetType.PreDoor;
+        targetDoor = d;
+
+        //Set the pre and post targets based on which of the offsets is closer, in theory, they cant be equivalently close, if they are, that is a problem in itself
+
+        if(Vector2.Distance(pos, d.Offset1) < Vector2.Distance(pos, d.Offset2))
+        {
+            preDoorTarget = d.Offset1;
+            postDoorTarget = d.Offset2;
+        }
+        else
+        {
+            preDoorTarget = d.Offset2;
+            postDoorTarget = d.Offset1;
+        }
+    }
+
+    public void SetTargetToDoor()
     {
         type = TargetType.Door;
-        targetDoor = d;
+    }
+
+    public void SetTargetToPostDoor()
+    {
+        type = TargetType.PostDoor;
     }
 
     public Vector2 GetTargetPosition()
@@ -61,6 +91,10 @@ public class Target
                 return targetDoor.transform.position;
             case TargetType.Workstation:
                 return targetWorkStation.GetWorkingPosition();
+            case TargetType.PreDoor:
+                return preDoorTarget;
+            case TargetType.PostDoor:
+                return postDoorTarget;
             default:
                 Debug.Log("<color=red>Error: </color> Read Target Position while type was none!");
                 return Vector2.zero;

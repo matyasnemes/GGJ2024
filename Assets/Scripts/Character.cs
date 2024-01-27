@@ -278,7 +278,7 @@ public class Character : MonoBehaviour
             {
                 if(d.IsConnectedToRoom(targetRoom))
                 {
-                    target.SetTargetDoor(d);
+                    target.SetTargetDoor(d, transform.position);
                 }
             }
         }
@@ -294,14 +294,20 @@ public class Character : MonoBehaviour
     {
         switch(target.Type)
         {
+            case TargetType.PreDoor:
+                target.SetTargetToDoor();
+                break;
             case TargetType.Door:
                 currentRoom.LeaveRoom(this);
                 currentRoom = target.TargetDoor.GetOtherRoom(currentRoom);
                 currentRoom.EnterRoom(this);
 
                 //Currently, the goal can only be in the neighbouring room. If this changes, change here.
-                target.SetTargetToWorkstation();
+                target.SetTargetToPostDoor();
 
+                break;
+            case TargetType.PostDoor:
+                target.SetTargetToWorkstation();
                 break;
             case TargetType.Workstation:
                 target.TargetWorkStation.EnterWorkstation(this);

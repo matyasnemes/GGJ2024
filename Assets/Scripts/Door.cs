@@ -8,6 +8,9 @@ public class Door : MonoBehaviour
     public Room room1;
     public Room room2;
 
+    public Vector2 Offset1 => transform.Find("Offset1").transform.position;
+    public Vector2 Offset2 => transform.Find("Offset2").transform.position;
+
     /**
      * Given a room returns the other room this door connects to.
      */
