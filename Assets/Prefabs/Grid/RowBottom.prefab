@@ -430,6 +430,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterCell
       objectReference: {fileID: 0}
+    - target: {fileID: 5487802838506003493, guid: d3f317121af7c6d4db2c9f43ad709b60, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 772a9a1c13ca5b74397a56696fb08b9d, type: 3}
     - target: {fileID: 8570212089227395173, guid: d3f317121af7c6d4db2c9f43ad709b60, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
