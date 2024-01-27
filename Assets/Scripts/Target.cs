@@ -60,7 +60,7 @@ public class Target
             case TargetType.Door:
                 return targetDoor.transform.position;
             case TargetType.Workstation:
-                return targetWorkStation.transform.position;
+                return targetWorkStation.GetWorkingPosition();
             default:
                 Debug.Log("<color=red>Error: </color> Read Target Position while type was none!");
                 return Vector2.zero;

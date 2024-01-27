@@ -26,6 +26,72 @@ public class Character : MonoBehaviour
     Target target;
     Room currentRoom;
     GameObject bubble = null;
+    CharacterDisplay charDisp;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        state = State.Idle;
+        target = new Target();
+        rd = new System.Random();
+        charDisp = GetComponentInChildren<CharacterDisplay>();
+    }
+
+     // Update is called once per frame
+    void Update()
+    {
+        //Handle state specific behaviour
+        switch(state)
+        {
+            case State.Going:
+
+                Vector2 newpos = Vector2.MoveTowards(transform.position, target.GetTargetPosition(), speed * Time.deltaTime);
+                Vector2 displacement = newpos - new Vector2(transform.position.x, transform.position.y);
+                
+                //facing up or down?
+                var charDisp = GetComponentInChildren<CharacterDisplay>();
+                bool down = displacement.y >= 0 ? false : true;
+                if( charDisp.faceDown != down)
+                {
+                    if(down)
+                    {
+                        charDisp.FaceDown();
+                    }
+                    else
+                    {
+                        charDisp.FaceUp();
+                    }
+                }
+                
+                //Actually Go;
+                transform.position = newpos;
+
+                if(Vector2.Distance(target.GetTargetPosition(), transform.position) < eps)
+                {
+                    ReachedGoal();
+                }
+
+                break;
+            case State.Working:
+
+                //Work, work
+
+                break;
+            case State.Idle:
+
+                //TODO: If time allows, go to the center of the current room
+
+                if( FindNewGoal() )
+                {
+                    state = State.Going;
+                }
+                break;
+            default:
+                //What
+                break;
+        }  
+    }
 
     /**
      * Called automatically when entering another trigger collider.
@@ -73,71 +139,6 @@ public class Character : MonoBehaviour
         bubble = Instantiate(bubble, transform);
         bubble.transform.position += bubbleOffset;
         Destroy(bubble, bubbleTime);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        state = State.Idle;
-        target = new Target();
-        rd = new System.Random();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Handle state specific behaviour
-        switch(state)
-        {
-            case State.Going:
-
-                Vector2 newpos = Vector2.MoveTowards(transform.position, target.GetTargetPosition(), speed * Time.deltaTime);
-                Vector2 displacement = newpos - new Vector2(transform.position.x, transform.position.y);
-                
-                //facing up or down?
-                var charDisp = GetComponentInChildren<CharacterDisplay>();
-                bool down = displacement.y >= 0 ? false : true;
-                if( charDisp.faceDown != down)
-                {
-                    charDisp.faceDown = down;
-
-                    if(down)
-                    {
-                        charDisp.FaceDown();
-                    }
-                    else
-                    {
-                        charDisp.FaceUp();
-                    }
-                }
-                
-                //Actually Go;
-                transform.position = newpos;
-
-                if(Vector2.Distance(target.GetTargetPosition(), transform.position) < eps)
-                {
-                    ReachedGoal();
-                }
-
-                break;
-            case State.Working:
-
-                //Work, work
-
-                break;
-            case State.Idle:
-
-                //TODO: If time allows, go to the center of the current room
-
-                if( FindNewGoal() )
-                {
-                    state = State.Going;
-                }
-                break;
-            default:
-                //What
-                break;
-        }  
     }
 
     //Currently, a possible target can only be in the adjacent rooms, if there is no space there, try the current room
@@ -212,6 +213,15 @@ public class Character : MonoBehaviour
                 break;
             case TargetType.Workstation:
                 target.TargetWorkStation.EnterWorkstation(this);
+                if(target.TargetWorkStation.facingDown)
+                {
+                    charDisp.FaceDown();
+                }
+                else
+                {
+                    charDisp.FaceUp();
+                }
+
                 target.Clear();
                 state = State.Working;
 

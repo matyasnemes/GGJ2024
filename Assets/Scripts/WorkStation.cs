@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WorkStation : MonoBehaviour
 {
+
+    public bool facingDown;
+
     /**
      * The total amount of seconds a character can spend at the workstation.
      */
