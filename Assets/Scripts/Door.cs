@@ -28,8 +28,11 @@ public class Door : MonoBehaviour
         } 
     }
 
-    public bool IsConnectedToRoom(Room thisRoom)
+    /**
+     * Checks whether the specified room is connected to this door.
+     */
+    public bool IsConnectedToRoom(Room room)
     {
-        return room1 == thisRoom || room2 == thisRoom;
+        return room1 == room || room2 == room;
     }
 }

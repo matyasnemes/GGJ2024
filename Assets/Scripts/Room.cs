@@ -27,6 +27,18 @@ public class Room : MonoBehaviour
     }
 
     /**
+     * Tells a joke to every NPC character in the room.
+     * @param[in] jokeType: The type of the joke to tell.
+     */
+    public void TellJoke(JokeItemType jokeType)
+    {
+        foreach (Character character in charactersInRoom)
+        {
+            character.Joke(jokeType);
+        }
+    }
+
+    /**
      * Initializes the room.
      */
     void Start()
