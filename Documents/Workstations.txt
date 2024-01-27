@@ -1,0 +1,13 @@
+4 szoba:
+	Mosdó:
+		-Piszoár
+		-WC
+	Iroda:
+		-Cubicle
+		-Nyomtató
+	Meeting Room:
+		-Board
+		-Seat
+	Kitchen:
+		-Table
+		-Vending machine
