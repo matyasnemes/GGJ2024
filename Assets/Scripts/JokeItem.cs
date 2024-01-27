@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 // Class containing the information of a joke to be used.
@@ -46,7 +47,8 @@ public class JokeItem
 	{
 		if (_revealTimer < s_revealDuration)
 		{
-			_revealTimer += dt;
+			_revealTimer = Math.Max(s_revealDuration,
+									_revealTimer + dt);
 		}
 	}
 
