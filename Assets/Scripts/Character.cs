@@ -5,11 +5,11 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     const float eps = 0.0001f;
+    Vector3 bubbleOffset = new Vector3(0, 7, 0);
+
     
     public float speed = 0.4f;
-    public Vector3 bubbleOffset = new Vector3(0, 10, 0);
     public float bubbleTime = 2.0f;
-    public Room startRoom;
     public List<JokeItemType> funnyJokes;
     public GameObject laughBubble;
     public GameObject neutralBubble;
@@ -26,6 +26,19 @@ public class Character : MonoBehaviour
     Target target;
     Room currentRoom;
     GameObject bubble = null;
+
+    /**
+     * Called automatically when entering another trigger collider.
+     * Used to automatically set the starting room of the character.
+     */
+    public void OnTriggerEnter2D(Collider2D collider)
+    {
+        Room room = collider.gameObject.GetComponent<Room>();
+        if (currentRoom == null && room != null)
+        {
+            currentRoom = room;
+        }
+    }
 
     /**
      * Requests the character to leave its current workstation.
@@ -57,16 +70,8 @@ public class Character : MonoBehaviour
         }
 
 
-        bubble = Instantiate(bubble, transform.position + bubbleOffset, Quaternion.identity);
-        bubble.transform.parent = transform;
-        Destroy(bubble, bubbleTime);
-    }
-
-    void DebugLaugh()
-    {
-        bubble = laughBubble;
-        bubble = Instantiate(bubble, transform.position + bubbleOffset, Quaternion.identity);
-        bubble.transform.parent = transform;
+        bubble = Instantiate(bubble, transform);
+        bubble.transform.position += bubbleOffset;
         Destroy(bubble, bubbleTime);
     }
 
@@ -132,12 +137,7 @@ public class Character : MonoBehaviour
             default:
                 //What
                 break;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            DebugLaugh();
-        }    
+        }  
     }
 
     //Currently, a possible target can only be in the adjacent rooms, if there is no space there, try the current room

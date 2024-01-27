@@ -27,13 +27,16 @@ public class CharacterDisplay : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bodyImage = uiIcon.transform.GetChild(0).gameObject.GetComponent<Image>();
-        headImage = uiIcon.transform.GetChild(1).gameObject.GetComponent<Image>();
-        handImage1 = uiIcon.transform.GetChild(2).gameObject.GetComponent<Image>();
-        handImage2 = uiIcon.transform.GetChild(3).gameObject.GetComponent<Image>();
+        if(uiIcon)
+        {
+            bodyImage = uiIcon.transform.GetChild(0).gameObject.GetComponent<Image>();
+            headImage = uiIcon.transform.GetChild(1).gameObject.GetComponent<Image>();
+            handImage1 = uiIcon.transform.GetChild(2).gameObject.GetComponent<Image>();
+            handImage2 = uiIcon.transform.GetChild(3).gameObject.GetComponent<Image>();
+            handImage1.sprite = hand;
+            handImage2.sprite = hand;
+        }
 
-        handImage1.sprite = hand;
-        handImage2.sprite = hand;
 
         if (faceDown)
         {
@@ -57,9 +60,12 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer1.sortingOrder = 11;
         handRenderer2.sortingOrder = 11;
         bodyRenderer.sortingOrder = 10;
-
-        headImage.sprite = headDown;
-        bodyImage.sprite = bodyDown;
+        
+        if(uiIcon)
+        {
+            headImage.sprite = headDown;
+            bodyImage.sprite = bodyDown;
+        }
     }
 
     public void FaceUp()
@@ -71,8 +77,11 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer1.sortingOrder = 10;
         handRenderer2.sortingOrder = 10;
         bodyRenderer.sortingOrder = 11;
-
-        headImage.sprite = headUp;
-        bodyImage.sprite = bodyUp;
+        
+        if(uiIcon)
+        {
+            headImage.sprite = headUp;
+            bodyImage.sprite = bodyUp;
+        }
     }
 }
