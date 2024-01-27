@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
         {
             currentRoom.TellJoke(jokeType);
         }
+
+        //DisplayJoke(jokestring);
     }
 
     /**
@@ -124,5 +126,17 @@ public class Player : MonoBehaviour
         }
 
         rigidBody.velocity = velocity;
+    }
+
+    void DisplayJoke(string joke)
+    {
+        //Around 250 characters can be displayed on the textbox
+        if(joke.Length > 250)
+        {
+            Debug.LogError("The following joke is too long: " + joke);
+            return;
+        }
+
+        
     }
 }
