@@ -1,18 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 
 public class Inventory : MonoBehaviour
 {
-	public void useItem()
-	{
-		itemSprite = null;
-	}
-
-	public void addItem()
+	public void Update()
 	{
 	}
 
-	public Image itemSprite = null;
+	public List<InventorySlot> slots = new List<InventorySlot>();
 }
+
