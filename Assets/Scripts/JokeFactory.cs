@@ -48,5 +48,33 @@ public class JokeFactory : MonoBehaviour
 	public List<Sprite> openedSprites;
 	public List<JokeItemType> jokeItemTypes;
 	public float revealDuration = 5.0F; // In seconds.
+	
+	/**
+	 * The maximum allowed number of active joke papers.
+	 */
+	public int MaximumNumberOfActiveJokePapers = 10;
+
+	/**
+	 * The current number of joke papers lying around on the floor.
+	 */
+	private int numActiveJokePapers;
+
+	public bool CanSpawnNewJokePaper()
+	{
+		return numActiveJokePapers < MaximumNumberOfActiveJokePapers;
+	}
+
+	public void OnJokePaperSpawned()
+	{
+		numActiveJokePapers += 1;
+	}
+
+	public void OnJokePaperCollected()
+	{
+		numActiveJokePapers -= 1;
+	}
+
+
+
 }
 

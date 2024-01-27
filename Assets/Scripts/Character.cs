@@ -14,6 +14,26 @@ public class Character : MonoBehaviour
     public GameObject laughBubble;
     public GameObject neutralBubble;
 
+    /**
+     * Prefab for Joke Paper items that are spawned on the floor.
+     */
+    public Transform JokePaperPrefab;
+
+    /**
+     * Minimum time between spawning Joke Papers.
+     */
+    public float JokeSpawnTimeSecondsMin = 5.0f;
+
+    /**
+     * Maximum time between spawning Joke Papers.
+     */
+    public float JokeSpawnTimeSecondsMax = 10.0f;
+
+    /**
+     * Remaining time until spawning the next Joke Paper.
+     */
+    private float RemainingSecondsUntilJokeSpawn = 0.0f;
+
     enum State
     {
         Going,
@@ -28,21 +48,19 @@ public class Character : MonoBehaviour
     Room currentRoom;
     GameObject bubble = null;
     CharacterDisplay charDisp;
+    JokeFactory jokeFactory;
 
-
-    // Start is called before the first frame update
-    void Start()
+    void SpawnJokePaper()
     {
-        state = State.Idle;
-        target = new Target();
-        rd = new System.Random();
-        charDisp = GetComponentInChildren<CharacterDisplay>();
+        Transform spawnedJokePaper = Instantiate(JokePaperPrefab, transform.position, transform.rotation);
     }
 
-     // Update is called once per frame
-    void Update()
+    /**
+     * Updates the state machine responsible for moving the character around.
+     */
+    void UpdateStateMachine()
     {
-        //Handle state specific behaviour
+        // Handle state specific behaviour
         switch(state)
         {
             case State.Going:
@@ -92,6 +110,44 @@ public class Character : MonoBehaviour
                 //What
                 break;
         }  
+    }
+
+    /**
+     * Updates the random joke spawner logic.
+     */
+    void UpdateJokeSpawner()
+    {
+        if (RemainingSecondsUntilJokeSpawn < 0.0f)
+        {
+            if (jokeFactory.CanSpawnNewJokePaper())
+            {
+                SpawnJokePaper();
+                jokeFactory.OnJokePaperSpawned();
+            }
+            RemainingSecondsUntilJokeSpawn = Random.Range(JokeSpawnTimeSecondsMin, JokeSpawnTimeSecondsMax);
+        }
+        else
+        {
+            RemainingSecondsUntilJokeSpawn -= Time.deltaTime;
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        state = State.Idle;
+        target = new Target();
+        rd = new System.Random();
+        charDisp = GetComponentInChildren<CharacterDisplay>();
+        jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
+        RemainingSecondsUntilJokeSpawn = Random.Range(JokeSpawnTimeSecondsMin, JokeSpawnTimeSecondsMax);
+    }
+
+     // Update is called once per frame
+    void Update()
+    {
+        UpdateStateMachine();
+        UpdateJokeSpawner();
     }
 
     public void ThisIsFunny(string joke)
