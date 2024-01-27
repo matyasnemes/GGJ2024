@@ -123,10 +123,6 @@ public class Player : MonoBehaviour
         {
             velocity += Vector2.right * MovementSpeed;
         }
-        else if (Input.GetKey(KeyCode.Space))
-        {
-            DisplayJoke("Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum,Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem ipsum, Lorem ipsum, lorem");
-        }
 
         rigidBody.velocity = velocity;
     }
