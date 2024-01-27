@@ -1,27 +1,27 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class JokeItemType
+[CreateAssetMenu(fileName = "JokeItemType", menuName = "ScriptableObjects/JokeItemType", order = 1)]
+public class JokeItemType : ScriptableObject
 {
-	public string name()
+	new public string name()
 	{
-		return _name;
+		return Name;
 	}
 
 	public string description()
 	{
-		return _description;
+		return Description;
 	}
 
 	public Sprite sprite()
 	{
-		return _sprite;
+		return Sprite;
 	}
 
-	private string _name;
-	private string _description;
-	private Sprite _sprite;
+	public string Name;
+	public string Description;
+	public Sprite Sprite;
 	// Other meta info
 }
 

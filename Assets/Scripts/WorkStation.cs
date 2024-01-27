@@ -52,7 +52,9 @@ public class WorkStation : MonoBehaviour
     } 
 
     /**
-     * During play, when a character occupies the workstation counts down.
+     * Counts down, when a character occupies the workstation.
+     * When the remaining time reaches zero, instructs the character
+     * to leave the workstation and frees it up for a new reservation.
      */
     void Update()
     {
@@ -66,10 +68,4 @@ public class WorkStation : MonoBehaviour
             isReserved = false;
         }
     }
-
-    public Room GetRoom()
-    {
-        return null;
-    }
-
 }
