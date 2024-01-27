@@ -42,9 +42,9 @@ public class InventorySlot : MonoBehaviour
 	public void Update()
 	{
 		// Temp testing
-		if (Input.GetKey(KeyCode.Alpha1))
+		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
-			addJoke(_jokeFactory.createJokeItem());
+			addJoke(_jokeFactory.createRandomJokeItem());
 		}
 		// Temp testing done
 

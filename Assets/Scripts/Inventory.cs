@@ -21,3 +21,4 @@ public class Inventory : MonoBehaviour
 
 	public Image itemSprite = null;
 }
+
