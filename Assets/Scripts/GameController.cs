@@ -12,16 +12,14 @@ public class GameController : MonoBehaviour
     System.Random rd = new System.Random();
     Character robot;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         SetUpNPCs();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (gameTime > 0)
+        if (gameTime - Time.deltaTime > 0)
         {
             gameTime -= Time.deltaTime;
             updateTimer();
@@ -31,6 +29,11 @@ public class GameController : MonoBehaviour
             Debug.Log("TIME IS UP YOU LOSER!");
             gameTime = 0;
         }
+    }
+
+    public List<JokeItemType> GetRobotFunnyJokes()
+    {
+        return robot.funnyJokes;
     }
 
     public void Accuse(GameObject characterObejct)
