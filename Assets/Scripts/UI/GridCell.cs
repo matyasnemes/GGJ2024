@@ -4,34 +4,34 @@ using UnityEngine.UI;
 
 public class GridCell : MonoBehaviour, IPointerDownHandler
 {
-    public Sprite checkmarkSprite;
-    public Sprite xmarkSprite;
+    public Sprite laughSprite;
+    public Sprite mehSprite;
     public Sprite questionmarkSprite;
 
     private Image image;
 
-    enum State { CheckMarked, XMarked, QuestionMarked, Empty };
+    enum State { Laugh, Meh, QuestionMark, Empty };
     private State state = State.Empty;
 
     void Start()
     {
         image = GetComponent<Image>();
-        SetTransparency(0);
+        image.enabled = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left)
         {
-            SetState(State.CheckMarked);
+            SetState(State.Laugh);
         }
         else if (eventData.button == PointerEventData.InputButton.Right)
         {
-            SetState(State.XMarked);
+            SetState(State.Meh);
         }
         else if (eventData.button == PointerEventData.InputButton.Middle)
         {
-            SetState(State.QuestionMarked);
+            SetState(State.QuestionMark);
         }
     }
 
@@ -40,25 +40,19 @@ public class GridCell : MonoBehaviour, IPointerDownHandler
 
         if (state == newState)
         {
-            SetTransparency(0);
+            image.enabled = false;
             state = State.Empty;
         }
         else
         {
             switch (newState)
             {
-                case State.CheckMarked: image.sprite = checkmarkSprite; break;
-                case State.XMarked: image.sprite = xmarkSprite; break;
-                case State.QuestionMarked: image.sprite = questionmarkSprite; break;
+                case State.Laugh: image.sprite = laughSprite; break;
+                case State.Meh: image.sprite = mehSprite; break;
+                case State.QuestionMark: image.sprite = questionmarkSprite; break;
             }
-            SetTransparency(1);
+            image.enabled = true;
             state = newState;
         }
-    }
-    private void SetTransparency(float transparency)
-    {
-        Color c = image.color;
-        c.a = transparency;
-        image.color = c;
     }
 }

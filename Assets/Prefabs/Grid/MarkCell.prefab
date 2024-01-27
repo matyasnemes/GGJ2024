@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 69647215d6fbc62499ea6380ee5bc277, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e812ec89e2f174c4f8f25ded33e6e3af, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598abc72269d1b64eba0c35f37918d6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  checkmarkSprite: {fileID: 21300000, guid: 69647215d6fbc62499ea6380ee5bc277, type: 3}
-  xmarkSprite: {fileID: 21300000, guid: 43f2b7d3dc7f4ce4eb0bb9f80109ad9e, type: 3}
+  laughSprite: {fileID: 21300000, guid: e812ec89e2f174c4f8f25ded33e6e3af, type: 3}
+  mehSprite: {fileID: 21300000, guid: 1c5508ac685f12445b039245e80e564b, type: 3}
   questionmarkSprite: {fileID: 21300000, guid: cf7b8ce4fe7a92246b3cf9f3322d629f, type: 3}
 --- !u!1 &5368662868118209957
 GameObject:
