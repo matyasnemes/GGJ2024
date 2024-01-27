@@ -29,8 +29,8 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            Debug.Log("TIME IS UP YOU LOSER!");
             gameTime = 0;
+            Lose();
         }
     }
 
@@ -43,11 +43,11 @@ public class GameController : MonoBehaviour
     {
         if (characterObejct.GetComponent<Character>().AreYouARobot())
         {
-            if(winSceneName != "") SceneManager.LoadScene(winSceneName);
+            Win();
         }
         else
         {
-            if(loseSceneName != "") SceneManager.LoadScene(loseSceneName);
+            Lose();
         }
     }
 
@@ -118,5 +118,15 @@ public class GameController : MonoBehaviour
         }
 
         return ret;
+    }
+
+    void Lose()
+    {
+        if(loseSceneName != "") SceneManager.LoadScene(loseSceneName);
+    }
+
+    void Win()
+    {
+        if(winSceneName != "") SceneManager.LoadScene(winSceneName);
     }
 }
