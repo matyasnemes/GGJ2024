@@ -98,7 +98,7 @@ public class GameController : MonoBehaviour
     System.Collections.IEnumerator StartAccusing()
     {
         jokeTextBox.DisplayJoke(accusitionStrings[0]);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         npcPlayer.GoToNPC(accusedNPC);
         jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
         yield return new WaitForSeconds(2);
@@ -111,11 +111,7 @@ public class GameController : MonoBehaviour
         else
         {
             characterDisplay.TurnIntoMeat();
-            AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
-            if (audioSource && loseMusic)
-            {
-                audioSource.PlayOneShot(loseMusic);
-            }
+            Lose();
         }
     }
 
@@ -198,12 +194,21 @@ public class GameController : MonoBehaviour
     }
 
     void Lose()
-    {
-        if (loseSceneName != "") SceneManager.LoadScene(loseSceneName);
+    {  
+        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
+        if (audioSource && loseMusic)
+        {
+            audioSource.PlayOneShot(loseMusic);
+        }
+
+        foreach(var ch in npcs)
+        {
+            ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
+        }
     }
 
     void Win()
     {
-        if (winSceneName != "") SceneManager.LoadScene(winSceneName);
+
     }
 }

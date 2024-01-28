@@ -11,6 +11,7 @@ public class JokeTextBox : MonoBehaviour
 
     float textTimeLeft = 0.0f;
     string jokeToDisplay = "";
+    bool indefinite = false;
     TextMeshProUGUI textmesh;
     Image img;
     // Start is called before the first frame update
@@ -35,7 +36,7 @@ public class JokeTextBox : MonoBehaviour
             if(index >= jokeToDisplay.Length) index = jokeToDisplay.Length;
             textmesh.text = jokeToDisplay.Substring(0, index);       
 
-            if(textTimeLeft <= 0.0f)
+            if(!indefinite && textTimeLeft <= 0.0f)
             {        
                 img.enabled = false;
                 textmesh.enabled = false;
@@ -49,5 +50,22 @@ public class JokeTextBox : MonoBehaviour
         img.enabled = true;
         textmesh.enabled = true;
         jokeToDisplay = joke;
+    }
+
+    public void DisplayIndefinitite(string text)
+    {
+        indefinite = true;
+        img.enabled = true;
+        textmesh.enabled = true;
+        jokeToDisplay = text;
+        textTimeLeft = textTimeMax;  
+    }
+
+    public void TurnOffTextBox()
+    {    
+        indefinite = false;
+        img.enabled = false;
+        textmesh.enabled = false;
+        textTimeLeft = 0.0f;
     }
 }
