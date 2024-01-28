@@ -395,7 +395,7 @@ public class Character : MonoBehaviour
                 charDisp.StartSit();
                 break;
             case WorkStation.WorkstationType.Print:
-                charDisp.StartEat();
+                charDisp.StartPrint();
                 break;
             case WorkStation.WorkstationType.Work:
                 charDisp.StartWork();

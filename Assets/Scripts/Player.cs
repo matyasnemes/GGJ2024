@@ -131,6 +131,15 @@ public class Player : MonoBehaviour
             velocity += Vector2.right * MovementSpeed;
         }
 
+        if(velocity.magnitude > 0.01f)
+        {
+            characterDisplay.StartMove();
+        }
+        else
+        {
+            characterDisplay.StartIdle();
+        }
+
         rigidBody.velocity = velocity;
     }
 
