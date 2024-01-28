@@ -18,21 +18,50 @@ MonoBehaviour:
   - How many babies do you need to paint a room? Depends on how hard you throw them.
   - Dark humour is like a child with cancer; it never gets old.
   - What's the best thing about stage 4 cancer? There is no stage 5.
-  - I thought opening the door for a lady was being a gentleman, but she just screamed and went flying out of the plane.
+  - I thought opening the door for a lady was being a gentleman, but she just screamed
+    and went flying out of the plane.
   - What makes sad people jump? Bridges.
-  - Old people kept saying "you're next" to me at weddings, so I started saying it to them at funerals.
-  - When I die, I want to go how my grandfather died, peacefully in his sleep not screaming like the passengers in his car.
-  - At my funeral, take the bouquet off the coffin and throw it into the crowd to see who's next.
+  - Old people kept saying "you're next" to me at weddings, so I started saying it
+    to them at funerals.
+  - When I die, I want to go how my grandfather died, peacefully in his sleep not
+    screaming like the passengers in his car.
+  - At my funeral, take the bouquet off the coffin and throw it into the crowd to
+    see who's next.
   - What does the cannibal call a pregnant woman? A meal deal.
   - What is a terrorist's biggest fear? Dying alone.
   - I saw my mom chopping onions today, so I started crying. Onions was a good dog.
-  - After an intense workout, I finally have the body I've always dreamed of. It's in my basement.
-  - My therapist said I should write letters to people who've wronged me and burn them. Done, but what do I do with the letters?
+  - After an intense workout, I finally have the body I've always dreamed of. It's
+    in my basement.
+  - My therapist said I should write letters to people who've wronged me and burn
+    them. Done, but what do I do with the letters?
   - Imagine saying "my bad" instead of "sorry for your loss" at a funeral.
-  - Why are Christmas trees banned in mental hospitals? Because the ornaments wouldn't be the only things hanging.
-  - Why was the anti-vaxxer's four-year-old kid stressed? He was having a midlife crisis.
+  - Why are Christmas trees banned in mental hospitals? Because the ornaments wouldn't
+    be the only things hanging.
+  - Why was the anti-vaxxer's four-year-old kid stressed? He was having a midlife
+    crisis.
   - What's the difference between me and cancer? My dad didn't beat cancer.
   - What is a necrophiliac's safe word? I'm alive.
   - Dark humour is like food; not everybody gets it.
   - What''s yellow and can''t swim? A bus full of children.
+  JokeClips:
+  - {fileID: 8300000, guid: 33bab98ff9f19d5428f79f6b93484e9e, type: 3}
+  - {fileID: 8300000, guid: aa15ae15c120df44ca2aa0a5103e617e, type: 3}
+  - {fileID: 8300000, guid: dfab4469c28970b40a6ba42bb1977e49, type: 3}
+  - {fileID: 8300000, guid: 2a971116f154d784ab641b2eacd55aef, type: 3}
+  - {fileID: 8300000, guid: a7213916db373874d98e987967195b66, type: 3}
+  - {fileID: 8300000, guid: 0d47e79b998454446850df32d56c9787, type: 3}
+  - {fileID: 8300000, guid: 499441c0c45be4d4a97914f899265c36, type: 3}
+  - {fileID: 8300000, guid: 3c371419ef41a4b46b16d2a1846839ca, type: 3}
+  - {fileID: 8300000, guid: b0356167aca0a394a9e7316f3a1d0cf7, type: 3}
+  - {fileID: 8300000, guid: 56ecfcf5a21d24a4e9c87cf1cdf16195, type: 3}
+  - {fileID: 8300000, guid: 7c3a92b13b1af2047a524edbb3edf6eb, type: 3}
+  - {fileID: 8300000, guid: 1ca41c6065fb352499dcba5ae64e6b4f, type: 3}
+  - {fileID: 8300000, guid: 76f863ac196c4254c9c9890699af8b77, type: 3}
+  - {fileID: 8300000, guid: daac628239dd0914b9fa1e313f647c82, type: 3}
+  - {fileID: 8300000, guid: b9b8ab17c2323994897d9f361b16bc80, type: 3}
+  - {fileID: 8300000, guid: b3b1363ff8c45674ca9f1e77d09ca2d2, type: 3}
+  - {fileID: 8300000, guid: df24e7138bf13dc42b588372e26d49a3, type: 3}
+  - {fileID: 8300000, guid: cc6930bfdd4b1564cabc219bb3aa5d04, type: 3}
+  - {fileID: 8300000, guid: 66060d462e2a0d14fac0dfe750e81d40, type: 3}
+  - {fileID: 8300000, guid: f4a366a7c92c77d4c9f9f68c5adbc0c8, type: 3}
   Sprite: {fileID: 21300000, guid: 25fa4c7deb057b94e822763b1922abd8, type: 3}

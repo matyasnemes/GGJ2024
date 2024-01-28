@@ -16,12 +16,14 @@ MonoBehaviour:
   Description: A joke about well rounded mothers.
   JokeTexts:
   - Yo mama's so poor, the ducks throw bread at her.
-  - Yo mama's cooking is so nasty, the house flies got together to fix the hole in the window screen.
-  - Yo mama's so depressing, blues singers come to visit her when they've got writer's block.
+  - Yo mama's cooking is so nasty, the house flies got together to fix the hole in
+    the window screen.
+  - Yo mama's so depressing, blues singers come to visit her when they've got writer's
+    block.
   - Yo mama's so short, you can see her feet on her driver's license.
-  - Yo mama is so old, she walked into an antique store, and they didn't let her leave.
+  - Yo mama is so old, she walked into an antique store, and they didn't let her
+    leave.
   - Yo momma is so poor, she chases the garbage truck with a grocery list.
-  - Yo momma is so poor, she chases the garbage truck with a grocery list.Yo mama's so lazy, she has a stay-at-home job and still is late to work.
   - Yo momma so short, she went to see Santa and he told her to get back to work.
   - Yo momma so old, she knew Burger King when he was a prince.
   - Yo mama's glasses are so thick when she looks at a map, she can see people waving.
@@ -29,7 +31,8 @@ MonoBehaviour:
   - Yo mama's teeth are so yellow when she smiles at traffic, it slows down.
   - Yo mama is so mean, even Hello Kitty said goodbye.
   - Yo mama is so nice, she'd give me the hair off her back.
-  - Yo momma is so lazy, she stuck her nose out the window and let the wind blow it.
+  - Yo momma is so lazy, she stuck her nose out the window and let the wind blow
+    it.
   - Yo mama is so old, when she was a child rainbows were still in black and white.
   - Yo mama's so poor, she can't even afford to pay attention.
   - Yo mama's arms are so short, she has to tilt her head to scratch her ear.
@@ -38,4 +41,27 @@ MonoBehaviour:
   - Yo mama's head is so big, she has to step into her shirts.
   - Yo mama's so old, she walked out of a museum and the alarm went off.
   - Yo mama's so mean, they don't give her happy meals at McDonald's.
+  JokeClips:
+  - {fileID: 8300000, guid: 686395d00ad790d498edfc3a111f6a74, type: 3}
+  - {fileID: 8300000, guid: c0e79ab3b1f3c694182b3a5d7d1205ec, type: 3}
+  - {fileID: 8300000, guid: 150c959e03286be4c8cf6dff6bb1ae57, type: 3}
+  - {fileID: 8300000, guid: 7b579068437b6b7429d0acc12cc75999, type: 3}
+  - {fileID: 8300000, guid: 65917676c9f5534449ef1d41cf7b2e24, type: 3}
+  - {fileID: 8300000, guid: f1333e5cfb297b746b1163aee47a5b81, type: 3}
+  - {fileID: 8300000, guid: d71e8c540a6a7074984d9fc7274d4b74, type: 3}
+  - {fileID: 8300000, guid: abef0a966befbd84a97d4f3e4b842122, type: 3}
+  - {fileID: 8300000, guid: 6272e7983192e8641997d8e55c33ffdb, type: 3}
+  - {fileID: 8300000, guid: 04c6bad8a8cf72349892ae20a00cc205, type: 3}
+  - {fileID: 8300000, guid: 423d9277819f88f478fc1ac64eaa8f6e, type: 3}
+  - {fileID: 8300000, guid: b5e510f37ea69d74c8a99b35efca7503, type: 3}
+  - {fileID: 8300000, guid: c3bb088ee1f643a4a81756272590e044, type: 3}
+  - {fileID: 8300000, guid: 4dede02eecfefd3428afc4658d88ee1e, type: 3}
+  - {fileID: 8300000, guid: c8fca16a9f8810f4bba792460ec97772, type: 3}
+  - {fileID: 8300000, guid: 4ec981e3f15cac545a3aa36ffee91c82, type: 3}
+  - {fileID: 8300000, guid: bb9b2554ae6ff87478fd52c36cdbb419, type: 3}
+  - {fileID: 8300000, guid: 42fb6c98d4ea52b4b8d6d0a075015565, type: 3}
+  - {fileID: 8300000, guid: 8ef739137bbcf894fa93bb7665a38c45, type: 3}
+  - {fileID: 8300000, guid: 34307ee9d849859408ec298cbdc42a88, type: 3}
+  - {fileID: 8300000, guid: 975875fba0fb81346b90bf4c1c6b3255, type: 3}
+  - {fileID: 8300000, guid: 79f0438204431c74d8d9d5b63aace402, type: 3}
   Sprite: {fileID: 21300000, guid: ffac91f94dec3ce439b7f8026fa88f8f, type: 3}
