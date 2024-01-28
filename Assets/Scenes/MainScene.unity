@@ -1399,7 +1399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.28235295}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6829,7 +6829,7 @@ MonoBehaviour:
   - {fileID: 1210310216}
   jokeFactory: {fileID: 139705701}
   timer: {fileID: 899482695}
-  gameTime: 120
+  gameTime: 240
   winSceneName: WinScene
   loseSceneName: LoseScene
   player: {fileID: 1144409792}

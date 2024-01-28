@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.4
-  bubbleTime: 2
+  bubbleTime: 6
   funnyJokes: []
   laughBubble: {fileID: 2473199078318612518, guid: d8673bd747cd51445b96b6df2397f87d, type: 3}
   neutralBubble: {fileID: 2473199078318612518, guid: 2e1d6b17a1e590240ab68bebbeac7c2c, type: 3}
@@ -527,6 +527,7 @@ MonoBehaviour:
   meatHand: {fileID: 0}
   faceDown: 1
   insidesRevealed: 0
+  state: Nothing
 --- !u!1 &5460556284349811495
 GameObject:
   m_ObjectHideFlags: 0
