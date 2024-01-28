@@ -22,10 +22,11 @@ public class GameController : MonoBehaviour
     private Character accusedNPC;
     private Character npcPlayer;
     private List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
-    private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of illegal creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm sure everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
-    private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "...", "I hope I can keep my job." };
+    private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of Illegal Creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm sure everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
+    private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "I hope I can keep my job." };
 
     public List<AudioClip> introClips;
+    public List<AudioClip> timeoutClips;
     public AudioClip loseMusic;
     public AudioClip winMusic;
     public AudioClip accuseStartClip;
@@ -36,6 +37,9 @@ public class GameController : MonoBehaviour
 
     private GameObject panel;
     private GameObject inv;
+    
+    private Coroutine gameStartCoroutine;
+
     private void Awake()
     {
         SetUpNPCs();
@@ -49,7 +53,7 @@ public class GameController : MonoBehaviour
         waitingNumber = npcs.Count + 1;
         panel = GameObject.Find("Panel");
         inv = GameObject.Find("inv_panel");
-        StartCoroutine(PlayIntroScene());
+        gameStartCoroutine = StartCoroutine(PlayIntroScene());
     }
 
     void Update()
@@ -57,6 +61,21 @@ public class GameController : MonoBehaviour
         if (gameStarted)
         {
             NormalUpdate();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopCoroutine(gameStartCoroutine);
+            jokeTextBox.TurnOffTextBox();
+            gameStarted = true;
+            foreach (var npc in npcs)
+            {
+                npc.enabled = true;
+            }
+            player.enabled = true;
+            player.gameObject.GetComponent<InventoryController>().enabled = true;
+            panel.SetActive(true);
+            inv.SetActive(true);
+            playerCamera.gameObject.GetComponent<PlayerCameraController>().enabled = true;
         }
     }
 
@@ -66,6 +85,15 @@ public class GameController : MonoBehaviour
         if (audioSource && index < introClips.Count && introClips[index])
         {
             audioSource.PlayOneShot(introClips[index]);
+        }
+    }
+
+    void PlayTimeoutClip(int index)
+    {
+        AudioSource audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+        if (audioSource && index < timeoutClips.Count && timeoutClips[index])
+        {
+            audioSource.PlayOneShot(timeoutClips[index]);
         }
     }
 
@@ -90,6 +118,7 @@ public class GameController : MonoBehaviour
         player.gameObject.GetComponent<InventoryController>().enabled = true;
         panel.SetActive(true);
         inv.SetActive(true);
+        playerCamera.gameObject.GetComponent<PlayerCameraController>().enabled = true;
     }
 
     void NormalUpdate()
@@ -102,7 +131,7 @@ public class GameController : MonoBehaviour
         else
         {
             gameTime = 0;
-            Lose();
+            Accuse(null);
         }
         UpdateCamera();
 
@@ -140,8 +169,14 @@ public class GameController : MonoBehaviour
             npc.speed *= 2;
         }
         npcPlayer.GoToFinalWorkstation();
-
-        accusedNPC = characterObejct.GetComponent<Character>();
+        if(characterObejct == null)
+        {
+            accusedNPC = characterObejct.GetComponent<Character>();
+        }
+        else
+        {
+            accusedNPC = null;
+        }
         Destroy(player.gameObject);
     }
 
@@ -194,26 +229,59 @@ public class GameController : MonoBehaviour
 
     System.Collections.IEnumerator StartAccusing()
     {
-        jokeTextBox.DisplayJoke(accusitionStrings[0]);
-        PlayAccuseStart();
-        yield return new WaitForSeconds(accuseStartClip.length + 1.0f);
-        npcPlayer.GoToNPC(accusedNPC);
-        yield return new WaitForSeconds(2);
-        jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
-        PlayAccusedName(accusedNPC);
-        yield return new WaitForSeconds(2);
-
-        var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
-        if (accusedNPC.AreYouARobot())
+        
+        bool won;
+        if(accusedNPC != null)
         {
-            characterDisplay.TurnIntoRobot();
-            PlayEndingSound(true);
+            jokeTextBox.DisplayJoke(accusitionStrings[0]);
+            PlayAccuseStart();
+            yield return new WaitForSeconds(accuseStartClip.length + 1.0f);
+            npcPlayer.GoToNPC(accusedNPC);
+            yield return new WaitForSeconds(2);
+            jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
+            PlayAccusedName(accusedNPC);
+            yield return new WaitForSeconds(2);
+
+            var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
+            if (accusedNPC.AreYouARobot())
+            {
+                characterDisplay.TurnIntoRobot();
+                won = true;
+            }
+            else
+            {
+                characterDisplay.TurnIntoMeat();
+                won = false;
+            }
         }
         else
         {
-            characterDisplay.TurnIntoMeat();
-            PlayEndingSound(false);
+            won = false;
+            for (int i = 0; i < timeoutStrings.Count; i++)
+            {
+                jokeTextBox.DisplayIndefinitite(timeoutStrings[i]);
+                PlayTimeoutClip(i);
+                yield return new WaitForSeconds(timeoutClips[i].length + 0.5f);
+            }
+        }        
+        if(!won)
+        {
+            foreach (var ch in npcs)
+            {
+                ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
+            }
         }
+
+        PlayEndingSound(won);
+        yield return new WaitForSeconds(2);
+        jokeTextBox.ChangeToEndingStyle();
+        string finalMsg = won ? "Congratulations officer, you have successfully uncovered the robot!" : "The real joke has been you all along!" ;
+        jokeTextBox.DisplayIndefinitite(finalMsg);
+        yield return new WaitForSeconds(8);
+
+
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     void SetUpNPCs()
@@ -292,24 +360,5 @@ public class GameController : MonoBehaviour
         }
 
         return ret;
-    }
-
-    void Lose()
-    {
-        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
-        if (audioSource && loseMusic)
-        {
-            audioSource.PlayOneShot(loseMusic);
-        }
-
-        foreach (var ch in npcs)
-        {
-            ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
-        }
-    }
-
-    void Win()
-    {
-
     }
 }

@@ -1,10 +1,10 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
 
-
-public class InventorySlot : MonoBehaviour
+public class InventorySlot : MonoBehaviour, IPointerClickHandler
 {
 	public void Start()
 	{
@@ -17,6 +17,8 @@ public class InventorySlot : MonoBehaviour
 						.GetComponent<TextMeshProUGUI>();
 		Debug.Assert(keyText != null);
 		keyText.text = keybindText;
+
+		Debug.Assert(inventory != null);
 
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
@@ -46,6 +48,14 @@ public class InventorySlot : MonoBehaviour
 		_itemImage.sprite = jokeItem.unopenedSprite();
 		_itemImage.GetComponent<Image>().enabled = true;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
+	}
+
+	public void OnPointerClick(PointerEventData eventData)
+	{
+		if (eventData.button == PointerEventData.InputButton.Left)
+		{
+			inventory.useItem(int.Parse(keybindText) - 1);
+		}
 	}
 
 	public void disableSlot(float duration)
@@ -94,6 +104,8 @@ public class InventorySlot : MonoBehaviour
 	public Image _itemTypeImage = null;
 
 	public string keybindText = " ";
+
+	public Inventory inventory;
 
 	private JokeItem _jokeItem = null;
 

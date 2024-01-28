@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerCameraController : MonoBehaviour
 {
     public float minCameraSize = 15f;
     public float maxCameraSize = 30f;

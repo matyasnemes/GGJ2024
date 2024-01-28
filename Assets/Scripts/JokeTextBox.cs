@@ -68,4 +68,10 @@ public class JokeTextBox : MonoBehaviour
         textmesh.enabled = false;
         textTimeLeft = 0.0f;
     }
+
+    public void ChangeToEndingStyle()
+    {
+        img.color = new Color32(0,0,0,255);
+        textmesh.color = new Color(255,255,255,255);
+    }
 }

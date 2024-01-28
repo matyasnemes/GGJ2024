@@ -260,7 +260,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20.2
+  orthographic size: 25
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -298,7 +298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68905905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f893d018e70fdc47a0291fc32c0871b, type: 3}
   m_Name: 
@@ -858,6 +858,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 4
@@ -1542,6 +1546,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 3
       objectReference: {fileID: 0}
@@ -1827,6 +1835,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 6
@@ -2184,6 +2196,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 7
@@ -2546,6 +2562,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 1
@@ -4357,6 +4377,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6411585285967165199, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
   m_PrefabInstance: {fileID: 1144409782}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1144409784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+  m_PrefabInstance: {fileID: 1144409782}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8a8133d4d3923844b98704b9fad4ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1144409792 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1209221020041175968, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
@@ -4581,6 +4612,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 9
@@ -5267,6 +5302,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 2
       objectReference: {fileID: 0}
@@ -5720,6 +5759,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 8
@@ -11980,6 +12023,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 630877810}
     m_Modifications:
     - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 1144409784}
+    - target: {fileID: 703695568398297301, guid: 0fb7446949c20284880168b9c357e143, type: 3}
       propertyPath: keybindText
       value: 5
       objectReference: {fileID: 0}
@@ -12348,9 +12395,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 576bbdbd3b842c048b7e11ede86905d4, type: 3}
   - {fileID: 8300000, guid: b9cc0aac9aba98545b8d9eb22dcef77f, type: 3}
   - {fileID: 8300000, guid: 437005fb32c499543815412643857d11, type: 3}
+  timeoutClips:
+  - {fileID: 8300000, guid: 3fdba36951ad4484191a3495a2c1a061, type: 3}
+  - {fileID: 8300000, guid: 14034a39aedbd6d45ab280c66420a71d, type: 3}
+  - {fileID: 8300000, guid: 22a9cc91de07b3449809e9fdbeb67934, type: 3}
   loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
-  winMusic: {fileID: 8300000, guid: 6690c97ccb0dff84c9741063fc7fc7c5, type: 3}
-  accuseStartClip: {fileID: 8300000, guid: eaf405aa33ac58f4187dee06dcb4383b, type: 3}
+  winMusic: {fileID: 0}
+  accuseStartClip: {fileID: 0}
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
