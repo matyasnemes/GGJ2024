@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428309674132060150, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: m_Name
-      value: Christian Variant
+      value: Christian
       objectReference: {fileID: 0}
     - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: hand
@@ -40,6 +40,18 @@ PrefabInstance:
       propertyPath: headDown
       value: 
       objectReference: {fileID: 21300000, guid: c3db7d9d674ae234184f8c76ec3077aa, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: robotBody
+      value: 
+      objectReference: {fileID: 21300000, guid: 934cbda132f99ad448ecdeb0578a7f71, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: robotHand
+      value: 
+      objectReference: {fileID: 21300000, guid: cf05fc8ca7049f143ad11127df47d437, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: robotHead
+      value: 
+      objectReference: {fileID: 21300000, guid: 4c0c1f2b58cc6eb47a5f8fa45705c008, type: 3}
     - target: {fileID: 3909846779947014999, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: speed
       value: 5

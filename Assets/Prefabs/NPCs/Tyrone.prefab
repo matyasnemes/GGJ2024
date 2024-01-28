@@ -22,7 +22,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428309674132060150, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: m_Name
-      value: Tyrone Variant
+      value: Tyrone
       objectReference: {fileID: 0}
     - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: hand
@@ -44,6 +44,18 @@ PrefabInstance:
       propertyPath: headDown
       value: 
       objectReference: {fileID: 21300000, guid: ac35e7e0fcd383342995c5d991084b48, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: robotBody
+      value: 
+      objectReference: {fileID: 21300000, guid: 519a061e98ebea94381a354f5d249e48, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: robotHand
+      value: 
+      objectReference: {fileID: 21300000, guid: cf05fc8ca7049f143ad11127df47d437, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: robotHead
+      value: 
+      objectReference: {fileID: 21300000, guid: 38e764c9627e4c042b1be3601e77c027, type: 3}
     - target: {fileID: 3830891465885700428, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: m_Sprite
       value: 

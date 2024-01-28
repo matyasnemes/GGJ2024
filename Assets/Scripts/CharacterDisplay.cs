@@ -20,6 +20,11 @@ public class CharacterDisplay : MonoBehaviour
     public SpriteRenderer handRenderer1;
     public SpriteRenderer handRenderer2;
 
+    public Sprite robotBody;
+    public Sprite robotHead;
+    public Sprite robotHand;
+
+
     public bool faceDown = true;
 
     private GameObject uiIcon;
@@ -112,6 +117,14 @@ public class CharacterDisplay : MonoBehaviour
             headImage.sprite = headUp;
             bodyImage.sprite = bodyUp;
         }
+    }
+
+    public void TurnIntoRobot()
+    {
+        headRenderer.sprite = robotHead;
+        handRenderer1.sprite = robotHand;
+        handRenderer2.sprite = robotHand;
+        bodyRenderer.sprite = robotBody;
     }
 
     public void RegisterUIIcon(GameObject icon)
