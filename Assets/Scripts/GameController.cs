@@ -102,7 +102,7 @@ public class GameController : MonoBehaviour
         else
         {
             gameTime = 0;
-            Lose();
+            Accuse(null);
         }
         UpdateCamera();
 
@@ -140,8 +140,14 @@ public class GameController : MonoBehaviour
             npc.speed *= 2;
         }
         npcPlayer.GoToFinalWorkstation();
-
-        accusedNPC = characterObejct.GetComponent<Character>();
+        if(characterObejct == null)
+        {
+            accusedNPC = characterObejct.GetComponent<Character>();
+        }
+        else
+        {
+            accusedNPC = null;
+        }
         Destroy(player.gameObject);
     }
 
@@ -194,26 +200,57 @@ public class GameController : MonoBehaviour
 
     System.Collections.IEnumerator StartAccusing()
     {
-        jokeTextBox.DisplayJoke(accusitionStrings[0]);
-        PlayAccuseStart();
-        yield return new WaitForSeconds(accuseStartClip.length + 1.0f);
-        npcPlayer.GoToNPC(accusedNPC);
-        yield return new WaitForSeconds(2);
-        jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
-        PlayAccusedName(accusedNPC);
-        yield return new WaitForSeconds(2);
-
-        var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
-        if (accusedNPC.AreYouARobot())
+        
+        bool won;
+        if(accusedNPC != null)
         {
-            characterDisplay.TurnIntoRobot();
-            PlayEndingSound(true);
+            jokeTextBox.DisplayJoke(accusitionStrings[0]);
+            PlayAccuseStart();
+            yield return new WaitForSeconds(accuseStartClip.length + 1.0f);
+            npcPlayer.GoToNPC(accusedNPC);
+            yield return new WaitForSeconds(2);
+            jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
+            PlayAccusedName(accusedNPC);
+            yield return new WaitForSeconds(2);
+
+            var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
+            if (accusedNPC.AreYouARobot())
+            {
+                characterDisplay.TurnIntoRobot();
+                won = true;
+            }
+            else
+            {
+                characterDisplay.TurnIntoMeat();
+                won = false;
+            }
         }
         else
         {
-            characterDisplay.TurnIntoMeat();
-            PlayEndingSound(false);
+            won = false;
+            //timeOutStrings 4;
+            //jokeTextBox.DisplayJoke(timeoutStrings[0]);
+            //PlayAccuseStart();
+
+        }        
+        if(!won)
+        {
+            foreach (var ch in npcs)
+            {
+                ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
+            }
         }
+
+        PlayEndingSound(won);
+        yield return new WaitForSeconds(2);
+        jokeTextBox.ChangeToEndingStyle();
+        string finalMsg = won ? "Congratulations officer, you have successfully uncovered the robot!" : "The real joke has been you all along!" ;
+        jokeTextBox.DisplayIndefinitite(finalMsg);
+        yield return new WaitForSeconds(8);
+
+
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     void SetUpNPCs()
@@ -292,24 +329,5 @@ public class GameController : MonoBehaviour
         }
 
         return ret;
-    }
-
-    void Lose()
-    {
-        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
-        if (audioSource && loseMusic)
-        {
-            audioSource.PlayOneShot(loseMusic);
-        }
-
-        foreach (var ch in npcs)
-        {
-            ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
-        }
-    }
-
-    void Win()
-    {
-
     }
 }
