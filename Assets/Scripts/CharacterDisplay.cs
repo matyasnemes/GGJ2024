@@ -26,6 +26,7 @@ public class CharacterDisplay : MonoBehaviour
 
 
     public bool faceDown = true;
+    public bool insidesRevealed = false;
 
     private GameObject uiIcon;
 
@@ -69,53 +70,59 @@ public class CharacterDisplay : MonoBehaviour
 
     public void FaceDown()
     {
-        faceDown = true;
-        headRenderer.sprite = headDown;
-        bodyRenderer.sprite = bodyDown;
-        headRenderer.sortingOrder = 11;
-        handRenderer1.sortingOrder = 11;
-        handRenderer2.sortingOrder = 11;
-        bodyRenderer.sortingOrder = 10;
+        if (!insidesRevealed)
+        {
+            faceDown = true;
+            headRenderer.sprite = headDown;
+            bodyRenderer.sprite = bodyDown;
+            headRenderer.sortingOrder = 11;
+            handRenderer1.sortingOrder = 11;
+            handRenderer2.sortingOrder = 11;
+            bodyRenderer.sortingOrder = 10;
 
-        if(hand1 != null)
-        {
-            handRenderer1.sprite = hand1;
-        }
-        if (hand2 != null)
-        {
-            handRenderer2.sprite = hand2;
-        }
+            if (hand1 != null)
+            {
+                handRenderer1.sprite = hand1;
+            }
+            if (hand2 != null)
+            {
+                handRenderer2.sprite = hand2;
+            }
 
-        if (uiIcon)
-        {
-            headImage.sprite = headDown;
-            bodyImage.sprite = bodyDown;
+            if (uiIcon)
+            {
+                headImage.sprite = headDown;
+                bodyImage.sprite = bodyDown;
+            }
         }
     }
 
     public void FaceUp()
     {
-        faceDown = false;
-        headRenderer.sprite = headUp;
-        bodyRenderer.sprite = bodyUp;
-        headRenderer.sortingOrder = 10;
-        handRenderer1.sortingOrder = 10;
-        handRenderer2.sortingOrder = 10;
-        bodyRenderer.sortingOrder = 11;
+        if (!insidesRevealed)
+        {
+            faceDown = false;
+            headRenderer.sprite = headUp;
+            bodyRenderer.sprite = bodyUp;
+            headRenderer.sortingOrder = 10;
+            handRenderer1.sortingOrder = 10;
+            handRenderer2.sortingOrder = 10;
+            bodyRenderer.sortingOrder = 11;
 
-        if (hand1Back != null)
-        {
-            handRenderer1.sprite = hand1Back;
-        }
-        if (hand2Back != null)
-        {
-            handRenderer2.sprite = hand2Back;
-        }
+            if (hand1Back != null)
+            {
+                handRenderer1.sprite = hand1Back;
+            }
+            if (hand2Back != null)
+            {
+                handRenderer2.sprite = hand2Back;
+            }
 
-        if (uiIcon)
-        {
-            headImage.sprite = headUp;
-            bodyImage.sprite = bodyUp;
+            if (uiIcon)
+            {
+                headImage.sprite = headUp;
+                bodyImage.sprite = bodyUp;
+            }
         }
     }
 
@@ -125,6 +132,7 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer1.sprite = robotHand;
         handRenderer2.sprite = robotHand;
         bodyRenderer.sprite = robotBody;
+        insidesRevealed = true;
     }
 
     public void RegisterUIIcon(GameObject icon)
