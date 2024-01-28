@@ -125,10 +125,6 @@ public class Character : MonoBehaviour
         {
             state = State.Idle;
         }
-        else if(state != State.Fin)
-        {
-            Debug.Log("<color=red>Error: </color> Invalid state change to Idle");
-        }
     }
 
     public void Joke(JokeItemType jokeType)
