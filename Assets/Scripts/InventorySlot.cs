@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class InventorySlot : MonoBehaviour
@@ -11,6 +12,11 @@ public class InventorySlot : MonoBehaviour
 		Debug.Assert(_itemImage != null);
 		_itemTypeImage = transform.Find("slot_item_type").GetComponent<Image>();
 		Debug.Assert(_itemTypeImage != null);
+
+		var keyText = transform.Find("slot_keybind_text")
+						.GetComponent<TextMeshProUGUI>();
+		Debug.Assert(keyText != null);
+		keyText.text = keybindText;
 
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
@@ -86,6 +92,8 @@ public class InventorySlot : MonoBehaviour
 	public Image _itemImage = null;
 	// Indicates the type of the joke.
 	public Image _itemTypeImage = null;
+
+	public string keybindText = " ";
 
 	private JokeItem _jokeItem = null;
 
