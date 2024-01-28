@@ -234,8 +234,8 @@ public class Character : MonoBehaviour
         if (workstations.Count > 0)
         {
             target.SetDestination(workstations[rd.Next(workstations.Count)]);
-            target.SetTargetToWorkstation();
             target.TargetWorkStation.ReserveWorkstation();
+            CalculateAndSetRoute();
             return true;
         }
 
@@ -247,32 +247,21 @@ public class Character : MonoBehaviour
     {
         List<Room> possibleTargets = new List<Room>();
 
-        //Choosing a target workstation
-        foreach (var d in currentRoom.doors)
+        GameObject roomCollector = GameObject.Find("Rooms");
+
+        foreach(Transform child in roomCollector.transform)
         {
-            var r = d.GetOtherRoom(currentRoom);
-            if (r.GetFreeWorkstations().Count > 0)
-            {
-                possibleTargets.Add(r);
-            }
+            Room room = child.gameObject.GetComponent<Room>();
+            if(room != null && room.GetFreeWorkstations().Count > 0) possibleTargets.Add(room);
         }
 
-        Room targetRoom;
-        if (possibleTargets.Count == 0)
+        if(possibleTargets.Count == 0)
         {
-            if (currentRoom.GetFreeWorkstations().Count == 0)
-            {
-                return false;
-            }
-            else
-            {
-                targetRoom = currentRoom;
-            }
+            Debug.LogError("Could not find any rooms when choosing targets");
+            return false;
         }
-        else
-        {
-            targetRoom = possibleTargets[rd.Next(possibleTargets.Count)];
-        }
+
+        Room targetRoom = possibleTargets[rd.Next(possibleTargets.Count)];
 
         var workstations = targetRoom.GetFreeWorkstations();
         target.SetDestination(workstations[rd.Next(workstations.Count)]);
@@ -280,22 +269,9 @@ public class Character : MonoBehaviour
         //Letting the workstation know we are coming 
         target.TargetWorkStation.ReserveWorkstation();
 
-        //Calculating the target (remember, only possible targets are this room and its neighbours)
-        if (currentRoom != targetRoom)
-        {
-            foreach (var d in currentRoom.doors)
-            {
-                if (d.IsConnectedToRoom(targetRoom))
-                {
-                    target.SetTargetDoor(d, transform.position);
-                }
-            }
-        }
-        else
-        {
-            //If we stay in the current room there is no door needed to get there
-            target.SetTargetToWorkstation();
-        }
+        //Calculate and set route to target
+        CalculateAndSetRoute();
+        
         return true;
     }
 
@@ -310,9 +286,9 @@ public class Character : MonoBehaviour
 
         Room targetRoom = target.TargetWorkStation.GetOwnerRoom();
         //Three cases, the target workstation is in the given room, or it is in a neighbouring room, or it is accross the office
-        if(currentRoom = targetRoom)
+        if(currentRoom == targetRoom)
         {
-            //Target workstation is in the same room, set it as target
+            target.SetTargetToWorkstation();
         }
         else
         {
@@ -331,10 +307,24 @@ public class Character : MonoBehaviour
             if(neighbour)
             {
                 //target workstation is in a neighbouring room, go through the door leading there
+                target.SetTargetDoor(door, transform.position);
             }
             else
             {
-                //target workstation is in the room on the other side of the building, 
+                //target workstation is in the room on the other side of the building, go to the closest room
+                float dist = float.MaxValue;
+
+                foreach (var d in currentRoom.doors)
+                {
+
+                    if(Vector2.Distance(d.transform.position, transform.position) < dist)
+                    {
+                        neighbour = true;
+                        door = d;
+                    }
+                } 
+
+                target.SetTargetDoor(door, transform.position);
             }
 
         }
@@ -357,7 +347,8 @@ public class Character : MonoBehaviour
 
                 break;
             case TargetType.PostDoor:
-                target.SetTargetToWorkstation();
+//                target.SetTargetToWorkstation();
+                CalculateAndSetRoute();
                 break;
             case TargetType.Workstation:
                 target.TargetWorkStation.EnterWorkstation(this);
