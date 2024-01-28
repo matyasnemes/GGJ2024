@@ -153,6 +153,7 @@ MonoBehaviour:
   meatHand: {fileID: 0}
   faceDown: 1
   insidesRevealed: 0
+  state: Nothing
 --- !u!1 &5502186205253558703
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slots: []
+  globalCooldownDuration: 4
 --- !u!114 &1209221020041175968
 MonoBehaviour:
   m_ObjectHideFlags: 0
