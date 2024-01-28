@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
     private Character npcPlayer;
     public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb�cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
 
+    public AudioClip loseMusic;
+
     System.Random rd = new System.Random();
     Character robot;
 
@@ -118,6 +120,11 @@ public class GameController : MonoBehaviour
         else
         {
             characterDisplay.TurnIntoMeat();
+            AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
+            if (audioSource && loseMusic)
+            {
+                audioSource.PlayOneShot(loseMusic);
+            }
         }
     }
 

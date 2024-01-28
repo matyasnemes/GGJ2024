@@ -11920,6 +11920,7 @@ MonoBehaviour:
   - "Gentlemen, with my superb\_cognitive skills I've come to the conclusion that
     our robot is no one else then..."
   - ...
+  loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
