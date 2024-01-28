@@ -1,6 +1,6 @@
 # GGJ2024
 
-##Matyitól rajz
+## Matyitól rajz
 * Robot karakter
 * Accuse ujj
 * Meh fejnek más szín
@@ -14,7 +14,7 @@ Cinematic
 Zoom out to max
 
 
-##Minor imporvements
+## Minor imporvements
 * Inventoryban background a típus jelölőknek
 * Hang effektek
 	* Papír felvétel/kibomlás/leejtés?
