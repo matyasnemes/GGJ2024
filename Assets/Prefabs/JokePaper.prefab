@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4882196499427237929}
   - component: {fileID: 6406314545732825599}
   - component: {fileID: 6525706441209965678}
+  - component: {fileID: 6019869839892349535}
   m_Layer: 0
   m_Name: JokePaper
   m_TagString: Untagged
@@ -130,3 +131,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 8.453701, y: 8.249481}
   m_EdgeRadius: 0
+--- !u!114 &6019869839892349535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2231762111778338764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744fe3579955b1d48a7e157cd10ff21f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
