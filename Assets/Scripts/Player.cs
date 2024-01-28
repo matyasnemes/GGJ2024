@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
         jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
         inventory = GetComponent<Inventory>();
         jokeTB = GameObject.Find("JokeTextBox").GetComponent<JokeTextBox>();
+		inventory.addItem(jokeFactory.createRandomJokeItem());
     }
 
     public void GoToFinalWorkstation()
