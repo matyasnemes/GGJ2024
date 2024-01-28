@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428309674132060150, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: m_Name
-      value: Christian
+      value: Chris
       objectReference: {fileID: 0}
     - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: hand

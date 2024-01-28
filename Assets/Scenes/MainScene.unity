@@ -4348,7 +4348,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3969863700590591970, guid: f293951ccdaf8d0418350a56139e4e41, type: 3}
       propertyPath: m_Name
-      value: Christian
+      value: Chris
       objectReference: {fileID: 0}
     - target: {fileID: 7309293622717766908, guid: f293951ccdaf8d0418350a56139e4e41, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6922,6 +6922,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 7c91693b288681643b1545c688c3d1d4, type: 3}
+    - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2597539855435035173, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
