@@ -54,6 +54,11 @@ public class GameController : MonoBehaviour
             Lose();
         }
         UpdadteCamera();
+
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public List<JokeItemType> GetRobotFunnyJokes()
