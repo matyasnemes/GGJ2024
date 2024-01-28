@@ -101,6 +101,7 @@ public class Character : MonoBehaviour
     public void GoToFinalWorkstation()
     {
 
+
     }
 
     /**
@@ -294,6 +295,11 @@ public class Character : MonoBehaviour
             target.SetTargetToWorkstation();
         }
         return true;
+    }
+
+    void CalculateAndSetRoute()
+    {
+
     }
 
     void ReachedGoal()
