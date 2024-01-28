@@ -116,10 +116,10 @@ public class CharacterDisplay : MonoBehaviour
             faceDown = false;
             headRenderer.sprite = headUp;
             bodyRenderer.sprite = bodyUp;
-            headRenderer.sortingOrder = 10;
-            handRenderer1.sortingOrder = 10;
-            handRenderer2.sortingOrder = 10;
-            bodyRenderer.sortingOrder = 11;
+            headRenderer.sortingOrder = 11;
+            handRenderer1.sortingOrder = 9;
+            handRenderer2.sortingOrder = 9;
+            bodyRenderer.sortingOrder = 10;
 
             if (hand1Back != null)
             {
