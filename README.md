@@ -7,12 +7,12 @@
 * Meeting room székek háttal?
 * Óra?
 
-Animációk - Kövesse az UI?
-Menü
-Vicc gyűjtemény
-Cinematic
-Zoom out to max
-
+## Misc
+* Animációk - Kövesse az UI?
+* Menü
+* Vicc gyűjtemény
+* Cinematic
+* Zoom out to max
 
 ## Minor imporvements
 * Inventoryban background a típus jelölőknek
