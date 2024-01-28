@@ -49,11 +49,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.4
   bubbleTime: 6
-  distanceFromNpc: 3
+  distanceFromNpc: 5
   funnyJokes: []
   laughBubble: {fileID: 2473199078318612518, guid: d8673bd747cd51445b96b6df2397f87d, type: 3}
   neutralBubble: {fileID: 2473199078318612518, guid: 2e1d6b17a1e590240ab68bebbeac7c2c, type: 3}
   finalWorkstation: {fileID: 0}
+  nameClip: {fileID: 0}
   JokePaperPrefab: {fileID: 4882196499427237929, guid: 5f791b7348a7a5042832acf456c671a4, type: 3}
   JokeSpawnTimeSecondsMin: 6
   JokeSpawnTimeSecondsMax: 18

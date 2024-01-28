@@ -7,7 +7,6 @@ public class Character : MonoBehaviour
     Vector3 bubbleOffset = new Vector3(0, 7, 0);
     public float speed = 0.4f;
     public float bubbleTime = 2.0f;
-    public float distanceFromNpc = 3.0f;
     public List<JokeItemType> funnyJokes;
     public GameObject laughBubble;
     public GameObject neutralBubble;
@@ -34,6 +33,8 @@ public class Character : MonoBehaviour
      */
     private float RemainingSecondsUntilJokeSpawn = 0.0f;
 
+    private float distanceFromNpc = 5.0f;
+    
     enum State
     {
         Going,
