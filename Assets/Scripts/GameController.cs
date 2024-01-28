@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
 
     private Character accusedNPC;
     private Character npcPlayer;
-    public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
+    public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superbï¿½cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
 
     System.Random rd = new System.Random();
     Character robot;
@@ -68,6 +68,7 @@ public class GameController : MonoBehaviour
         var npcPlayerObject = Instantiate(npcPlayerPrefab);
         npcPlayerObject.transform.position = player.transform.position;
         npcPlayer = npcPlayerObject.GetComponent<Character>();
+        npcPlayer.finalWorkstation = GameObject.Find("Detective Final WS").GetComponent<WorkStation>();
 
         foreach (var npc in npcs)
         {
@@ -77,7 +78,6 @@ public class GameController : MonoBehaviour
 
         accusedNPC = characterObejct.GetComponent<Character>();
         Destroy(player.gameObject);
-        StartCoroutine(StartAccusing());
 
         //if (characterObejct.GetComponent<Character>().AreYouARobot())
         //{
@@ -94,7 +94,7 @@ public class GameController : MonoBehaviour
         waitingNumber--;
         if (waitingNumber == 0)
         {
-            StartAccusing();
+            StartCoroutine(StartAccusing());
         }
     }
 
