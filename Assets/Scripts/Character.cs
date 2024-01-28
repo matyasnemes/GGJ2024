@@ -5,8 +5,6 @@ public class Character : MonoBehaviour
 {
     const float eps = 0.0001f;
     Vector3 bubbleOffset = new Vector3(0, 7, 0);
-
-
     public float speed = 0.4f;
     public float bubbleTime = 2.0f;
     public List<JokeItemType> funnyJokes;
@@ -38,7 +36,8 @@ public class Character : MonoBehaviour
     {
         Going,
         Working,
-        Idle
+        Idle,
+        Fin
     }
 
     bool iAmRobot = false;
@@ -114,7 +113,7 @@ public class Character : MonoBehaviour
         {
             state = State.Idle;
         }
-        else
+        else if(state != State.Fin)
         {
             Debug.Log("<color=red>Error: </color> Invalid state change to Idle");
         }
@@ -137,11 +136,6 @@ public class Character : MonoBehaviour
         bubble = Instantiate(bubble, transform);
         bubble.transform.position += bubbleOffset;
         Destroy(bubble, bubbleTime);
-    }
-
-    void SpawnJokePaper()
-    {
-        Transform spawnedJokePaper = Instantiate(JokePaperPrefab, transform.position, transform.rotation);
     }
 
     /**
@@ -181,6 +175,7 @@ public class Character : MonoBehaviour
                 }
 
                 break;
+            case State.Fin:
             case State.Working:
 
                 //Work, work
@@ -205,6 +200,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    void SpawnJokePaper()
+    {
+        JokeItem jokeItem = jokeFactory.createRandomJokeItem();
+        Transform spawnedJokePaper = Instantiate(JokePaperPrefab, transform.position, transform.rotation);
+        spawnedJokePaper.GetComponent<JokePaper>().jokeItem = jokeItem;
+        spawnedJokePaper.GetComponent<SpriteRenderer>().sprite = jokeItem.unopenedSprite();
+    }
+
     /**
      * Updates the random joke spawner logic.
      */
@@ -212,7 +215,7 @@ public class Character : MonoBehaviour
     {
         if (RemainingSecondsUntilJokeSpawn < 0.0f)
         {
-            if (jokeFactory.CanSpawnNewJokePaper())
+            if (state != State.Fin && jokeFactory.CanSpawnNewJokePaper())
             {
                 SpawnJokePaper();
                 jokeFactory.OnJokePaperSpawned();
@@ -297,9 +300,45 @@ public class Character : MonoBehaviour
         return true;
     }
 
+    //Calculate and set the route to a workstation that has been set as Target
     void CalculateAndSetRoute()
     {
+        if(target.TargetWorkStation == null)
+        {
+            Debug.LogError("Would like to calculate route but there is no workstation");
+            return;
+        }
 
+        Room targetRoom = target.TargetWorkStation.GetOwnerRoom();
+        //Three cases, the target workstation is in the given room, or it is in a neighbouring room, or it is accross the office
+        if(currentRoom = targetRoom)
+        {
+            //Target workstation is in the same room, set it as target
+        }
+        else
+        {
+            bool neighbour = false;
+            Door door = null;
+
+            foreach (var d in currentRoom.doors)
+            {
+                if(d.IsConnectedToRoom(targetRoom))
+                {
+                    neighbour = true;
+                    door = d;
+                }
+            }
+
+            if(neighbour)
+            {
+                //target workstation is in a neighbouring room, go through the door leading there
+            }
+            else
+            {
+                //target workstation is in the room on the other side of the building, 
+            }
+
+        }
     }
 
     void ReachedGoal()

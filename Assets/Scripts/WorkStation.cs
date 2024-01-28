@@ -33,6 +33,11 @@ public class WorkStation : MonoBehaviour
     private AudioSource audioSource = null;
 
     /**
+     * The room owning the workstation.
+     */
+    private Room ownerRoom;
+
+    /**
      * Whether to play workstation sound upon entering or exiting.
      */
     public bool playSoundAtEnter = false;
@@ -76,6 +81,23 @@ public class WorkStation : MonoBehaviour
     {
         Transform workingTransform = transform.Find("WorkingPosition");
         return workingTransform ? workingTransform.position : transform.position;
+    }
+
+    /**
+     * Sets the owner room of the workstation.
+     * @param[in] owner: Room that owns the workstation.
+     */
+    public void SetOwnerRoom(Room owner)
+    {
+        ownerRoom = owner;
+    }
+
+    /**
+     * Returns the owner room of the workstation.
+     */
+    public Room GetOwnerRoom()
+    {
+        return ownerRoom;
     }
 
     /**

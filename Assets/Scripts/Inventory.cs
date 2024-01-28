@@ -14,17 +14,21 @@ public class Inventory : MonoBehaviour
         Debug.Assert(player != null);
     }
 
-    public bool useItem(int slot)
-    {
-        Debug.Assert(0 <= slot);
-        Debug.Assert(slots.Count > slot);
-        JokeItem joke = slots[slot].useJoke();
-        if (joke != null)
-        {
-            player.TellJokeInCurrentRoom(joke);
-        }
-        return joke != null;
-    }
+	public bool useItem(int slot)
+	{
+		Debug.Assert(0 <= slot);
+		Debug.Assert(slots.Count > slot);
+		JokeItem joke = slots[slot].useJoke();
+		if (joke != null)
+		{
+			foreach (var s in slots)
+			{
+				s.disableSlot(globalCooldownDuration);
+			}
+			player.TellJokeInCurrentRoom(joke);
+		}
+		return joke != null;
+	}
 
     public void Update()
     {
@@ -84,6 +88,7 @@ public class Inventory : MonoBehaviour
 
     private Player player = null;
     public List<InventorySlot> slots;
+    public float globalCooldownDuration = 4.0F; // In seconds.
     private JokeFactory _jokeFactory = null;
 }
 

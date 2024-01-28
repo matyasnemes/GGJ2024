@@ -86,9 +86,10 @@ public class Player : MonoBehaviour
         {
             if (!inventory.isFull())
             {
-                Destroy(collider.gameObject);
                 jokeFactory.OnJokePaperCollected();
-                inventory.addItem(jokeFactory.createRandomJokeItem());
+                JokeItem jokeItem = collider.gameObject.GetComponent<JokePaper>().jokeItem;
+                inventory.addItem(jokeItem);
+                Destroy(collider.gameObject);
             }
         }
     }
