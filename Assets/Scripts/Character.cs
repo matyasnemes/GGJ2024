@@ -42,9 +42,9 @@ public class Character : MonoBehaviour
 
     bool iAmRobot = false;
     bool firstFindGoal = true;
-    System.Random rd;
-    State state;
-    Target target;
+    System.Random rd = new System.Random();
+    State state = State.Idle;
+    Target target = new Target();
     Room currentRoom;
     GameObject bubble = null;
     CharacterDisplay charDisp;
@@ -53,12 +53,9 @@ public class Character : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = new Target();
-        rd = new System.Random();
         charDisp = GetComponentInChildren<CharacterDisplay>();
         jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
         RemainingSecondsUntilJokeSpawn = Random.Range(JokeSpawnTimeSecondsMin, JokeSpawnTimeSecondsMax);
-        state = State.Idle;
     }
 
     // Update is called once per frame
@@ -66,6 +63,11 @@ public class Character : MonoBehaviour
     {
         UpdateStateMachine();
         UpdateJokeSpawner();
+    }
+
+    void NoFirstFind()
+    {
+        firstFindGoal = false;
     }
 
     public void ThisIsFunny(JokeItemType joke)
@@ -99,7 +101,10 @@ public class Character : MonoBehaviour
 
     public void GoToFinalWorkstation()
     {   
-
+        target.SetDestination(finalWorkstation);
+        finalWorkstation.ReserveWorkstation();
+        CalculateAndSetRoute();
+        state = State.Going;
 
     }
 
@@ -262,7 +267,7 @@ public class Character : MonoBehaviour
             return false;
         }
 
-        Room targetRoom = possibleTargets[rd.Next(possibleTargets.Count)];
+        Room targetRoom = possibleTargets[rd.Next(possibleTargets.Count)];                  
 
         var workstations = targetRoom.GetFreeWorkstations();
         target.SetDestination(workstations[rd.Next(workstations.Count)]);
@@ -362,8 +367,19 @@ public class Character : MonoBehaviour
                     charDisp.FaceUp();
                 }
 
+                if(target.TargetWorkStation == finalWorkstation)
+                {
+                    GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
+
+                    gameController.RegisterFinalArrival();
+                    state = State.Fin;
+                }
+                else
+                {
+                    state = State.Working;
+                }
+
                 target.Clear();
-                state = State.Working;
 
                 break;
             default:
