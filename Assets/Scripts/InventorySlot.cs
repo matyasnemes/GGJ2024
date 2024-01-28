@@ -11,23 +11,26 @@ public class InventorySlot : MonoBehaviour
 		Debug.Assert(_itemImage != null);
 		_itemTypeImage = transform.Find("slot_item_type").GetComponent<Image>();
 		Debug.Assert(_itemTypeImage != null);
-		_cooldownImage = transform.Find("slot_cooldown").GetComponent<Image>();
+
 		_itemImage.GetComponent<Image>().enabled = false;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
-		_cooldownImage.GetComponent<Image>().enabled = false;
 	}
 
-	// Uses up a joke (if there is any).
-	// Returns the item itself (or null if there was none).
+	// Uses up the joke from the slot if the slot is enabled and it holds a
+	// joke.
+	// Returns the item itself on successful usage (or null otherwise).
 	public JokeItem useJoke()
 	{
-		var result = _jokeItem;
-		_jokeItem = null;
-		_itemImage.sprite = null;
-		_itemTypeImage.sprite = null;
-		_itemImage.GetComponent<Image>().enabled = false;
-		_itemTypeImage.GetComponent<Image>().enabled = false;
-		_cooldownImage.GetComponent<Image>().enabled = false;
+		var result = (JokeItem)null;
+		if (slotEnabled())
+		{
+			result = _jokeItem;
+			_jokeItem = null;
+			_itemImage.sprite = null;
+			_itemTypeImage.sprite = null;
+			_itemImage.GetComponent<Image>().enabled = false;
+			_itemTypeImage.GetComponent<Image>().enabled = false;
+		}
 		return result;
 	}
 
@@ -36,8 +39,23 @@ public class InventorySlot : MonoBehaviour
 		_jokeItem = jokeItem;
 		_itemImage.sprite = jokeItem.unopenedSprite();
 		_itemImage.GetComponent<Image>().enabled = true;
-		_cooldownImage.GetComponent<Image>().enabled = true;
 		_itemTypeImage.GetComponent<Image>().enabled = false;
+	}
+
+	public void disableSlot(float duration)
+	{
+		disableDuration = duration;
+		disableTimer = 0.0F;
+	}
+
+	public float disableDurationPercent()
+	{
+		return disableTimer / disableDuration;
+	}
+
+	public bool slotEnabled()
+	{
+		return disableTimer >= disableDuration;
 	}
 
 	public JokeItem jokeItem()
@@ -47,10 +65,14 @@ public class InventorySlot : MonoBehaviour
 
 	public void Update()
 	{
+		if (!slotEnabled())
+		{
+			disableTimer += Time.deltaTime;
+		}
 		if (_jokeItem != null)
 		{
 			_jokeItem.onUpdate(Time.deltaTime);
-			if (_jokeItem.isTypeRevealed())
+			if (slotEnabled() && _jokeItem.isTypeRevealed())
 			{
 				_itemImage.GetComponent<Image>().enabled = true;
 				_itemImage.sprite = _jokeItem.openedSprite();
@@ -64,9 +86,10 @@ public class InventorySlot : MonoBehaviour
 	public Image _itemImage = null;
 	// Indicates the type of the joke.
 	public Image _itemTypeImage = null;
-	// Cooldown image.
-	public Image _cooldownImage = null;
 
 	private JokeItem _jokeItem = null;
+
+	private float disableDuration = 0.0F;
+	private float disableTimer = 1.0F;
 }
 
