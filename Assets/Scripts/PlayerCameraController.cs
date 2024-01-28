@@ -4,7 +4,7 @@ public class NewBehaviourScript : MonoBehaviour
 {
     public float minCameraSize = 15f;
     public float maxCameraSize = 30f;
-    public float camereScrollSensitivity = 10f;
+    public float camereScrollSensitivity = 5f;
 
     private Camera playerCamera;
     private void Start()
@@ -19,7 +19,7 @@ public class NewBehaviourScript : MonoBehaviour
         }
 
         var size = playerCamera.orthographicSize;
-        size += Input.GetAxis("Mouse ScrollWheel") * camereScrollSensitivity;
+        size -= Input.GetAxis("Mouse ScrollWheel") * camereScrollSensitivity;
         size = Mathf.Clamp(size, minCameraSize, maxCameraSize);
         playerCamera.orthographicSize = size;
     }
