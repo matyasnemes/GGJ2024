@@ -1,17 +1,6 @@
-# GGJ2024
+# Illegal Creativity - GGJ2024
 
-## Matyitól rajz
-* Meeting room székek háttal?
-* Óra?
+## About
+This game is set in the distopic future where robots are disguised as humans and hidden among regular people. Your job as an investigator of the Bureau of Illegal Creativity is to find any robots hidden in workspaces looking like humans. You are visiting the Ministry of writing Jokez. All robots are known to have the same sense of humor. You have to tell the right jokes to the right people and listen to their reactions. After some time you can figure out which one of the workers is the hidden robot.
 
-## Misc
-* Animációk - Kövesse az UI?
-* Menü
-* Cinematic
-
-## Minor imporvements
-* Inventoryban background a típus jelölőknek
-* Hang effektek
-	* Papír felvétel/kibomlás/leejtés?
-	* Nevetés
-	* Vicc felolvastatás
+[Game jame site](https://globalgamejam.org/games/2024/illegal-creativity-2)
