@@ -46,7 +46,6 @@ public class Character : MonoBehaviour
     bool disableJokeSpawn = false;
     bool movingToNpc = false;
     Vector2 moveToNpcPos = Vector2.zero;
-    System.Random rd = new System.Random();
     State state = State.Idle;
     Target target = new Target();
     Room currentRoom;
@@ -187,8 +186,10 @@ public class Character : MonoBehaviour
 
                 break;
             case State.Fin:
+                charDisp.StartIdle();
                 if(movingToNpc)
                 {
+                    charDisp.StartMove();
                     if(Vector2.Distance(moveToNpcPos, transform.position) > distanceFromNpc) transform.position = Vector2.MoveTowards(transform.position, moveToNpcPos, speed * Time.deltaTime);
                 }
                 break;
@@ -250,7 +251,7 @@ public class Character : MonoBehaviour
         var workstations = currentRoom.GetFreeWorkstations();
         if (workstations.Count > 0)
         {
-            target.SetDestination(workstations[rd.Next(workstations.Count)]);
+            target.SetDestination(workstations[Random.Range(0,workstations.Count)]);
             target.TargetWorkStation.ReserveWorkstation();
             typeOfLastWorkstation = target.TargetWorkStation.workstationType;
             CalculateAndSetRoute();
@@ -279,10 +280,10 @@ public class Character : MonoBehaviour
             return false;
         }
 
-        Room targetRoom = possibleTargets[rd.Next(possibleTargets.Count)];                  
+        Room targetRoom = possibleTargets[Random.Range(0,possibleTargets.Count)];                  
 
         var workstations = targetRoom.GetFreeWorkstations(typeOfLastWorkstation);
-        target.SetDestination(workstations[rd.Next(workstations.Count)]);
+        target.SetDestination(workstations[Random.Range(0,workstations.Count)]);
         typeOfLastWorkstation = target.TargetWorkStation.workstationType;
 
         //Letting the workstation know we are coming 

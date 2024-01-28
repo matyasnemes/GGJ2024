@@ -24,8 +24,6 @@ public class GameController : MonoBehaviour
     public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb�cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
 
     public AudioClip loseMusic;
-
-    System.Random rd = new System.Random();
     Character robot;
 
     private int waitingNumber = 0;
@@ -36,7 +34,8 @@ public class GameController : MonoBehaviour
     }
 
     private void Start()
-    {
+    {   
+        Random.InitState((int)Time.time);
         playerCamera.enabled = true;
         mapCamera.enabled = false;
         waitingNumber = npcs.Count + 1;
@@ -133,7 +132,7 @@ public class GameController : MonoBehaviour
         List<JokeItemType> jokes = jokeFactory.jokeItemTypes;
 
         //ChooseARobot
-        robot = npcs[rd.Next(npcs.Count)];
+        robot = npcs[Random.Range(0, npcs.Count)];
         robot.YouAreARobot();
 
         //Choose a sense of humor for the robot
@@ -196,11 +195,11 @@ public class GameController : MonoBehaviour
 
     string GenerateRandomNLongBinary(int n)
     {
-        string ret = "";
+        string ret = "";    
 
         for (int i = 0; i < n; i++)
         {
-            ret += rd.Next(2);
+            ret += Random.Range(0,2);
         }
 
         return ret;
