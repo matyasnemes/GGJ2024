@@ -109,7 +109,6 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 velocity = Vector2.zero;
-        characterDisplay.FaceDown();
 
         if (Input.GetKey(KeyCode.W))
         {
