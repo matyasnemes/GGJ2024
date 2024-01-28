@@ -21,6 +21,10 @@ public class Inventory : MonoBehaviour
 		JokeItem joke = slots[slot].useJoke();
 		if (joke != null)
 		{
+			foreach (var s in slots)
+			{
+				s.disableSlot(globalCooldownDuration);
+			}
 			player.TellJokeInCurrentRoom(joke);
 		}
 		return joke != null;
@@ -85,6 +89,7 @@ public class Inventory : MonoBehaviour
 	public Image itemSprite = null;
 	public Player player = null;
 	public List<InventorySlot> slots;
+	public float globalCooldownDuration = 4.0F;	// In seconds.
 	private JokeFactory _jokeFactory = null;
 }
 
