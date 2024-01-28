@@ -180,6 +180,7 @@ public class Character : MonoBehaviour
         if (currentRoom == null && room != null)
         {
             currentRoom = room;
+            currentRoom.EnterRoom(this);
         }
     }
 
