@@ -298,7 +298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 68905905}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6f893d018e70fdc47a0291fc32c0871b, type: 3}
   m_Name: 
@@ -12349,8 +12349,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b9cc0aac9aba98545b8d9eb22dcef77f, type: 3}
   - {fileID: 8300000, guid: 437005fb32c499543815412643857d11, type: 3}
   loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
-  winMusic: {fileID: 8300000, guid: 6690c97ccb0dff84c9741063fc7fc7c5, type: 3}
-  accuseStartClip: {fileID: 8300000, guid: eaf405aa33ac58f4187dee06dcb4383b, type: 3}
+  winMusic: {fileID: 0}
+  accuseStartClip: {fileID: 0}
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
