@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
      * The room in which the player currently resides.
      */
     private Room currentRoom = null;
+    public Room CurrentRoom => currentRoom;
 
     /**
     * The text box displaying the hilarious jokes

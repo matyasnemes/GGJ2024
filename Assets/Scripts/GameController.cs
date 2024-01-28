@@ -69,6 +69,7 @@ public class GameController : MonoBehaviour
         npcPlayerObject.transform.position = player.transform.position;
         npcPlayer = npcPlayerObject.GetComponent<Character>();
         npcPlayer.finalWorkstation = GameObject.Find("Detective Final WS").GetComponent<WorkStation>();
+        npcPlayer.SetCurrentRoom(player.CurrentRoom);
 
         foreach (var npc in npcs)
         {

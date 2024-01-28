@@ -42,6 +42,7 @@ public class Character : MonoBehaviour
 
     bool iAmRobot = false;
     bool firstFindGoal = true;
+    bool disableJokeSpawn = false;
     System.Random rd = new System.Random();
     State state = State.Idle;
     Target target = new Target();
@@ -99,8 +100,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    public void SetCurrentRoom(Room room)
+    {
+        currentRoom = room;
+    }
+
     public void GoToFinalWorkstation()
-    {   
+    {  
+        disableJokeSpawn = true;
         target.SetDestination(finalWorkstation);
         finalWorkstation.ReserveWorkstation();
         CalculateAndSetRoute();
@@ -219,7 +226,7 @@ public class Character : MonoBehaviour
     {
         if (RemainingSecondsUntilJokeSpawn < 0.0f)
         {
-            if (state != State.Fin && jokeFactory.CanSpawnNewJokePaper())
+            if (!disableJokeSpawn && jokeFactory.CanSpawnNewJokePaper())
             {
                 SpawnJokePaper();
                 jokeFactory.OnJokePaperSpawned();
