@@ -21,7 +21,9 @@ public class GameController : MonoBehaviour
 
     private Character accusedNPC;
     private Character npcPlayer;
-    public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb�cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
+    private List<string> accusitionStrings = new List<string> { "Gentlemen! It seems the Bureau was right and there indeed is a robot among you.", "With my superb cognitive skills I've come to the conclusion that it is none other then...", "..." };
+    private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of illegal creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
+    private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "...", "I hope I can keep my job." };
 
     public AudioClip loseMusic;
     Character robot;
