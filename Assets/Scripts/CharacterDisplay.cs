@@ -66,6 +66,8 @@ public class CharacterDisplay : MonoBehaviour
             handImage2.sprite = hand;
         }
 
+        handRenderer1.sprite = hand;
+        handRenderer2.sprite = hand;
         if (faceDown)
         {
             FaceDown();
@@ -74,9 +76,6 @@ public class CharacterDisplay : MonoBehaviour
         {
             FaceUp();
         }
-
-        handRenderer1.sprite = hand;
-        handRenderer2.sprite = hand;
 
         StartMove();
     }
