@@ -90,6 +90,7 @@ public class GameController : MonoBehaviour
         player.gameObject.GetComponent<InventoryController>().enabled = true;
         panel.SetActive(true);
         inv.SetActive(true);
+        playerCamera.gameObject.GetComponent<PlayerCameraController>().enabled = true;
     }
 
     void NormalUpdate()
