@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -12,12 +12,21 @@ public class GameController : MonoBehaviour
     public string winSceneName = "";
     public string loseSceneName = "";
 
+    public Camera playerCamera;
+    public Camera mapCamera;
+
     System.Random rd = new System.Random();
     Character robot;
 
     private void Awake()
     {
         SetUpNPCs();
+    }
+
+    private void Start()
+    {
+        playerCamera.enabled = true;
+        mapCamera.enabled = false;
     }
 
     void Update()
@@ -32,6 +41,7 @@ public class GameController : MonoBehaviour
             gameTime = 0;
             Lose();
         }
+        UpdadteCamera();
     }
 
     public List<JokeItemType> GetRobotFunnyJokes()
@@ -108,6 +118,15 @@ public class GameController : MonoBehaviour
         timer.text = string.Format("{0}:{1:00}", minutes, seconds);
     }
 
+    private void UpdadteCamera()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            playerCamera.enabled = !playerCamera.enabled;
+            mapCamera.enabled = !mapCamera.enabled;
+        }
+    }
+
     string GenerateRandomNLongBinary(int n)
     {
         string ret = "";
@@ -122,11 +141,11 @@ public class GameController : MonoBehaviour
 
     void Lose()
     {
-        if(loseSceneName != "") SceneManager.LoadScene(loseSceneName);
+        if (loseSceneName != "") SceneManager.LoadScene(loseSceneName);
     }
 
     void Win()
     {
-        if(winSceneName != "") SceneManager.LoadScene(winSceneName);
+        if (winSceneName != "") SceneManager.LoadScene(winSceneName);
     }
 }

@@ -5,6 +5,7 @@
 * Accuse ujj
 * Meh fejnek más szín
 * Meeting room székek háttal?
+* Camera icon
 * Óra?
 
 ## Misc
