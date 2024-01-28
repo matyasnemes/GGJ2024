@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: speed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3909846779947014999, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: nameClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a77e5b58c98ed7448012195edb1a8dc, type: 3}
     - target: {fileID: 4731728252879541480, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.1

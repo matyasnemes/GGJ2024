@@ -21,9 +21,11 @@ public class GameController : MonoBehaviour
 
     private Character accusedNPC;
     private Character npcPlayer;
-    public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb�cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
+    public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
 
     public AudioClip loseMusic;
+    public AudioClip winMusic;
+    public AudioClip accuseStartClip;
     Character robot;
 
     private int waitingNumber = 0;
@@ -103,27 +105,64 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /**
+     * Plays the end game music.
+     * @param[in] won: True if won, false if lost.
+     */
+    public void PlayEndingSound(bool won)
+    {
+        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
+        if (audioSource)
+        {
+            if (!won && loseMusic)
+            {
+                audioSource.PlayOneShot(loseMusic);
+            }
+            else if (won && winMusic)
+            {
+                audioSource.PlayOneShot(winMusic);
+            }
+        }
+    }
+
+    public void PlayAccuseStart()
+    {
+        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
+        if (audioSource && accuseStartClip)
+        {
+            audioSource.PlayOneShot(accuseStartClip);
+        }
+    }
+
+    public void PlayAccusedName(Character character)
+    {
+        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
+        if (audioSource && character.nameClip)
+        {
+            audioSource.PlayOneShot(character.nameClip);
+        }
+    }
+
     System.Collections.IEnumerator StartAccusing()
     {
         jokeTextBox.DisplayJoke(accusitionStrings[0]);
-        yield return new WaitForSeconds(3);
+        PlayAccuseStart();
+        yield return new WaitForSeconds(accuseStartClip.length + 1.0f);
         npcPlayer.GoToNPC(accusedNPC);
         jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
+        PlayAccusedName(accusedNPC);
         yield return new WaitForSeconds(2);
 
         var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
         if (accusedNPC.AreYouARobot())
         {
             characterDisplay.TurnIntoRobot();
+            PlayEndingSound(true);
         }
         else
         {
             characterDisplay.TurnIntoMeat();
-            AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
-            if (audioSource && loseMusic)
-            {
-                audioSource.PlayOneShot(loseMusic);
-            }
+            PlayEndingSound(false);
         }
     }
 

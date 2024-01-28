@@ -12,6 +12,7 @@ public class Character : MonoBehaviour
     public GameObject laughBubble;
     public GameObject neutralBubble;
     public WorkStation finalWorkstation;
+    public AudioClip nameClip;
 
     /**
      * Prefab for Joke Paper items that are spawned on the floor.
