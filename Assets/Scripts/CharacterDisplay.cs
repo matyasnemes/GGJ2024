@@ -24,6 +24,10 @@ public class CharacterDisplay : MonoBehaviour
     public Sprite robotHead;
     public Sprite robotHand;
 
+    public Sprite meatBody;
+    public Sprite meatHead;
+    public Sprite meatHand;
+
 
     public bool faceDown = true;
     public bool insidesRevealed = false;
@@ -128,10 +132,21 @@ public class CharacterDisplay : MonoBehaviour
 
     public void TurnIntoRobot()
     {
+        FaceDown();
         headRenderer.sprite = robotHead;
         handRenderer1.sprite = robotHand;
         handRenderer2.sprite = robotHand;
         bodyRenderer.sprite = robotBody;
+        insidesRevealed = true;
+    }
+
+    public void TurnIntoMeat()
+    {
+        FaceDown();
+        headRenderer.sprite = meatHead;
+        handRenderer1.sprite = meatHand;
+        handRenderer2.sprite = meatHand;
+        bodyRenderer.sprite = meatBody;
         insidesRevealed = true;
     }
 

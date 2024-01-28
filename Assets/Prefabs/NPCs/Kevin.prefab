@@ -45,6 +45,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0d2037eee0e53e84db44a132844d6fb6, type: 3}
     - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: meatBody
+      value: 
+      objectReference: {fileID: 21300000, guid: 09a683eafe0b220499974e0a17f4d492, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: meatHand
+      value: 
+      objectReference: {fileID: 21300000, guid: a519ed2a7a3ca0e4282cc6783ccd350c, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: meatHead
+      value: 
+      objectReference: {fileID: 21300000, guid: 34103c4408e035747abdc360ae8cf2bc, type: 3}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: robotBody
       value: 
       objectReference: {fileID: 21300000, guid: 519a061e98ebea94381a354f5d249e48, type: 3}
