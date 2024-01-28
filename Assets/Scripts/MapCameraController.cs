@@ -2,13 +2,12 @@ using UnityEngine;
 
 public class MapCameraController : MonoBehaviour
 {
-    public float minCameraSize = 15f;
-    public float maxCameraSize = 30f;
-    public float camereScrollSensitivity = 5f;
+    private float minCameraSize = 15f;
+    private float maxCameraSize = 44f;
+    private float camereScrollSensitivity = 5f;
 
     private Camera mapCamera;
     private bool isZoomingOut = false;
-    private float lastTime;
     private void Start()
     {
         mapCamera = GetComponent<Camera>();
@@ -21,7 +20,7 @@ public class MapCameraController : MonoBehaviour
     public void ZoomOut(float zoom)
     {
         var size = mapCamera.orthographicSize;
-        size = zoom * camereScrollSensitivity;
+        size += zoom * camereScrollSensitivity;
         if (size > maxCameraSize)
         {
             size = maxCameraSize;
@@ -40,9 +39,7 @@ public class MapCameraController : MonoBehaviour
     {
         if (isZoomingOut)
         {
-            var currTime = Time.deltaTime;
-            ZoomOut(currTime - lastTime);
-            lastTime = currTime;
+            ZoomOut(Time.deltaTime);
         }
     }
 }
