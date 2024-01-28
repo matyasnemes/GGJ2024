@@ -10,6 +10,11 @@ public class CharacterDisplay : MonoBehaviour
     public Sprite bodyUp;
     public Sprite hand;
 
+    public Sprite hand1;
+    public Sprite hand2;
+    public Sprite hand1Back;
+    public Sprite hand2Back;
+
     public SpriteRenderer headRenderer;
     public SpriteRenderer bodyRenderer;
     public SpriteRenderer handRenderer1;
@@ -67,6 +72,15 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer2.sortingOrder = 11;
         bodyRenderer.sortingOrder = 10;
 
+        if(hand1 != null)
+        {
+            handRenderer1.sprite = hand1;
+        }
+        if (hand2 != null)
+        {
+            handRenderer2.sprite = hand2;
+        }
+
         if (uiIcon)
         {
             headImage.sprite = headDown;
@@ -83,6 +97,15 @@ public class CharacterDisplay : MonoBehaviour
         handRenderer1.sortingOrder = 10;
         handRenderer2.sortingOrder = 10;
         bodyRenderer.sortingOrder = 11;
+
+        if (hand1Back != null)
+        {
+            handRenderer1.sprite = hand1Back;
+        }
+        if (hand2Back != null)
+        {
+            handRenderer2.sprite = hand2Back;
+        }
 
         if (uiIcon)
         {
