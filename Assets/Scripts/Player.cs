@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
      */
     public float MovementSpeed = 10.0f;
 
+    public WorkStation finalWorkstation;
+
     /**
      * RigidBody of the player for colliding with solid objects.
      */
@@ -61,6 +63,11 @@ public class Player : MonoBehaviour
         jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
         inventory = GetComponent<Inventory>();
         jokeTB = GameObject.Find("JokeTextBox").GetComponent<JokeTextBox>();
+    }
+
+    public void GoToFinalWorkstation()
+    {
+
     }
 
     /**
