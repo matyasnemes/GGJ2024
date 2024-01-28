@@ -25,13 +25,13 @@ public class GameController : MonoBehaviour
     private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of illegal creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm sure everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
     private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "...", "I hope I can keep my job." };
 
+    public List<AudioClip> introClips;
     public AudioClip loseMusic;
     public AudioClip winMusic;
     public AudioClip accuseStartClip;
     Character robot;
 
     private int waitingNumber = 0;
-    private int introIndex = 0;
     private bool gameStarted = false;
 
     private void Awake()
@@ -45,6 +45,7 @@ public class GameController : MonoBehaviour
         playerCamera.enabled = true;
         mapCamera.enabled = false;
         waitingNumber = npcs.Count + 1;
+        StartCoroutine(PlayIntroScene());
     }
 
     void Update()
@@ -53,33 +54,33 @@ public class GameController : MonoBehaviour
         {
             NormalUpdate();
         }
-        else
+    }
+
+    void PlayIntroClip(int index)
+    {
+        AudioSource audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+        if (audioSource && index < introClips.Count && introClips[index])
         {
-            IntroUpdate();
+            audioSource.PlayOneShot(introClips[index]);
         }
     }
 
-    void IntroUpdate()
+    System.Collections.IEnumerator PlayIntroScene()
     {
-        if (introIndex == 0)
+        for (int i = 0; i < introStrings.Count; i++)
         {
-            jokeTextBox.DisplayIndefinitite(introStrings[introIndex]);
-            introIndex++;
+            jokeTextBox.DisplayIndefinitite(introStrings[i]);
+            PlayIntroClip(i);
+            yield return new WaitForSeconds(introClips[i].length + 0.5f);
         }
-        if (introIndex == introStrings.Count)
+
+        jokeTextBox.TurnOffTextBox();
+        gameStarted = true;
+        foreach (var npc in npcs)
         {
-            jokeTextBox.TurnOffTextBox();
-            gameStarted = true;
-            foreach (var npc in npcs)
-            {
-                npc.enabled = true;
-            }
-            player.enabled = true;
+            npc.enabled = true;
         }
-        if (Input.GetKeyDown("space"))
-        {
-            jokeTextBox.DisplayIndefinitite(introStrings[introIndex++]);
-        }
+        player.enabled = true;
     }
 
     void NormalUpdate()
@@ -94,7 +95,7 @@ public class GameController : MonoBehaviour
             gameTime = 0;
             Lose();
         }
-        UpdadteCamera();
+        UpdateCamera();
 
         if (Input.GetKeyUp(KeyCode.Escape))
         {
@@ -263,7 +264,7 @@ public class GameController : MonoBehaviour
         timer.text = string.Format("{0}:{1:00}", minutes, seconds);
     }
 
-    private void UpdadteCamera()
+    private void UpdateCamera()
     {
         if (Input.GetKeyDown(KeyCode.M))
         {

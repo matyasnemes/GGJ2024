@@ -12341,9 +12341,16 @@ MonoBehaviour:
   jokeTextBox: {fileID: 404120190}
   playerCamera: {fileID: 68905907}
   mapCamera: {fileID: 1653472933}
+  introClips:
+  - {fileID: 8300000, guid: 1fd19d1f5225a3243997050e23714e14, type: 3}
+  - {fileID: 8300000, guid: c1894526774d6094eaa8efb4761a087f, type: 3}
+  - {fileID: 8300000, guid: d7989699a6bbfa441b6ded142c762953, type: 3}
+  - {fileID: 8300000, guid: 576bbdbd3b842c048b7e11ede86905d4, type: 3}
+  - {fileID: 8300000, guid: b9cc0aac9aba98545b8d9eb22dcef77f, type: 3}
+  - {fileID: 8300000, guid: 437005fb32c499543815412643857d11, type: 3}
   loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
-  winMusic: {fileID: 0}
-  accuseStartClip: {fileID: 0}
+  winMusic: {fileID: 8300000, guid: 6690c97ccb0dff84c9741063fc7fc7c5, type: 3}
+  accuseStartClip: {fileID: 8300000, guid: eaf405aa33ac58f4187dee06dcb4383b, type: 3}
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
