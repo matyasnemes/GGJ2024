@@ -78,20 +78,12 @@ public class GameController : MonoBehaviour
         foreach (var npc in npcs)
         {
             npc.GoToFinalWorkstation();
+            npc.speed *= 2;
         }
         npcPlayer.GoToFinalWorkstation();
 
         accusedNPC = characterObejct.GetComponent<Character>();
         Destroy(player.gameObject);
-
-        //if (characterObejct.GetComponent<Character>().AreYouARobot())
-        //{
-        //    Win();
-        //}
-        //else
-        //{
-        //    Lose();
-        //}
     }
 
     public void RegisterFinalArrival()
