@@ -1457,7 +1457,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: 
-  textTimeMax: 5
+  textTimeMax: 6
 --- !u!1 &420046618
 GameObject:
   m_ObjectHideFlags: 0
@@ -3805,6 +3805,10 @@ PrefabInstance:
       propertyPath: slots.Array.data[8]
       value: 
       objectReference: {fileID: 745758853}
+    - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+      propertyPath: globalCooldownDuration
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5516609606032763809, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       propertyPath: m_GravityScale
       value: 0
@@ -5613,9 +5617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395fd70e269b386458dbaeec6df7a659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCameraSize: 15
-  maxCameraSize: 30
-  camereScrollSensitivity: 5
 --- !u!1001 &1654395204
 PrefabInstance:
   m_ObjectHideFlags: 0
