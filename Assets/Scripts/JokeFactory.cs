@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,8 +47,8 @@ public class JokeFactory : MonoBehaviour
 	// min inclusive, max is exclusive.
 	private int generateInterval(int min, int max)
 	{
-		// 2nd try
-		return _random.Next() % (max - min) + min;
+		// 3rd time is the charm
+		return Random.Range(min, max);
 	}
 
 	public bool CanSpawnNewJokePaper()
@@ -81,7 +80,5 @@ public class JokeFactory : MonoBehaviour
 	 * The current number of joke papers lying around on the floor.
 	 */
 	private int numActiveJokePapers;
-
-	private System.Random _random = new System.Random();
 }
 
