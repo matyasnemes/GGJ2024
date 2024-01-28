@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class WorkStation : MonoBehaviour
 {
+    public enum WorkstationType
+    {
+        Piss,
+        Shit,
+        Eat,
+        Vend,
+        Present,
+        Sit,
+        Print,
+        Work
+    }
+
+    public WorkstationType workstationType;
 
     public bool facingDown;
 

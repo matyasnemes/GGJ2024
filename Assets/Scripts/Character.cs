@@ -147,12 +147,11 @@ public class Character : MonoBehaviour
         switch (state)
         {
             case State.Going:
-
                 Vector2 newpos = Vector2.MoveTowards(transform.position, target.GetTargetPosition(), speed * Time.deltaTime);
                 Vector2 displacement = newpos - new Vector2(transform.position.x, transform.position.y);
 
                 //facing up or down?
-                var charDisp = GetComponentInChildren<CharacterDisplay>();
+                charDisp.StartMove();
                 bool down = displacement.y >= 0 ? false : true;
                 if (charDisp.faceDown != down)
                 {
@@ -182,7 +181,7 @@ public class Character : MonoBehaviour
 
                 break;
             case State.Idle:
-
+                charDisp.StartIdle();
                 //TODO: If time allows, go to the center of the current room
                 if (firstFindGoal)
                 {
@@ -353,6 +352,7 @@ public class Character : MonoBehaviour
                 break;
             case TargetType.Workstation:
                 target.TargetWorkStation.EnterWorkstation(this);
+                PlayWorkstationAnimation(target.TargetWorkStation.workstationType);
                 if (target.TargetWorkStation.facingDown)
                 {
                     charDisp.FaceDown();
@@ -368,6 +368,37 @@ public class Character : MonoBehaviour
                 break;
             default:
                 //What
+                break;
+        }
+    }
+
+    private void PlayWorkstationAnimation(WorkStation.WorkstationType workstationType)
+    {
+        switch(workstationType)
+        {
+            case WorkStation.WorkstationType.Piss:
+                charDisp.StartPiss();
+                break;
+            case WorkStation.WorkstationType.Shit:
+                charDisp.StartShit();
+                break;
+            case WorkStation.WorkstationType.Eat:
+                charDisp.StartEat();
+                break;
+            case WorkStation.WorkstationType.Vend:
+                charDisp.StartVend();
+                break;
+            case WorkStation.WorkstationType.Present:
+                charDisp.StartPresent();
+                break;
+            case WorkStation.WorkstationType.Sit:
+                charDisp.StartSit();
+                break;
+            case WorkStation.WorkstationType.Print:
+                charDisp.StartEat();
+                break;
+            case WorkStation.WorkstationType.Work:
+                charDisp.StartWork();
                 break;
         }
     }
