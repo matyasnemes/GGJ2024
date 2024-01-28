@@ -299,7 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minCameraSize: 15
   maxCameraSize: 30
-  camereScrollSensitivity: 10
+  camereScrollSensitivity: 5
 --- !u!1001 &98418827
 PrefabInstance:
   m_ObjectHideFlags: 0

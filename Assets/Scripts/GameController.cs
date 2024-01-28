@@ -65,6 +65,7 @@ public class GameController : MonoBehaviour
         playerCamera.enabled = false;
         mapCamera.enabled = true;
 
+
         var npcPlayerObject = Instantiate(npcPlayerPrefab);
         npcPlayerObject.transform.position = player.transform.position;
         npcPlayer = npcPlayerObject.GetComponent<Character>();
