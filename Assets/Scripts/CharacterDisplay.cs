@@ -278,7 +278,7 @@ public class CharacterDisplay : MonoBehaviour
     private float vendHand1Speed = 2.0f;
     private float vendHand2Speed = 2.0f;
 
-    private void StartMove()
+    public void StartMove()
     {
         string newState = "Move";
         if (!state.Equals(newState))
@@ -297,7 +297,7 @@ public class CharacterDisplay : MonoBehaviour
         }
     }
 
-    private void StartEat()
+    public void StartEat()
     {
         string newState = "Eat";
         if (!state.Equals(newState))
@@ -315,7 +315,7 @@ public class CharacterDisplay : MonoBehaviour
             hand2Target = hand2Origin + eatHand2Offset;
         }
     }
-    private void StartVend()
+    public void StartVend()
     {
         string newState = "Vend";
         if (!state.Equals(newState))
@@ -334,7 +334,7 @@ public class CharacterDisplay : MonoBehaviour
         }
     }
 
-    private void StartIdle()
+    public void StartIdle()
     {
         string newState = "Idle";
         if (!state.Equals(newState))
@@ -353,7 +353,7 @@ public class CharacterDisplay : MonoBehaviour
         }
     }
 
-    private void StartPiss()
+    public void StartPiss()
     {
         string newState = "Piss";
         if (!state.Equals(newState))
@@ -372,7 +372,7 @@ public class CharacterDisplay : MonoBehaviour
         }
     }
 
-    private void StartShit()
+    public void StartShit()
     {
         string newState = "Shit";
         if (!state.Equals(newState))
