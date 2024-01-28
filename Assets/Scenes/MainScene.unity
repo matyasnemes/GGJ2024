@@ -12342,8 +12342,8 @@ MonoBehaviour:
   playerCamera: {fileID: 68905907}
   mapCamera: {fileID: 1653472933}
   loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
-  winMusic: {fileID: 0}
-  accuseStartClip: {fileID: 0}
+  winMusic: {fileID: 8300000, guid: 6690c97ccb0dff84c9741063fc7fc7c5, type: 3}
+  accuseStartClip: {fileID: 8300000, guid: eaf405aa33ac58f4187dee06dcb4383b, type: 3}
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
