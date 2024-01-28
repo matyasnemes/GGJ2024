@@ -834,11 +834,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2ab2601856ec34184aacd81b91084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &233508553 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6807904795828795047, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
-  m_PrefabInstance: {fileID: 1144409782}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &242626273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3401251305461028376, guid: 7ed9d13f9348ee7409e8c5f8b7815743, type: 3}
@@ -3506,41 +3501,13 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6411585285967165199, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 68905908}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6807904795828795047, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1144409791}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
 --- !u!4 &1144409783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6411585285967165199, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
   m_PrefabInstance: {fileID: 1144409782}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1144409791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233508553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985bfe13043999b41bb8f9729152ffbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MovementSpeed: 10
-  finalWorkstation: {fileID: 0}
---- !u!114 &1144409792 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1209221020041175968, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
-  m_PrefabInstance: {fileID: 1144409782}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 233508553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985bfe13043999b41bb8f9729152ffbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1170051321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4348,7 +4315,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3969863700590591970, guid: f293951ccdaf8d0418350a56139e4e41, type: 3}
       propertyPath: m_Name
-      value: Chris
+      value: Christian
       objectReference: {fileID: 0}
     - target: {fileID: 7309293622717766908, guid: f293951ccdaf8d0418350a56139e4e41, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5969,9 +5936,9 @@ MonoBehaviour:
   gameTime: 120
   winSceneName: WinScene
   loseSceneName: LoseScene
-  player: {fileID: 1144409792}
-  npcPlayerPrefab: {fileID: 9013034397458144920, guid: 098d17854edefe14ba4e438d049388d5, type: 3}
-  jokeTextBox: {fileID: 404120190}
+  player: {fileID: 0}
+  npcPlayerPrefab: {fileID: 0}
+  jokeTextBox: {fileID: 0}
   playerCamera: {fileID: 68905907}
   mapCamera: {fileID: 1653472933}
   accusitionStrings:
@@ -6650,10 +6617,6 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 560047659}
-    - target: {fileID: 1443856641756558473, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1457199207367474252, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6929,6 +6892,14 @@ PrefabInstance:
     - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2535410609954186974, guid: 36ae002a3905c29439d46308fc127e21, type: 3}
       propertyPath: m_AnchoredPosition.x
