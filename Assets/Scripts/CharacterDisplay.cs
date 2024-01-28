@@ -206,30 +206,6 @@ public class CharacterDisplay : MonoBehaviour
         {
             Hand2Loop();
         }
-
-        if(Input.GetKeyUp(KeyCode.U)) {
-            StartMove();
-        }
-        if (Input.GetKeyUp(KeyCode.I))
-        {
-            StartIdle();
-        }
-        if (Input.GetKeyUp(KeyCode.O))
-        {
-            StartPiss();
-        }
-        if (Input.GetKeyUp(KeyCode.J))
-        {
-            StartShit();
-        }
-        if (Input.GetKeyUp(KeyCode.K))
-        {
-            StartEat();
-        }
-        if (Input.GetKeyUp(KeyCode.L))
-        {
-            StartVend();
-        }
     }
 
     private Vector3 moveHeadOffset = new Vector3(0.0f, 0.05f, 0.0f);
@@ -278,6 +254,38 @@ public class CharacterDisplay : MonoBehaviour
     private float vendHand1Speed = 2.0f;
     private float vendHand2Speed = 2.0f;
 
+    private Vector3 sitHeadOffset = new Vector3(0.0f, 0.05f, 0.0f);
+    private Vector3 sitHand1Offset = new Vector3(0.0f, -0.5f, 0.0f);
+    private Vector3 sitHand2Offset = new Vector3(0.0f, -0.5f, 0.0f);
+    private float sitHeadSpeed = 0.5f;
+    private float sitHand1Speed = 2.0f;
+    private float sitHand2Speed = 2.0f;
+
+    private Vector3 presentHeadOffset = new Vector3(0.0f, 0.1f, 0.0f);
+    private Vector3 presentHand1Offset = new Vector3(0.4f, 2.0f, 0.0f);
+    private Vector3 presentHand2Offset = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 presentHand1Offset2 = new Vector3(-0.2f, 1.6f, 0.0f);
+    private float presentHeadSpeed = 0.5f;
+    private float presentHand1Speed = 2.0f;
+    private float presentHand2Speed = 2.0f;
+
+    private Vector3 printHeadOffset = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 printHand1Offset = new Vector3(-3.8f, 0.0f, 0.0f);
+    private Vector3 printHand2Offset = new Vector3(-0.5f, 1.5f, 0.0f);
+    private Vector3 printHand1Offset2 = new Vector3(-3.4f, 0.0f, 0.0f);
+    private float printHeadSpeed = 0.5f;
+    private float printHand1Speed = 1.5f;
+    private float printHand2Speed = 2.0f;
+
+    private Vector3 workHeadOffset = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 workHand1Offset = new Vector3(-3.8f, 0.0f, 0.0f);
+    private Vector3 workHand2Offset = new Vector3(-0.5f, 0.5f, 0.0f);
+    private Vector3 workHand1Offset2 = new Vector3(-3.4f, 0.0f, 0.0f);
+    private Vector3 workHand2Offset2 = new Vector3(-0.9f, 0.5f, 0.0f);
+    private float workHeadSpeed = 0.5f;
+    private float workHand1Speed = 1.5f;
+    private float workHand2Speed = 1.5f;
+
     public void StartMove()
     {
         string newState = "Move";
@@ -294,6 +302,82 @@ public class CharacterDisplay : MonoBehaviour
             headTarget = headOrigin + moveHeadOffset;
             hand1Target = hand1Origin + moveHand1Offset;
             hand2Target = hand2Origin + moveHand2Offset;
+        }
+    }
+
+    public void StartWork()
+    {
+        string newState = "Work";
+        if (!state.Equals(newState))
+        {
+            ResetPositions();
+            headForwards = true;
+            hand1Forwards = true;
+            hand2Forwards = true;
+            headSpeed = workHeadSpeed;
+            hand1Speed = workHand1Speed;
+            hand2Speed = workHand2Speed;
+            state = newState;
+            headTarget = headOrigin + workHeadOffset;
+            hand1Target = hand1Origin + workHand1Offset;
+            hand2Target = hand2Origin + workHand2Offset;
+        }
+    }
+
+    public void StartPrint()
+    {
+        string newState = "Print";
+        if (!state.Equals(newState))
+        {
+            ResetPositions();
+            headForwards = true;
+            hand1Forwards = true;
+            hand2Forwards = true;
+            headSpeed = printHeadSpeed;
+            hand1Speed = printHand1Speed;
+            hand2Speed = printHand2Speed;
+            state = newState;
+            headTarget = headOrigin + printHeadOffset;
+            hand1Target = hand1Origin + printHand1Offset;
+            hand2Target = hand2Origin + printHand2Offset;
+        }
+    }
+
+    public void StartPresent()
+    {
+        string newState = "Present";
+        if (!state.Equals(newState))
+        {
+            ResetPositions();
+            headForwards = true;
+            hand1Forwards = true;
+            hand2Forwards = true;
+            headSpeed = presentHeadSpeed;
+            hand1Speed = presentHand1Speed;
+            hand2Speed = presentHand2Speed;
+            state = newState;
+            headTarget = headOrigin + presentHeadOffset;
+            hand1Target = hand1Origin + presentHand1Offset;
+            hand2Target = hand2Origin + presentHand2Offset;
+        }
+    }
+
+    public void StartSit()
+    {
+        string newState = "Sit";
+        if (!state.Equals(newState))
+        {
+            ResetPositions();
+            headForwards = true;
+            hand1Forwards = true;
+            hand2Forwards = true;
+            headSpeed = sitHeadSpeed;
+            hand1Speed = sitHand1Speed;
+            hand2Speed = sitHand2Speed;
+            state = newState;
+            headTarget = headOrigin + sitHeadOffset;
+            hand1Target = hand1Origin + sitHand1Offset;
+            hand2Target = hand2Origin + sitHand2Offset;
         }
     }
 
@@ -419,6 +503,18 @@ public class CharacterDisplay : MonoBehaviour
                     headTarget = headOrigin + idleHeadOffset;
                 }
                 break;
+            case "Present":
+                if (headForwards)
+                {
+                    headForwards = false;
+                    headTarget = headOrigin - presentHeadOffset;
+                }
+                else
+                {
+                    headForwards = true;
+                    headTarget = headOrigin + presentHeadOffset;
+                }
+                break;
         }
     }
 
@@ -474,6 +570,42 @@ public class CharacterDisplay : MonoBehaviour
                     hand1Target = hand1Origin + vendHand1Offset;
                 }
                 break;
+            case "Present":
+                if (hand1Forwards)
+                {
+                    hand1Forwards = false;
+                    hand1Target = hand1Origin + presentHand1Offset2;
+                }
+                else
+                {
+                    hand1Forwards = true;
+                    hand1Target = hand1Origin + presentHand1Offset;
+                }
+                break;
+            case "Print":
+                if (hand1Forwards)
+                {
+                    hand1Forwards = false;
+                    hand1Target = hand1Origin + printHand1Offset2;
+                }
+                else
+                {
+                    hand1Forwards = true;
+                    hand1Target = hand1Origin + printHand1Offset;
+                }
+                break;
+            case "Work":
+                if (hand1Forwards)
+                {
+                    hand1Forwards = false;
+                    hand1Target = hand1Origin + workHand1Offset2;
+                }
+                else
+                {
+                    hand1Forwards = true;
+                    hand1Target = hand1Origin + workHand1Offset;
+                }
+                break;
         }
     }
 
@@ -527,6 +659,18 @@ public class CharacterDisplay : MonoBehaviour
                 {
                     hand2Forwards = true;
                     hand2Target = hand2Origin + vendHand2Offset;
+                }
+                break;
+            case "Work":
+                if (hand2Forwards)
+                {
+                    hand2Forwards = false;
+                    hand2Target = hand2Origin + workHand2Offset2;
+                }
+                else
+                {
+                    hand2Forwards = true;
+                    hand2Target = hand2Origin + workHand2Offset;
                 }
                 break;
         }
