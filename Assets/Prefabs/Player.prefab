@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 1209221020041175968}
   - component: {fileID: 8767220458700184076}
   - component: {fileID: 2963153122109240130}
+  - component: {fileID: 2416028820591401160}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -435,7 +436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemSprite: {fileID: 0}
-  player: {fileID: 0}
+  player: {fileID: 1209221020041175968}
   slots: []
   globalCooldownDuration: 4
 --- !u!114 &1209221020041175968
@@ -445,7 +446,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6807904795828795047}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 985bfe13043999b41bb8f9729152ffbd, type: 3}
   m_Name: 
@@ -556,6 +557,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2416028820591401160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6807904795828795047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 646f6b3fcda008346a40186cea53123e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 1479583501706135279}
 --- !u!1 &7694919826548506180
 GameObject:
   m_ObjectHideFlags: 0
