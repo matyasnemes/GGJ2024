@@ -20,6 +20,11 @@ public class JokeItemType : ScriptableObject
 		return JokeTexts;
 	}
 
+	public List<AudioClip> jokeClips()
+	{
+		return JokeClips;
+	}
+
 	public Sprite sprite()
 	{
 		return Sprite;
@@ -28,6 +33,7 @@ public class JokeItemType : ScriptableObject
 	public string Name;
 	public string Description;
 	public List<string> JokeTexts;
+	public List<AudioClip> JokeClips;
 	public Sprite Sprite;
 	// Other meta info
 }
