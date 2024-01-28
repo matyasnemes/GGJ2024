@@ -110,7 +110,7 @@ public class Character : MonoBehaviour
     }
 
     public void GoToFinalWorkstation()
-    {  
+    {
         disableJokeSpawn = true;
         target.SetDestination(finalWorkstation);
         finalWorkstation.ReserveWorkstation();
@@ -188,10 +188,10 @@ public class Character : MonoBehaviour
                 break;
             case State.Fin:
                 charDisp.StartIdle();
-                if(movingToNpc)
+                if (movingToNpc)
                 {
                     charDisp.StartMove();
-                    if(Vector2.Distance(moveToNpcPos, transform.position) > distanceFromNpc) transform.position = Vector2.MoveTowards(transform.position, moveToNpcPos, speed * Time.deltaTime);
+                    if (Vector2.Distance(moveToNpcPos, transform.position) > distanceFromNpc) transform.position = Vector2.MoveTowards(transform.position, moveToNpcPos, speed * Time.deltaTime);
                 }
                 break;
             case State.Working:
@@ -252,7 +252,7 @@ public class Character : MonoBehaviour
         var workstations = currentRoom.GetFreeWorkstations();
         if (workstations.Count > 0)
         {
-            target.SetDestination(workstations[Random.Range(0,workstations.Count)]);
+            target.SetDestination(workstations[Random.Range(0, workstations.Count)]);
             target.TargetWorkStation.ReserveWorkstation();
             typeOfLastWorkstation = target.TargetWorkStation.workstationType;
             CalculateAndSetRoute();
@@ -269,22 +269,22 @@ public class Character : MonoBehaviour
 
         GameObject roomCollector = GameObject.Find("Rooms");
 
-        foreach(Transform child in roomCollector.transform)
+        foreach (Transform child in roomCollector.transform)
         {
             Room room = child.gameObject.GetComponent<Room>();
-            if(room != null && room.GetFreeWorkstations(typeOfLastWorkstation).Count > 0) possibleTargets.Add(room);
+            if (room != null && room.GetFreeWorkstations(typeOfLastWorkstation).Count > 0) possibleTargets.Add(room);
         }
 
-        if(possibleTargets.Count == 0)
+        if (possibleTargets.Count == 0)
         {
             Debug.LogError("Could not find any rooms when choosing targets");
             return false;
         }
 
-        Room targetRoom = possibleTargets[Random.Range(0,possibleTargets.Count)];                  
+        Room targetRoom = possibleTargets[Random.Range(0, possibleTargets.Count)];
 
         var workstations = targetRoom.GetFreeWorkstations(typeOfLastWorkstation);
-        target.SetDestination(workstations[Random.Range(0,workstations.Count)]);
+        target.SetDestination(workstations[Random.Range(0, workstations.Count)]);
         typeOfLastWorkstation = target.TargetWorkStation.workstationType;
 
         //Letting the workstation know we are coming 
@@ -292,14 +292,14 @@ public class Character : MonoBehaviour
 
         //Calculate and set route to target
         CalculateAndSetRoute();
-        
+
         return true;
     }
 
     //Calculate and set the route to a workstation that has been set as Target
     void CalculateAndSetRoute()
     {
-        if(target.TargetWorkStation == null)
+        if (target.TargetWorkStation == null)
         {
             Debug.LogError("Would like to calculate route but there is no workstation");
             return;
@@ -307,7 +307,7 @@ public class Character : MonoBehaviour
 
         Room targetRoom = target.TargetWorkStation.GetOwnerRoom();
         //Three cases, the target workstation is in the given room, or it is in a neighbouring room, or it is accross the office
-        if(currentRoom == targetRoom)
+        if (currentRoom == targetRoom)
         {
             target.SetTargetToWorkstation();
         }
@@ -318,14 +318,14 @@ public class Character : MonoBehaviour
 
             foreach (var d in currentRoom.doors)
             {
-                if(d.IsConnectedToRoom(targetRoom))
+                if (d.IsConnectedToRoom(targetRoom))
                 {
                     neighbour = true;
                     door = d;
                 }
             }
 
-            if(neighbour)
+            if (neighbour)
             {
                 //target workstation is in a neighbouring room, go through the door leading there
                 target.SetTargetDoor(door, transform.position);
@@ -338,12 +338,12 @@ public class Character : MonoBehaviour
                 foreach (var d in currentRoom.doors)
                 {
 
-                    if(Vector2.Distance(d.transform.position, transform.position) < dist)
+                    if (Vector2.Distance(d.transform.position, transform.position) < dist)
                     {
                         neighbour = true;
                         door = d;
                     }
-                } 
+                }
 
                 target.SetTargetDoor(door, transform.position);
             }
@@ -368,7 +368,7 @@ public class Character : MonoBehaviour
 
                 break;
             case TargetType.PostDoor:
-//                target.SetTargetToWorkstation();
+                //                target.SetTargetToWorkstation();
                 CalculateAndSetRoute();
                 break;
             case TargetType.Workstation:
@@ -383,7 +383,7 @@ public class Character : MonoBehaviour
                     charDisp.FaceUp();
                 }
 
-                if(target.TargetWorkStation == finalWorkstation)
+                if (target.TargetWorkStation == finalWorkstation)
                 {
                     GameController gameController = GameObject.Find("GameController").GetComponent<GameController>();
 
@@ -406,7 +406,7 @@ public class Character : MonoBehaviour
 
     private void PlayWorkstationAnimation(WorkStation.WorkstationType workstationType)
     {
-        switch(workstationType)
+        switch (workstationType)
         {
             case WorkStation.WorkstationType.Piss:
                 charDisp.StartPiss();

@@ -42,13 +42,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428309674132060150}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf2ab2601856ec34184aacd81b91084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.4
   bubbleTime: 6
+  distanceFromNpc: 3
   funnyJokes: []
   laughBubble: {fileID: 2473199078318612518, guid: d8673bd747cd51445b96b6df2397f87d, type: 3}
   neutralBubble: {fileID: 2473199078318612518, guid: 2e1d6b17a1e590240ab68bebbeac7c2c, type: 3}
@@ -525,7 +526,7 @@ MonoBehaviour:
   meatBody: {fileID: 0}
   meatHead: {fileID: 0}
   meatHand: {fileID: 0}
-  faceDown: 1
+  faceDown: 0
   insidesRevealed: 0
   state: Nothing
 --- !u!1 &5460556284349811495

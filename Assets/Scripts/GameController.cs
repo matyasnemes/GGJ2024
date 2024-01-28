@@ -31,6 +31,8 @@ public class GameController : MonoBehaviour
     Character robot;
 
     private int waitingNumber = 0;
+    private int introIndex = 0;
+    private bool gameStarted = false;
 
     private void Awake()
     {
@@ -38,7 +40,7 @@ public class GameController : MonoBehaviour
     }
 
     private void Start()
-    {   
+    {
         Random.InitState((int)Time.time);
         playerCamera.enabled = true;
         mapCamera.enabled = false;
@@ -46,6 +48,41 @@ public class GameController : MonoBehaviour
     }
 
     void Update()
+    {
+        if (gameStarted)
+        {
+            NormalUpdate();
+        }
+        else
+        {
+            IntroUpdate();
+        }
+    }
+
+    void IntroUpdate()
+    {
+        if (introIndex == 0)
+        {
+            jokeTextBox.DisplayIndefinitite(introStrings[introIndex]);
+            introIndex++;
+        }
+        if (introIndex == introStrings.Count)
+        {
+            jokeTextBox.TurnOffTextBox();
+            gameStarted = true;
+            foreach (var npc in npcs)
+            {
+                npc.enabled = true;
+            }
+            player.enabled = true;
+        }
+        if (Input.GetKeyDown("space"))
+        {
+            jokeTextBox.DisplayIndefinitite(introStrings[introIndex++]);
+        }
+    }
+
+    void NormalUpdate()
     {
         if (gameTime - Time.deltaTime > 0)
         {
@@ -59,7 +96,7 @@ public class GameController : MonoBehaviour
         }
         UpdadteCamera();
 
-        if(Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetKeyUp(KeyCode.Escape))
         {
             SceneManager.LoadScene("MainMenu");
         }
@@ -237,25 +274,25 @@ public class GameController : MonoBehaviour
 
     string GenerateRandomNLongBinary(int n)
     {
-        string ret = "";    
+        string ret = "";
 
         for (int i = 0; i < n; i++)
         {
-            ret += Random.Range(0,2);
+            ret += Random.Range(0, 2);
         }
 
         return ret;
     }
 
     void Lose()
-    {  
+    {
         AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
         if (audioSource && loseMusic)
         {
             audioSource.PlayOneShot(loseMusic);
         }
 
-        foreach(var ch in npcs)
+        foreach (var ch in npcs)
         {
             ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
         }

@@ -37,6 +37,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e4d3c0ca851278a4db1e32e14deb9cb1, type: 3}
     - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
+      propertyPath: faceDown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3677266875907871743, guid: 6d085af7c50b1254286ca53c507c8278, type: 3}
       propertyPath: headDown
       value: 
       objectReference: {fileID: 21300000, guid: c3db7d9d674ae234184f8c76ec3077aa, type: 3}
