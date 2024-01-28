@@ -2983,19 +2983,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.x
-      value: 34.0036
+      value: 31.107374
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.y
-      value: 43.435833
+      value: 39.347046
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.x
-      value: 14.271378
+      value: 12.823266
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.y
-      value: -14.256277
+      value: -16.30067
       objectReference: {fileID: 0}
     - target: {fileID: 5075323173433285915, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Name
@@ -3965,19 +3965,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.x
-      value: 46.402363
+      value: 40.563385
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.y
-      value: 31.816368
+      value: 27.474567
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.x
-      value: -33.45591
+      value: -30.536423
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.y
-      value: -22.75034
+      value: -24.92124
       objectReference: {fileID: 0}
     - target: {fileID: 5075323173433285915, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Name
@@ -4777,19 +4777,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.x
-      value: 34.010605
+      value: 30.319199
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.y
-      value: 35.11564
+      value: 30.00446
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.x
-      value: 16.202412
+      value: 14.356709
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.y
-      value: 5.400237
+      value: 7.9558277
       objectReference: {fileID: 0}
     - target: {fileID: 5075323173433285915, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Name
@@ -5195,19 +5195,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.x
-      value: 44.02176
+      value: 39.676197
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Size.y
-      value: 23.035961
+      value: 21.07153
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.x
-      value: -34.23039
+      value: -32.057602
       objectReference: {fileID: 0}
     - target: {fileID: 2306907470406402262, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Offset.y
-      value: 6.355007
+      value: 7.337223
       objectReference: {fileID: 0}
     - target: {fileID: 5075323173433285915, guid: 2862052e6e2a62e49a6a854918bb44eb, type: 3}
       propertyPath: m_Name
@@ -12341,10 +12341,6 @@ MonoBehaviour:
   jokeTextBox: {fileID: 404120190}
   playerCamera: {fileID: 68905907}
   mapCamera: {fileID: 1653472933}
-  accusitionStrings:
-  - "Gentlemen, with my superb\_cognitive skills I've come to the conclusion that
-    our robot is no one else then..."
-  - ...
   loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
   winMusic: {fileID: 8300000, guid: 6690c97ccb0dff84c9741063fc7fc7c5, type: 3}
   accuseStartClip: {fileID: 8300000, guid: eaf405aa33ac58f4187dee06dcb4383b, type: 3}

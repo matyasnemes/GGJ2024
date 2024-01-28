@@ -28,48 +28,6 @@ public class Inventory : MonoBehaviour
 		return joke != null;
 	}
 
-	public void Update()
-	{
-		// Temp testing
-		if (Input.GetKeyDown(KeyCode.Alpha1))
-		{
-			useItem(0);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha2))
-		{
-			useItem(1);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha3))
-		{
-			useItem(2);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha4))
-		{
-			useItem(3);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha5))
-		{
-			useItem(4);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha6))
-		{
-			useItem(5);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha7))
-		{
-			useItem(6);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha8))
-		{
-			useItem(7);
-		}
-		if (Input.GetKeyDown(KeyCode.Alpha9))
-		{
-			useItem(8);
-		}
-		// Temp testing done
-	}
-
 	public bool isFull()
 	{
 		return !slots.Exists(x => x.jokeItem() == null);

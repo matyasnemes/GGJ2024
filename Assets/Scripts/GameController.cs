@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour
     private Character accusedNPC;
     private Character npcPlayer;
     public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
+    private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of illegal creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
+    private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "...", "I hope I can keep my job." };
 
     public AudioClip loseMusic;
     public AudioClip winMusic;
@@ -56,6 +58,11 @@ public class GameController : MonoBehaviour
             Lose();
         }
         UpdadteCamera();
+
+        if(Input.GetKeyUp(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 
     public List<JokeItemType> GetRobotFunnyJokes()
@@ -65,6 +72,9 @@ public class GameController : MonoBehaviour
 
     public void Accuse(GameObject characterObejct)
     {
+        GameObject.Find("Panel").SetActive(false);
+        GameObject.Find("inv_panel").SetActive(false);
+
         playerCamera.enabled = false;
         mapCamera.enabled = true;
         mapCamera.transform.position = playerCamera.transform.position;
@@ -80,20 +90,12 @@ public class GameController : MonoBehaviour
         foreach (var npc in npcs)
         {
             npc.GoToFinalWorkstation();
+            npc.speed *= 2;
         }
         npcPlayer.GoToFinalWorkstation();
 
         accusedNPC = characterObejct.GetComponent<Character>();
         Destroy(player.gameObject);
-
-        //if (characterObejct.GetComponent<Character>().AreYouARobot())
-        //{
-        //    Win();
-        //}
-        //else
-        //{
-        //    Lose();
-        //}
     }
 
     public void RegisterFinalArrival()
@@ -149,6 +151,7 @@ public class GameController : MonoBehaviour
         PlayAccuseStart();
         yield return new WaitForSeconds(accuseStartClip.length + 1.0f);
         npcPlayer.GoToNPC(accusedNPC);
+        yield return new WaitForSeconds(2);
         jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
         PlayAccusedName(accusedNPC);
         yield return new WaitForSeconds(2);
@@ -245,12 +248,21 @@ public class GameController : MonoBehaviour
     }
 
     void Lose()
-    {
-        if (loseSceneName != "") SceneManager.LoadScene(loseSceneName);
+    {  
+        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
+        if (audioSource && loseMusic)
+        {
+            audioSource.PlayOneShot(loseMusic);
+        }
+
+        foreach(var ch in npcs)
+        {
+            ch.GetComponentInChildren<CharacterDisplay>().FaceDown();
+        }
     }
 
     void Win()
     {
-        if (winSceneName != "") SceneManager.LoadScene(winSceneName);
+
     }
 }
