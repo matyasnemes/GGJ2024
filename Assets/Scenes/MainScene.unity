@@ -138,7 +138,6 @@ GameObject:
   m_Component:
   - component: {fileID: 68905908}
   - component: {fileID: 68905907}
-  - component: {fileID: 68905906}
   - component: {fileID: 68905909}
   m_Layer: 0
   m_Name: Main Camera
@@ -147,14 +146,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &68905906
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 68905905}
-  m_Enabled: 1
 --- !u!20 &68905907
 Camera:
   m_ObjectHideFlags: 0
@@ -843,6 +834,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf2ab2601856ec34184aacd81b91084f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &233508553 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6807904795828795047, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+  m_PrefabInstance: {fileID: 1144409782}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &242626273 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3401251305461028376, guid: 7ed9d13f9348ee7409e8c5f8b7815743, type: 3}
@@ -3415,7 +3411,7 @@ PrefabInstance:
     - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1144409787}
+      objectReference: {fileID: 0}
     - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       propertyPath: slots.Array.size
       value: 9
@@ -3510,19 +3506,36 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6411585285967165199, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 68905908}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6807904795828795047, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1144409791}
   m_SourcePrefab: {fileID: 100100000, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
 --- !u!4 &1144409783 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6411585285967165199, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
   m_PrefabInstance: {fileID: 1144409782}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1144409787 stripped
+--- !u!114 &1144409791
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2166805176502934737, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 233508553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 985bfe13043999b41bb8f9729152ffbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovementSpeed: 10
+  finalWorkstation: {fileID: 0}
+--- !u!114 &1144409792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1209221020041175968, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
   m_PrefabInstance: {fileID: 1144409782}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 233508553}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 985bfe13043999b41bb8f9729152ffbd, type: 3}
@@ -5956,8 +5969,15 @@ MonoBehaviour:
   gameTime: 120
   winSceneName: WinScene
   loseSceneName: LoseScene
+  player: {fileID: 1144409792}
+  npcPlayerPrefab: {fileID: 9013034397458144920, guid: 098d17854edefe14ba4e438d049388d5, type: 3}
+  jokeTextBox: {fileID: 404120190}
   playerCamera: {fileID: 68905907}
   mapCamera: {fileID: 1653472933}
+  accusitionStrings:
+  - "Gentlemen, with my superb\_cognitive skills I've come to the conclusion that
+    our robot is no one else then..."
+  - ...
 --- !u!4 &2045352683
 Transform:
   m_ObjectHideFlags: 0
