@@ -68,6 +68,9 @@ public class GameController : MonoBehaviour
 
     public void Accuse(GameObject characterObejct)
     {
+        GameObject.Find("Panel").SetActive(false);
+        GameObject.Find("inv_panel").SetActive(false);
+
         playerCamera.enabled = false;
         mapCamera.enabled = true;
         mapCamera.transform.position = playerCamera.transform.position;
@@ -105,8 +108,9 @@ public class GameController : MonoBehaviour
         jokeTextBox.DisplayJoke(accusitionStrings[0]);
         yield return new WaitForSeconds(2);
         npcPlayer.GoToNPC(accusedNPC);
-        jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
         yield return new WaitForSeconds(2);
+        jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
+        yield return new WaitForSeconds(1);
 
         var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
         if (accusedNPC.AreYouARobot())
