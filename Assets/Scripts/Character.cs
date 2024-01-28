@@ -5,8 +5,6 @@ public class Character : MonoBehaviour
 {
     const float eps = 0.0001f;
     Vector3 bubbleOffset = new Vector3(0, 7, 0);
-
-
     public float speed = 0.4f;
     public float bubbleTime = 2.0f;
     public List<JokeItemType> funnyJokes;
@@ -140,11 +138,6 @@ public class Character : MonoBehaviour
         Destroy(bubble, bubbleTime);
     }
 
-    void SpawnJokePaper()
-    {
-        Transform spawnedJokePaper = Instantiate(JokePaperPrefab, transform.position, transform.rotation);
-    }
-
     /**
      * Updates the state machine responsible for moving the character around.
      */
@@ -207,6 +200,14 @@ public class Character : MonoBehaviour
         }
     }
 
+    void SpawnJokePaper()
+    {
+        JokeItem jokeItem = jokeFactory.createRandomJokeItem();
+        Transform spawnedJokePaper = Instantiate(JokePaperPrefab, transform.position, transform.rotation);
+        spawnedJokePaper.GetComponent<JokePaper>().jokeItem = jokeItem;
+        spawnedJokePaper.GetComponent<SpriteRenderer>().sprite = jokeItem.unopenedSprite();
+    }
+
     /**
      * Updates the random joke spawner logic.
      */
@@ -214,7 +215,7 @@ public class Character : MonoBehaviour
     {
         if (RemainingSecondsUntilJokeSpawn < 0.0f)
         {
-            if (jokeFactory.CanSpawnNewJokePaper())
+            if (state != State.Fin && jokeFactory.CanSpawnNewJokePaper())
             {
                 SpawnJokePaper();
                 jokeFactory.OnJokePaperSpawned();

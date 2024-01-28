@@ -12,11 +12,21 @@ public class GameController : MonoBehaviour
     public string winSceneName = "";
     public string loseSceneName = "";
 
+    public Player player;
+    public GameObject npcPlayerPrefab;
+    public JokeTextBox jokeTextBox;
+
     public Camera playerCamera;
     public Camera mapCamera;
 
+    private Character accusedNPC;
+    private Character npcPlayer;
+    public List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
+
     System.Random rd = new System.Random();
     Character robot;
+
+    private int waitingNumber = 0;
 
     private void Awake()
     {
@@ -27,6 +37,7 @@ public class GameController : MonoBehaviour
     {
         playerCamera.enabled = true;
         mapCamera.enabled = false;
+        waitingNumber = npcs.Count + 1;
     }
 
     void Update()
@@ -51,13 +62,58 @@ public class GameController : MonoBehaviour
 
     public void Accuse(GameObject characterObejct)
     {
-        if (characterObejct.GetComponent<Character>().AreYouARobot())
+        playerCamera.enabled = false;
+        mapCamera.enabled = true;
+
+        var npcPlayerObject = Instantiate(npcPlayerPrefab);
+        npcPlayerObject.transform.position = player.transform.position;
+        npcPlayer = npcPlayerObject.GetComponent<Character>();
+
+        foreach (var npc in npcs)
         {
-            Win();
+            npc.GoToFinalWorkstation();
+        }
+        npcPlayer.GoToFinalWorkstation();
+
+        accusedNPC = characterObejct.GetComponent<Character>();
+        Destroy(player.gameObject);
+        StartCoroutine(StartAccusing());
+
+        //if (characterObejct.GetComponent<Character>().AreYouARobot())
+        //{
+        //    Win();
+        //}
+        //else
+        //{
+        //    Lose();
+        //}
+    }
+
+    public void RegisterFinalArrival()
+    {
+        waitingNumber--;
+        if (waitingNumber == 0)
+        {
+            StartAccusing();
+        }
+    }
+
+    System.Collections.IEnumerator StartAccusing()
+    {
+        jokeTextBox.DisplayJoke(accusitionStrings[0]);
+        yield return new WaitForSeconds(3);
+        //npcPlayer.GoToNPC(accusedNPC);
+        jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
+        yield return new WaitForSeconds(2);
+
+        var characterDisplay = accusedNPC.gameObject.GetComponentInChildren<CharacterDisplay>();
+        if (accusedNPC.AreYouARobot())
+        {
+            characterDisplay.TurnIntoRobot();
         }
         else
         {
-            Lose();
+            characterDisplay.TurnIntoMeat();
         }
     }
 
