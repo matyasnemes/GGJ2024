@@ -73,6 +73,10 @@ PrefabInstance:
       value: Workstation Vendingmachine
       objectReference: {fileID: 0}
     - target: {fileID: 4473170659311284922, guid: aa7989718d0e76d4584192894d916e52, type: 3}
+      propertyPath: workstationType
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4473170659311284922, guid: aa7989718d0e76d4584192894d916e52, type: 3}
       propertyPath: playSoundAtEnter
       value: 1
       objectReference: {fileID: 0}
