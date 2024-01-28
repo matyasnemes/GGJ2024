@@ -37,6 +37,9 @@ public class GameController : MonoBehaviour
 
     private GameObject panel;
     private GameObject inv;
+    
+    private Coroutine gameStartCoroutine;
+
     private void Awake()
     {
         SetUpNPCs();
@@ -50,7 +53,7 @@ public class GameController : MonoBehaviour
         waitingNumber = npcs.Count + 1;
         panel = GameObject.Find("Panel");
         inv = GameObject.Find("inv_panel");
-        StartCoroutine(PlayIntroScene());
+        gameStartCoroutine = StartCoroutine(PlayIntroScene());
     }
 
     void Update()
@@ -58,6 +61,21 @@ public class GameController : MonoBehaviour
         if (gameStarted)
         {
             NormalUpdate();
+        }
+        else if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopCoroutine(gameStartCoroutine);
+            jokeTextBox.TurnOffTextBox();
+            gameStarted = true;
+            foreach (var npc in npcs)
+            {
+                npc.enabled = true;
+            }
+            player.enabled = true;
+            player.gameObject.GetComponent<InventoryController>().enabled = true;
+            panel.SetActive(true);
+            inv.SetActive(true);
+            playerCamera.gameObject.GetComponent<PlayerCameraController>().enabled = true;
         }
     }
 

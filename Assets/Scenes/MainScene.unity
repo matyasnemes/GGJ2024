@@ -12395,6 +12395,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 576bbdbd3b842c048b7e11ede86905d4, type: 3}
   - {fileID: 8300000, guid: b9cc0aac9aba98545b8d9eb22dcef77f, type: 3}
   - {fileID: 8300000, guid: 437005fb32c499543815412643857d11, type: 3}
+  timeoutClips:
+  - {fileID: 8300000, guid: 3fdba36951ad4484191a3495a2c1a061, type: 3}
+  - {fileID: 8300000, guid: 14034a39aedbd6d45ab280c66420a71d, type: 3}
+  - {fileID: 8300000, guid: 22a9cc91de07b3449809e9fdbeb67934, type: 3}
   loseMusic: {fileID: 8300000, guid: de0ce30e2c147cd4ebfd8d997feff68e, type: 3}
   winMusic: {fileID: 0}
   accuseStartClip: {fileID: 0}
