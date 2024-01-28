@@ -22,10 +22,11 @@ public class GameController : MonoBehaviour
     private Character accusedNPC;
     private Character npcPlayer;
     private List<string> accusitionStrings = new List<string> { "Gentlemen, with my superb cognitive skills I've come to the conclusion that our robot is no one else then...", "..." };
-    private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of illegal creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm sure everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
-    private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "...", "I hope I can keep my job." };
+    private List<string> introStrings = new List<string> { "Listen up everybody!", "As you all know, the new AI rules strictly forbid employing robots in creative jobs.", "This fine gentleman is here from the Bureau of Illegal Creativity to find if any robot is hiding among us.", "I have absolute trust in all of you, and I'm sure everyone is a human here.", "So go on your day as usual, and let the investigator do his job!", "Dismissed!" };
+    private List<string> timeoutStrings = new List<string> { "Gentlemen, it seems the Bureau was wrong and there is not a single robot here.", "I came to this conclusion by running out of my allocated time.", "I hope I can keep my job." };
 
     public List<AudioClip> introClips;
+    public List<AudioClip> timeoutClips;
     public AudioClip loseMusic;
     public AudioClip winMusic;
     public AudioClip accuseStartClip;
@@ -66,6 +67,15 @@ public class GameController : MonoBehaviour
         if (audioSource && index < introClips.Count && introClips[index])
         {
             audioSource.PlayOneShot(introClips[index]);
+        }
+    }
+
+    void PlayTimeoutClip(int index)
+    {
+        AudioSource audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+        if (audioSource && index < timeoutClips.Count && timeoutClips[index])
+        {
+            audioSource.PlayOneShot(timeoutClips[index]);
         }
     }
 
@@ -229,10 +239,12 @@ public class GameController : MonoBehaviour
         else
         {
             won = false;
-            //timeOutStrings 4;
-            //jokeTextBox.DisplayJoke(timeoutStrings[0]);
-            //PlayAccuseStart();
-
+            for (int i = 0; i < timeoutStrings.Count; i++)
+            {
+                jokeTextBox.DisplayIndefinitite(timeoutStrings[i]);
+                PlayTimeoutClip(i);
+                yield return new WaitForSeconds(timeoutClips[i].length + 0.5f);
+            }
         }        
         if(!won)
         {
