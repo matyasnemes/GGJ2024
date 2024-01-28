@@ -50,6 +50,7 @@ public class Character : MonoBehaviour
     GameObject bubble = null;
     CharacterDisplay charDisp;
     JokeFactory jokeFactory;
+    WorkStation.WorkstationType typeOfLastWorkstation = WorkStation.WorkstationType.Final;
 
     // Start is called before the first frame update
     void Start()
@@ -124,10 +125,6 @@ public class Character : MonoBehaviour
         if (state == State.Working)
         {
             state = State.Idle;
-        }
-        else if(state != State.Fin)
-        {
-            Debug.Log("<color=red>Error: </color> Invalid state change to Idle");
         }
     }
 
@@ -247,6 +244,7 @@ public class Character : MonoBehaviour
         {
             target.SetDestination(workstations[rd.Next(workstations.Count)]);
             target.TargetWorkStation.ReserveWorkstation();
+            typeOfLastWorkstation = target.TargetWorkStation.workstationType;
             CalculateAndSetRoute();
             return true;
         }
@@ -264,7 +262,7 @@ public class Character : MonoBehaviour
         foreach(Transform child in roomCollector.transform)
         {
             Room room = child.gameObject.GetComponent<Room>();
-            if(room != null && room.GetFreeWorkstations().Count > 0) possibleTargets.Add(room);
+            if(room != null && room.GetFreeWorkstations(typeOfLastWorkstation).Count > 0) possibleTargets.Add(room);
         }
 
         if(possibleTargets.Count == 0)
@@ -275,8 +273,9 @@ public class Character : MonoBehaviour
 
         Room targetRoom = possibleTargets[rd.Next(possibleTargets.Count)];                  
 
-        var workstations = targetRoom.GetFreeWorkstations();
+        var workstations = targetRoom.GetFreeWorkstations(typeOfLastWorkstation);
         target.SetDestination(workstations[rd.Next(workstations.Count)]);
+        typeOfLastWorkstation = target.TargetWorkStation.workstationType;
 
         //Letting the workstation know we are coming 
         target.TargetWorkStation.ReserveWorkstation();

@@ -51,14 +51,14 @@ public class Room : MonoBehaviour
     }
 
     /**
-     * Queries the list of free (unreserved and unoccopied) workstations in the room.
+     * Queries the list of free (unreserved and unoccopied) workstations in the room, except those that are final type, or the same type as the parameter
      */
-    public List<WorkStation> GetFreeWorkstations()
+    public List<WorkStation> GetFreeWorkstations(WorkStation.WorkstationType excludeWSType = WorkStation.WorkstationType.Final)
     {   
         List<WorkStation> freeWorkStations = new List<WorkStation>();
         foreach (WorkStation workStation in workStationsInRoom)
         {
-            if (!workStation.IsReserved())
+            if (!workStation.IsReserved() && workStation.workstationType != WorkStation.WorkstationType.Final && workStation.workstationType != excludeWSType)
             {
                 freeWorkStations.Add(workStation);
             }

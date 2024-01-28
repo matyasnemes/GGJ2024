@@ -71,6 +71,7 @@ public class Player : MonoBehaviour
         inventory = GetComponent<Inventory>();
         audioSource = GetComponent<AudioSource>();
         jokeTB = GameObject.Find("JokeTextBox").GetComponent<JokeTextBox>();
+		inventory.addItem(jokeFactory.createRandomJokeItem());
     }
 
     public void GoToFinalWorkstation()

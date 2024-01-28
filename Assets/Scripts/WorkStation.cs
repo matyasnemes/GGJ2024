@@ -13,7 +13,8 @@ public class WorkStation : MonoBehaviour
         Present,
         Sit,
         Print,
-        Work
+        Work,
+        Final
     }
 
     public WorkstationType workstationType;

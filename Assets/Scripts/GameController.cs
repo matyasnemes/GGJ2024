@@ -64,7 +64,9 @@ public class GameController : MonoBehaviour
     {
         playerCamera.enabled = false;
         mapCamera.enabled = true;
-        mapCamera.GetComponent<MapCameraController>().ZoomOut();
+        mapCamera.transform.position = playerCamera.transform.position;
+        mapCamera.orthographicSize = playerCamera.orthographicSize;
+        mapCamera.gameObject.GetComponent<MapCameraController>().ZoomOut();
 
         var npcPlayerObject = Instantiate(npcPlayerPrefab);
         npcPlayerObject.transform.position = player.transform.position;
