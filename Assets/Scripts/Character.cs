@@ -215,7 +215,7 @@ public class Character : MonoBehaviour
     {
         if (RemainingSecondsUntilJokeSpawn < 0.0f)
         {
-            if (jokeFactory.CanSpawnNewJokePaper())
+            if (state != State.Fin && jokeFactory.CanSpawnNewJokePaper())
             {
                 SpawnJokePaper();
                 jokeFactory.OnJokePaperSpawned();
