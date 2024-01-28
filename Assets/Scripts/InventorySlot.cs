@@ -72,7 +72,7 @@ public class InventorySlot : MonoBehaviour
 		if (_jokeItem != null)
 		{
 			_jokeItem.onUpdate(Time.deltaTime);
-			if (slotEnabled() && _jokeItem.isTypeRevealed())
+			if (_jokeItem.isTypeRevealed())
 			{
 				_itemImage.GetComponent<Image>().enabled = true;
 				_itemImage.sprite = _jokeItem.openedSprite();

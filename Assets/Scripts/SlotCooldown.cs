@@ -9,9 +9,8 @@ public class SlotCooldown : MonoBehaviour
 		Debug.Assert(cooldownImg);
 		Debug.Assert(_invSlot);
 		cooldownImg.fillAmount = 0.0F;
-		_cooldownImage = transform.Find("slot_cooldown").GetComponent<Image>();
-		Debug.Assert(_cooldownImage != null);
-		_cooldownImage.GetComponent<Image>().enabled = false;
+		Debug.Assert(cooldownImg != null);
+		cooldownImg.GetComponent<Image>().enabled = false;
 	}
 
 	public void LateUpdate()
@@ -19,23 +18,25 @@ public class SlotCooldown : MonoBehaviour
 		var joke = _invSlot.jokeItem();
 		if (!_invSlot.slotEnabled())
 		{
-			_cooldownImage.GetComponent<Image>().enabled = true;
+			cooldownImg.enabled = true;
+			cooldownImg.fillMethod = Image.FillMethod.Radial360;
+			cooldownImg.fillOrigin = (int)Image.Origin360.Top;
 			cooldownImg.fillAmount = 1.0F - _invSlot.disableDurationPercent();
 		}
-		else if (joke != null)
+		else if (joke != null && joke.typeRevealPercent() < 1.0F)
 		{
-			_cooldownImage.GetComponent<Image>().enabled = true;
+			cooldownImg.enabled = true;
+			cooldownImg.fillMethod = Image.FillMethod.Vertical;
+			cooldownImg.fillOrigin = (int)Image.OriginVertical.Bottom;
 			cooldownImg.fillAmount = 1.0F - joke.typeRevealPercent();
 		}
 		else
 		{
-			_cooldownImage.GetComponent<Image>().enabled = false;
+			cooldownImg.GetComponent<Image>().enabled = false;
 		}
 	}
 
 	public Image cooldownImg;
 	private InventorySlot _invSlot;
-	// Cooldown image.
-	public Image _cooldownImage = null;
 }
 
