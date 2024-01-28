@@ -106,7 +106,7 @@ public class GameController : MonoBehaviour
     {
         jokeTextBox.DisplayJoke(accusitionStrings[0]);
         yield return new WaitForSeconds(3);
-        //npcPlayer.GoToNPC(accusedNPC);
+        npcPlayer.GoToNPC(accusedNPC);
         jokeTextBox.DisplayJoke(accusitionStrings[1] + accusedNPC.name);
         yield return new WaitForSeconds(2);
 

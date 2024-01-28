@@ -7,6 +7,7 @@ public class Character : MonoBehaviour
     Vector3 bubbleOffset = new Vector3(0, 7, 0);
     public float speed = 0.4f;
     public float bubbleTime = 2.0f;
+    public float distanceFromNpc = 3.0f;
     public List<JokeItemType> funnyJokes;
     public GameObject laughBubble;
     public GameObject neutralBubble;
@@ -43,6 +44,8 @@ public class Character : MonoBehaviour
     bool iAmRobot = false;
     bool firstFindGoal = true;
     bool disableJokeSpawn = false;
+    bool movingToNpc = false;
+    Vector2 moveToNpcPos = Vector2.zero;
     System.Random rd = new System.Random();
     State state = State.Idle;
     Target target = new Target();
@@ -184,6 +187,11 @@ public class Character : MonoBehaviour
 
                 break;
             case State.Fin:
+                if(movingToNpc)
+                {
+                    if(Vector2.Distance(moveToNpcPos, transform.position) > distanceFromNpc) transform.position = Vector2.MoveTowards(transform.position, moveToNpcPos, speed * Time.deltaTime);
+                }
+                break;
             case State.Working:
 
                 //Work, work
@@ -423,5 +431,11 @@ public class Character : MonoBehaviour
                 charDisp.StartWork();
                 break;
         }
+    }
+
+    public void GoToNPC(Character npc)
+    {
+        movingToNpc = true;
+        moveToNpcPos = npc.gameObject.transform.position;
     }
 }
