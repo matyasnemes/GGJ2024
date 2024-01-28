@@ -5,12 +5,14 @@ public class JokeItem
 {
 	public JokeItem(JokeItemType type,
 					string jokeText,
+					AudioClip jokeClip,
 					Sprite unopenedSprite,
 					Sprite openedSprite,
 					float revealDuration)
 	{
 		this._type = type;
 		this._jokeText = jokeText;
+		this._jokeClip = jokeClip;
 		this._unopenedSprite = unopenedSprite;
 		this._openedSprite = openedSprite;
 		this._revealDuration = revealDuration;
@@ -40,6 +42,11 @@ public class JokeItem
 	public string jokeText()
 	{
 		return _jokeText;
+	}
+
+	public AudioClip jokeClip()
+	{
+		return _jokeClip;
 	}
 
 	public Sprite jokeSprite()
@@ -74,6 +81,7 @@ public class JokeItem
 
 	private JokeItemType _type;
 	private string _jokeText;
+	private AudioClip _jokeClip;
 	private Sprite _unopenedSprite;
 	private Sprite _openedSprite;
 	private float _revealTimer; // Elapsed, in seconds.

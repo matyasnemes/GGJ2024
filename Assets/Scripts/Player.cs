@@ -30,6 +30,11 @@ public class Player : MonoBehaviour
     private Inventory inventory;
 
     /**
+     * Reference to the audio source of the player.
+     */
+    private AudioSource audioSource;
+
+    /**
      * The room in which the player currently resides.
      */
     private Room currentRoom = null;
@@ -52,6 +57,7 @@ public class Player : MonoBehaviour
         }
 
         DisplayJoke(joke.jokeText());
+        PlayJokeAudio(joke.jokeClip());
     }
 
     /**
@@ -63,6 +69,7 @@ public class Player : MonoBehaviour
         characterDisplay = GetComponentInChildren<CharacterDisplay>();
         jokeFactory = GameObject.Find("Joker").GetComponent<JokeFactory>();
         inventory = GetComponent<Inventory>();
+        audioSource = GetComponent<AudioSource>();
         jokeTB = GameObject.Find("JokeTextBox").GetComponent<JokeTextBox>();
 		inventory.addItem(jokeFactory.createRandomJokeItem());
     }
@@ -155,5 +162,13 @@ public class Player : MonoBehaviour
         }
 
         jokeTB.DisplayJoke(joke);
+    }
+
+    void PlayJokeAudio(AudioClip jokeClip)
+    {
+        if (jokeClip)
+        {
+            audioSource.PlayOneShot(jokeClip);
+        }
     }
 }

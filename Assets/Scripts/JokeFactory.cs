@@ -25,9 +25,11 @@ public class JokeFactory : MonoBehaviour
 		int chosenType = generateInterval(0, jokeItemTypes.Count);
 		JokeItemType jit = jokeItemTypes[chosenType];
 		int numJokeTexts = jit.jokeTexts().Count;
+		int numJokeClips = jit.jokeClips().Count;
 		int chosenText = generateInterval(0, numJokeTexts);
 		return new JokeItem(jit,
 				            jit.jokeTexts()[chosenText],
+							chosenText < numJokeClips ? jit.jokeClips()[chosenText] : null,
 							unopenedSprites[chosenUnopened],
 							openedSprites[chosenOpened],
 							revealDuration);
