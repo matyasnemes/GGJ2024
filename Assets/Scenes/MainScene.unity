@@ -3764,7 +3764,7 @@ PrefabInstance:
     - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1144409792}
     - target: {fileID: 1479583501706135279, guid: 2e9c459a3ed383b4fb32261406ffa31f, type: 3}
       propertyPath: slots.Array.size
       value: 9
