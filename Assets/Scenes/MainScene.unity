@@ -10977,6 +10977,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Detective Final WS
       objectReference: {fileID: 0}
+    - target: {fileID: 4536323892579755900, guid: f9a42af322e88de43a0a21d7ca9ba146, type: 3}
+      propertyPath: facingDown
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
