@@ -52,6 +52,7 @@ MonoBehaviour:
   funnyJokes: []
   laughBubble: {fileID: 2473199078318612518, guid: d8673bd747cd51445b96b6df2397f87d, type: 3}
   neutralBubble: {fileID: 2473199078318612518, guid: 2e1d6b17a1e590240ab68bebbeac7c2c, type: 3}
+  finalWorkstation: {fileID: 0}
   JokePaperPrefab: {fileID: 4882196499427237929, guid: 5f791b7348a7a5042832acf456c671a4, type: 3}
   JokeSpawnTimeSecondsMin: 5
   JokeSpawnTimeSecondsMax: 10
@@ -227,7 +228,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2571712868326268756}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -278,7 +279,7 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &6083404587679892119
 MonoBehaviour:
@@ -510,11 +511,22 @@ MonoBehaviour:
   bodyDown: {fileID: 0}
   bodyUp: {fileID: 0}
   hand: {fileID: 0}
+  hand1: {fileID: 0}
+  hand2: {fileID: 0}
+  hand1Back: {fileID: 0}
+  hand2Back: {fileID: 0}
   headRenderer: {fileID: 8384951102869802347}
   bodyRenderer: {fileID: 5012638317272763560}
   handRenderer1: {fileID: 3830891465885700428}
   handRenderer2: {fileID: 307616046719073693}
+  robotBody: {fileID: 0}
+  robotHead: {fileID: 0}
+  robotHand: {fileID: 0}
+  meatBody: {fileID: 0}
+  meatHead: {fileID: 0}
+  meatHand: {fileID: 0}
   faceDown: 1
+  insidesRevealed: 0
 --- !u!1 &5460556284349811495
 GameObject:
   m_ObjectHideFlags: 0
