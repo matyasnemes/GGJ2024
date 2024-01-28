@@ -44,6 +44,10 @@ public class Room : MonoBehaviour
     void Start()
     {
         workStationsInRoom = new List<WorkStation>(GetComponentsInChildren<WorkStation>());
+        foreach (WorkStation workStation in workStationsInRoom)
+        {
+            workStation.SetOwnerRoom(this);
+        }
     }
 
     /**
