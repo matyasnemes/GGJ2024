@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     private GameObject inv;
     
     private Coroutine gameStartCoroutine;
+    private bool accusationStarted = false;
 
     private void Awake()
     {
@@ -90,7 +91,7 @@ public class GameController : MonoBehaviour
 
     void PlayTimeoutClip(int index)
     {
-        AudioSource audioSource = GameObject.Find("Player").GetComponent<AudioSource>();
+        AudioSource audioSource = GameObject.Find("NPCPlayer(Clone)").GetComponent<AudioSource>();
         if (audioSource && index < timeoutClips.Count && timeoutClips[index])
         {
             audioSource.PlayOneShot(timeoutClips[index]);
@@ -123,6 +124,11 @@ public class GameController : MonoBehaviour
 
     void NormalUpdate()
     {
+        if(accusationStarted)
+        {
+            return;
+        }
+
         if (gameTime - Time.deltaTime > 0)
         {
             gameTime -= Time.deltaTime;
@@ -148,6 +154,7 @@ public class GameController : MonoBehaviour
 
     public void Accuse(GameObject characterObejct)
     {
+        accusationStarted = true;
         GameObject.Find("Panel").SetActive(false);
         GameObject.Find("inv_panel").SetActive(false);
 
@@ -169,7 +176,7 @@ public class GameController : MonoBehaviour
             npc.speed *= 2;
         }
         npcPlayer.GoToFinalWorkstation();
-        if(characterObejct == null)
+        if(characterObejct != null)
         {
             accusedNPC = characterObejct.GetComponent<Character>();
         }
